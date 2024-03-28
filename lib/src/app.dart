@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/utils/routes/app_pages.dart';
 import 'package:get/get.dart';
 
+import 'utils/routes/routes.dart';
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -15,8 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           // fontFamily: 'Popins',
           ),
-      initialRoute: AppPages.INITIAL,
-
+      initialRoute: Routes.splash,
       getPages: AppPages.routes,
       // onUnknownRoute: (RouteSettings rs) => MaterialPageRoute(
       //   builder: (context) {
