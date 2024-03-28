@@ -5,5 +5,6 @@ abstract class Routes {
   static const singUp = '/singUp';
   static const forgot = '/forgot';
   static const addAsset= '/addAsset';
+  static const viewAssets= '/viewAssets';
 
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/utils/routes/routes.dart';
-import 'package:flutter_application_1/src/utils/widgets/container_widget.dart';
-import 'package:flutter_application_1/src/utils/widgets/textformfild_widgets.dart';
+import 'package:flutter_application_1/src/ui/widgets/container_widget.dart';
+import 'package:flutter_application_1/src/ui/widgets/textformfild_widgets.dart';
 import 'package:get/get.dart';
 
 class LogIn extends StatelessWidget {
@@ -47,7 +47,7 @@ class LogIn extends StatelessWidget {
                     width: double.infinity,
                     child: TextButton(
                       onPressed: (){
-                        Get.toNamed(Routes.addAsset);
+                        Get.toNamed(Routes.viewAssets);
                       },
                       // onPressed: () async {
                       //   // var sharedpref= await SharedPreferences.getInstance();
