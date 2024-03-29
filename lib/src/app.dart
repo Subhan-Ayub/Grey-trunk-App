@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           // fontFamily: 'Popins',
           ),
-      initialRoute: Routes.splash,
+      initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       // onUnknownRoute: (RouteSettings rs) => MaterialPageRoute(
       //   builder: (context) {
