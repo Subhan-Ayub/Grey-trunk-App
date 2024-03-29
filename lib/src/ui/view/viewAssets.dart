@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/src/utils/routes/routes.dart';
 import 'package:flutter_application_1/src/utils/uidata/color.dart';
 import 'package:get/get.dart';
 
@@ -34,8 +35,8 @@ class ViewAssets extends StatelessWidget {
             child: TextField(
               decoration: InputDecoration(
                 hintText: 'Search',
-                hintStyle: TextStyle(
-                    color: const Color.fromARGB(148, 158, 158, 158)),
+                hintStyle:
+                    TextStyle(color: const Color.fromARGB(148, 158, 158, 158)),
                 prefixIcon: Icon(
                   Icons.search_rounded,
                   size: 22,
@@ -66,74 +67,80 @@ class ViewAssets extends StatelessWidget {
             child: ListView.builder(
                 itemCount: 5,
                 itemBuilder: (BuildContext context, ind) {
-                  return Container(
-                    color: Colors.white,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                      const Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text('Asset tag ID: 11'),
-                          Text(
-                            '• Available',
-                            style: TextStyle(color: Colors.green),
-                          )
-                        ],
-                      ).marginSymmetric(vertical: 10),
-                      Divider(),
-                      Container(
-                        width: Get.width / 2,
-                        child: Column(
+                  return InkWell(
+                    onTap: () {
+                      Get.toNamed(Routes.assetsDetails);
+                    },
+                    child: Container(
+                      color: Colors.white,
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Row(
+                            const Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Icon(
-                                  Icons.description_outlined,
-                                  size: 17,
-                                ).marginOnly(right: 5),
-                                Text('Description:'),
-                                Spacer(),
-                                Text('zzz')
+                                Text('Asset tag ID: 11'),
+                                Text(
+                                  '• Available',
+                                  style: TextStyle(color: Colors.green),
+                                )
                               ],
-                            ).marginOnly(top: 5,bottom: 5),
+                            ).marginSymmetric(vertical: 10),
+                            Divider(),
+                            Container(
+                              width: Get.width / 2,
+                              child: Column(
+                                children: [
                                   Row(
-                              children: [
-                                Icon(
-                                  Icons.add_location_alt,
-                                  size: 17,
-                                ).marginOnly(right: 5),
-                                Text('Site:'),
-                                Spacer(),
-                                Text('NA')
-                              ],
-                            ).marginOnly(top: 5,bottom: 5),      Row(
-                              children: [
-                                Icon(
-                                  Icons.maps_home_work_outlined,
-                                  size: 17,
-                                ).marginOnly(right: 5),
-                                Text('Location:'),
-                                Spacer(),
-                                Text('NA')
-                              ],
-                            ).marginOnly(top: 5,bottom: 5),      Row(
-                              children: [
-                                Icon(
-                                  Icons.category,
-                                  size: 17,
-                                ).marginOnly(right: 5),
-                                Text('Category:'),
-                                Spacer(),
-                                Text('NA')
-                              ],
-                            ).marginOnly(top: 5,bottom: 5),
-                            
-                          ],
-                        ),
-                      )
-                    ]).marginSymmetric(horizontal: 15),
-                  ).marginOnly(bottom: 10);
+                                    children: [
+                                      Icon(
+                                        Icons.description_outlined,
+                                        size: 17,
+                                      ).marginOnly(right: 5),
+                                      Text('Description:'),
+                                      Spacer(),
+                                      Text('zzz')
+                                    ],
+                                  ).marginOnly(top: 5, bottom: 5),
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        Icons.add_location_alt,
+                                        size: 17,
+                                      ).marginOnly(right: 5),
+                                      Text('Site:'),
+                                      Spacer(),
+                                      Text('NA')
+                                    ],
+                                  ).marginOnly(top: 5, bottom: 5),
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        Icons.maps_home_work_outlined,
+                                        size: 17,
+                                      ).marginOnly(right: 5),
+                                      Text('Location:'),
+                                      Spacer(),
+                                      Text('NA')
+                                    ],
+                                  ).marginOnly(top: 5, bottom: 5),
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        Icons.category,
+                                        size: 17,
+                                      ).marginOnly(right: 5),
+                                      Text('Category:'),
+                                      Spacer(),
+                                      Text('NA')
+                                    ],
+                                  ).marginOnly(top: 5, bottom: 5),
+                                ],
+                              ),
+                            )
+                          ]).marginSymmetric(horizontal: 15),
+                    ).marginOnly(bottom: 10),
+                  );
                 }),
           )
         ],

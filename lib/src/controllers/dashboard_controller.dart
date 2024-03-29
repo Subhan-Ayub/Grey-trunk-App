@@ -6,6 +6,7 @@ class DashboardController extends GetxController{
   // late TooltipBehavior _tooltip;
  @override
   void onInit() async {
+    super.onInit();
   data = [
       ChartData('David', 25),
       ChartData('Steve', 38),
