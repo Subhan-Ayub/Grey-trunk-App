@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/src/controllers/login_controller.dart';
 import 'package:flutter_application_1/src/utils/routes/routes.dart';
 import 'package:flutter_application_1/src/ui/widgets/container_widget.dart';
 import 'package:flutter_application_1/src/ui/widgets/textformfild_widgets.dart';
@@ -9,6 +10,7 @@ class LogIn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+   // LoginScreenController _ = Get.find<LoginScreenController>();
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -47,7 +49,7 @@ class LogIn extends StatelessWidget {
                     width: double.infinity,
                     child: TextButton(
                       onPressed: (){
-                        Get.toNamed(Routes.viewAssets);
+                        Get.toNamed(Routes.addAsset);
                       },
                       // onPressed: () async {
                       //   // var sharedpref= await SharedPreferences.getInstance();
@@ -80,10 +82,10 @@ class LogIn extends StatelessWidget {
                   ),
                   TextButton(
                       onPressed: () {
-                        Get.toNamed(Routes.singUp);
+                        Get.toNamed(Routes.signUp);
                       },
                       child: Text(
-                        "Dont Have ant Account? SingUp",
+                        "Dont Have ant Account? SignUp",
                         style: TextStyle(
                           decoration: TextDecoration.underline,
                           color: Color(0xff4c505b),

@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/src/controllers/signUp_controller.dart';
 import 'package:flutter_application_1/src/utils/routes/routes.dart';
 import 'package:flutter_application_1/src/ui/widgets/container_widget.dart';
 import 'package:flutter_application_1/src/ui/widgets/textformfild_widgets.dart';
 import 'package:get/get.dart';
 
-class SingUpScreen extends StatelessWidget {
-  const SingUpScreen({super.key});
+class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // SingUpScreenController _ = Get.find<SingUpScreenController>();
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children:  [
-            ContainerWidgets(title: "Please Enter Your Credentials to get Access", text: "SingUp"),
+            ContainerWidgets(title: "Please Enter Your Credentials to get Access", text: "SignUp"),
             SizedBox(
               height: 60,
             ),
@@ -56,7 +58,7 @@ class SingUpScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(30)),
                           padding: const EdgeInsets.symmetric(
                             vertical: 15,)),
-                      child: const Text('SingUp',
+                      child: const Text('SignUp',
                           style: TextStyle(color: Colors.white)),
                     ),
                   ),
