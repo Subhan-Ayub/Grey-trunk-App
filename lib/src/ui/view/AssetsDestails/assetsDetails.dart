@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/src/ui/view/AssetsDestails/bottomBar.dart';
 import 'package:flutter_application_1/src/utils/routes/routes.dart';
 import 'package:flutter_application_1/src/utils/uidata/color.dart';
 import 'package:get/get.dart';
@@ -134,33 +135,11 @@ class AssetsDetails extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedFontSize: 11,
-        unselectedLabelStyle: const TextStyle(color: Colors.black,fontSize: 10),
-        //  fixedColor: Color.fromARGB(69, 0, 0, 0),
-        //  backgroundColor: Color.fromARGB(255, 29, 29, 29),
-        type: BottomNavigationBarType.fixed,
-
-        // currentIndex: controller.tabIndex,
-        // onTap: controller.changeTab,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.description_outlined,
-              // color: Color.fromARGB(255, 54, 54, 54),
-            ),
-            label: 'Documents',
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.settings), label: 'Maintenance'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'History'),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Event'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.more_horiz), label: 'Despreciation'),
-        ],
-      ),
+      bottomNavigationBar: bottombar(0),
     );
   }
+
+ 
 
   Container des(String key, String value, int check) {
     return Container(
@@ -207,15 +186,15 @@ class AssetsDetails extends StatelessWidget {
           actions: [
             Center(
                 child: InkWell(
-                  onTap: (){
-                    Get.toNamed(Routes.addAsset);
-                  },
-                  child: Icon(
-                                Icons.add,
-                                size: 30,
-                                color: UIDataColors.commonColor,
-                              ),
-                )).marginOnly(right: 18),
+              onTap: () {
+                Get.toNamed(Routes.addAsset);
+              },
+              child: Icon(
+                Icons.add,
+                size: 30,
+                color: UIDataColors.commonColor,
+              ),
+            )).marginOnly(right: 18),
           ],
         ),
       ),

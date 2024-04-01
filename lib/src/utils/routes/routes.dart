@@ -7,6 +7,9 @@ abstract class Routes {
   static const addAsset= '/addAsset';
   static const viewAssets= '/viewAssets';
   static const assetsDetails= '/assetsDetails';
+ static const document= '/document';
+  static const event= '/event';
+  static const maintenance= '/maintenance';
 
 
 }

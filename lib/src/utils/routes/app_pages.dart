@@ -1,8 +1,12 @@
 import 'package:flutter_application_1/src/bindings/aseetsdetailsBindings.dart';
 import 'package:flutter_application_1/src/bindings/dashboard_bindings.dart';
 import 'package:flutter_application_1/src/bindings/viewAssets_bindings.dart';
+import 'package:flutter_application_1/src/ui/view/AssetsDestails/assetsDetails.dart';
+import 'package:flutter_application_1/src/ui/view/AssetsDestails/document.dart';
+import 'package:flutter_application_1/src/ui/view/AssetsDestails/event.dart';
+import 'package:flutter_application_1/src/ui/view/AssetsDestails/maintenancePage.dart';
 import 'package:flutter_application_1/src/ui/view/addAsset.dart';
-import 'package:flutter_application_1/src/ui/view/assetsDetails.dart';
+
 import 'package:flutter_application_1/src/ui/view/dashboard.dart';
 import 'package:flutter_application_1/src/ui/view/forgot.dart';
 import 'package:flutter_application_1/src/ui/view/login.dart';
@@ -49,6 +53,21 @@ class AppPages {
         name: Routes.assetsDetails,
         page: () => AssetsDetails(),
         binding: AssetsDetailsBindings(),
+        transition: Transition.noTransition),
+          GetPage(
+        name: Routes.document,
+        page: () => Document(),
+        // binding: AssetsDetailsBindings(),
+        transition: Transition.noTransition),
+           GetPage(
+        name: Routes.event,
+        page: () => Event(),
+        // binding: AssetsDetailsBindings(),
+        transition: Transition.noTransition),
+            GetPage(
+        name: Routes.maintenance,
+        page: () => Maintenance(),
+        // binding: AssetsDetailsBindings(),
         transition: Transition.noTransition),
   ];
 }

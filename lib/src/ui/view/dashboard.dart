@@ -308,15 +308,138 @@ class Dashboard extends StatelessWidget {
     return Drawer(
         backgroundColor: UIDataColors.commonColor,
         width: Get.width / 1.5,
-        child: ListView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              height: 40,
-              width: 40,
-              color: Colors.amber,
-            )
+            Center(
+              child: Container(
+                height: 70,
+                width: 70,
+                decoration: BoxDecoration(
+                    color: Color.fromARGB(141, 224, 224, 224),
+                    borderRadius: BorderRadius.circular(40)),
+                child: Center(
+                    child: Icon(
+                  Icons.person,
+                  size: 40,
+                  color: Color.fromARGB(195, 246, 246, 246),
+                )),
+              ).marginOnly(top: 50),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Center(
+              child: Text(
+                'Subhan',
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Divider(
+              color: Color.fromARGB(98, 255, 255, 255),
+            ),
+            Text(
+              'Assets',
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ).marginOnly(top: 20),
+            SizedBox(
+              height: 20,
+            ),
+            InkWell(
+              onTap: () {
+                Get.toNamed(Routes.addAsset);
+              },
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.add,
+                    color: const Color.fromARGB(170, 255, 255, 255),
+                  ),
+                  Text(
+                    'Add Assets',
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  ).marginOnly(left: 10)
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            InkWell(
+              onTap: () {
+                Get.toNamed(Routes.viewAssets);
+              },
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.remove_red_eye_outlined,
+                    size: 18,
+                    color: const Color.fromARGB(170, 255, 255, 255),
+                  ),
+                  Text(
+                    'View Assets',
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  ).marginOnly(left: 10)
+                ],
+              ).marginOnly(left: 3),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Divider(
+              color: Color.fromARGB(98, 255, 255, 255),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Text(
+              'Start Scan',
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Divider(
+              color: Color.fromARGB(98, 255, 255, 255),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Text(
+              'My Devices',
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Divider(
+              color: Color.fromARGB(98, 255, 255, 255),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Text(
+              'Scan History',
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Divider(
+              color: Color.fromARGB(98, 255, 255, 255),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Text(
+              'Logout',
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
           ],
-        ));
+        ).marginSymmetric(horizontal: 40));
   }
 }
 
