@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/controllers/addAsset_controller.dart';
 import 'package:flutter_application_1/src/ui/widgets/container.dart';
 import 'package:flutter_application_1/src/ui/widgets/textformfild_widgets.dart';
+import 'package:flutter_application_1/src/utils/uidata/color.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 class AddAssets extends StatefulWidget {
@@ -34,7 +35,7 @@ class _AddAssetsState extends State<AddAssets> {
   static const String option1 = 'Option 1';
   static const String option2 = 'Option 2';
 
-  String selectedRadio = option1;
+  String selectedRadio = option2;
 
   bool showTextField = false;
 
@@ -104,21 +105,6 @@ class _AddAssetsState extends State<AddAssets> {
                   ),
 
                   ContWidgets(text: 'ASSETS LOCATION'),
-                  SizedBox(height: 20,),
-                  Container(
-                    color: Colors.grey.shade100,
-                    height: 270,
-                    width: 400,
-                    child: _imageFile == null
-                        ? Center(child: Text('No image selected.'))
-                        : Image.file(_imageFile!),
-                  ),
-                  SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: () => _pickImage(ImageSource.camera),
-                    child: Text('Take Picture'),
-                  ),
-
 
                   SizedBox(height: 20,),
                   TextFormFildWidgets(title: 'Site', icon: Icons.keyboard_arrow_down_sharp,onPressd: (){
@@ -145,7 +131,23 @@ class _AddAssetsState extends State<AddAssets> {
                         });
                   },),
                   SizedBox(height: 20,),
-                  ContWidgets(text: 'ASSETS IMAGE'),
+                  ContWidgets(text: 'ASSETS IMAGE',),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    color: Colors.grey.shade100,
+                    height: 270,
+                    width: 400,
+                    child: _imageFile == null
+                        ? Center(child: Text('No image selected.'))
+                        : Image.file(_imageFile!),
+                  ),
+                  SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: () => _pickImage(ImageSource.camera),
+                    child: Text('Take Picture',style: TextStyle(color: UIDataColors.commonColor),),
+                  ),
                   SizedBox(height: 20,),
                   ContWidgets(text: 'DEPRECIATION'),
                   SizedBox(height: 20,),
@@ -225,11 +227,11 @@ class _AddAssetsState extends State<AddAssets> {
                   onPressed: (){
                   },
                   style: TextButton.styleFrom(
-                      backgroundColor: Colors.indigo,
+                      backgroundColor: UIDataColors.commonColor,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30)),
+                          borderRadius: BorderRadius.circular(6)),
                       padding: const EdgeInsets.symmetric(
-                        vertical: 15,)),
+                        vertical: 20,)),
                   child: const Text('Save',
                       style: TextStyle(color: Colors.white)),
                 ),

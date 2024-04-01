@@ -10,6 +10,12 @@ abstract class Routes {
  static const document= '/document';
   static const event= '/event';
   static const maintenance= '/maintenance';
+  static const checkout = '/checkout';
+  static const addSite = '/addSite';
+  static const addLocation = '/addLocation';
+  static const dispose = '/dispose';
+  static const lost = '/lost';
+  static const scan = '/scan';
 
 
 }

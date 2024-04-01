@@ -6,12 +6,18 @@ import 'package:flutter_application_1/src/ui/view/AssetsDestails/document.dart';
 import 'package:flutter_application_1/src/ui/view/AssetsDestails/event.dart';
 import 'package:flutter_application_1/src/ui/view/AssetsDestails/maintenancePage.dart';
 import 'package:flutter_application_1/src/ui/view/addAsset.dart';
+import 'package:flutter_application_1/src/ui/view/addLocation.dart';
+import 'package:flutter_application_1/src/ui/view/addSite.dart';
+import 'package:flutter_application_1/src/ui/view/checkOut.dart';
 
 import 'package:flutter_application_1/src/ui/view/dashboard.dart';
+import 'package:flutter_application_1/src/ui/view/dispose.dart';
 import 'package:flutter_application_1/src/ui/view/forgot.dart';
 import 'package:flutter_application_1/src/ui/view/login.dart';
+import 'package:flutter_application_1/src/ui/view/lost.dart';
 import 'package:flutter_application_1/src/ui/view/signup.dart';
 import 'package:flutter_application_1/src/ui/view/splash_screen.dart';
+import 'package:flutter_application_1/src/ui/view/startScan.dart';
 import 'package:flutter_application_1/src/ui/view/viewAssets.dart';
 import 'package:flutter_application_1/src/utils/routes/routes.dart';
 import 'package:get/route_manager.dart';
@@ -68,6 +74,36 @@ class AppPages {
         name: Routes.maintenance,
         page: () => Maintenance(),
         // binding: AssetsDetailsBindings(),
+        transition: Transition.noTransition),
+        GetPage(
+        name: Routes.checkout,
+        page: () => CheckOut(),
+        binding: AssetsDetailsBindings(),
+        transition: Transition.noTransition),
+    GetPage(
+        name: Routes.addSite,
+        page: () => AddSite(),
+        binding: AssetsDetailsBindings(),
+        transition: Transition.noTransition),
+    GetPage(
+        name: Routes.addLocation,
+        page: () => AddLocation(),
+        binding: AssetsDetailsBindings(),
+        transition: Transition.noTransition),
+    GetPage(
+        name: Routes.dispose,
+        page: () => Dispose(),
+        binding: AssetsDetailsBindings(),
+        transition: Transition.noTransition),
+    GetPage(
+        name: Routes.lost,
+        page: () => Lost(),
+        binding: AssetsDetailsBindings(),
+        transition: Transition.noTransition),
+    GetPage(
+        name: Routes.scan,
+        page: () => ScanScreen(),
+        binding: AssetsDetailsBindings(),
         transition: Transition.noTransition),
   ];
 }

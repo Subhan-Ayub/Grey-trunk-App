@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/utils/routes/routes.dart';
 import 'package:flutter_application_1/src/ui/widgets/container_widget.dart';
 import 'package:flutter_application_1/src/ui/widgets/textformfild_widgets.dart';
+import 'package:flutter_application_1/src/utils/uidata/color.dart';
 import 'package:get/get.dart';
 class ForgotScreen extends StatelessWidget {
   const ForgotScreen({super.key});
@@ -50,11 +51,11 @@ class ForgotScreen extends StatelessWidget {
                       //   // });
                       // },
                       style: TextButton.styleFrom(
-                          backgroundColor: Colors.indigo,
+                          backgroundColor: UIDataColors.commonColor,
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30)),
+                              borderRadius: BorderRadius.circular(6)),
                           padding: const EdgeInsets.symmetric(
-                            vertical: 15,)),
+                            vertical: 20,)),
                       child: const Text('Submit',
                           style: TextStyle(color: Colors.white)),
                     ),

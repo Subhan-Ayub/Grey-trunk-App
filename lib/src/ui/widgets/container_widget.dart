@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/utils/uidata/appImages.dart';
+import 'package:flutter_application_1/src/utils/uidata/color.dart';
 class ContainerWidgets extends StatelessWidget {
   final String title;
   final String text;
@@ -17,7 +18,7 @@ class ContainerWidgets extends StatelessWidget {
     return  Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height/3,
-      color: Colors.blue.shade500,
+      color: UIDataColors.commonColor,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,

@@ -3,6 +3,7 @@ import 'package:flutter_application_1/src/controllers/signUp_controller.dart';
 import 'package:flutter_application_1/src/utils/routes/routes.dart';
 import 'package:flutter_application_1/src/ui/widgets/container_widget.dart';
 import 'package:flutter_application_1/src/ui/widgets/textformfild_widgets.dart';
+import 'package:flutter_application_1/src/utils/uidata/color.dart';
 import 'package:get/get.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -53,11 +54,11 @@ class SignUpScreen extends StatelessWidget {
                         Get.toNamed(Routes.login);
                       },
                       style: TextButton.styleFrom(
-                          backgroundColor: Colors.indigo,
+                          backgroundColor: UIDataColors.commonColor,
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30)),
+                              borderRadius: BorderRadius.circular(6)),
                           padding: const EdgeInsets.symmetric(
-                            vertical: 15,)),
+                            vertical: 20,)),
                       child: const Text('SignUp',
                           style: TextStyle(color: Colors.white)),
                     ),

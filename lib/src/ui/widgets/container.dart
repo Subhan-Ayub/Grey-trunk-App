@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/src/utils/uidata/color.dart';
 
 class ContWidgets extends StatelessWidget {
   final String text;
@@ -15,7 +16,7 @@ class ContWidgets extends StatelessWidget {
       child: Align( alignment: Alignment.centerLeft,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text(text,style: TextStyle(color: Colors.indigo),),
+            child: Text(text,style: TextStyle(color: UIDataColors.commonColor),),
           )),
     );
   }
