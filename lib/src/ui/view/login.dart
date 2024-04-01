@@ -49,7 +49,7 @@ class LogIn extends StatelessWidget {
                     width: double.infinity,
                     child: TextButton(
                       onPressed: (){
-                        Get.toNamed(Routes.addAsset);
+                        Get.toNamed(Routes.dashboard);
                       },
                       // onPressed: () async {
                       //   // var sharedpref= await SharedPreferences.getInstance();

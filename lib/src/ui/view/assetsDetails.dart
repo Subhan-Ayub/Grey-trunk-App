@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/src/utils/routes/routes.dart';
 import 'package:flutter_application_1/src/utils/uidata/color.dart';
 import 'package:get/get.dart';
 
@@ -205,11 +206,16 @@ class AssetsDetails extends StatelessWidget {
           ),
           actions: [
             Center(
-                child: Icon(
-              Icons.add,
-              size: 30,
-              color: UIDataColors.commonColor,
-            )).marginOnly(right: 18),
+                child: InkWell(
+                  onTap: (){
+                    Get.toNamed(Routes.addAsset);
+                  },
+                  child: Icon(
+                                Icons.add,
+                                size: 30,
+                                color: UIDataColors.commonColor,
+                              ),
+                )).marginOnly(right: 18),
           ],
         ),
       ),

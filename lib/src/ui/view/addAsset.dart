@@ -1,8 +1,10 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/controllers/addAsset_controller.dart';
 import 'package:flutter_application_1/src/ui/widgets/container.dart';
 import 'package:flutter_application_1/src/ui/widgets/textformfild_widgets.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 class AddAssets extends StatefulWidget {
   const AddAssets({super.key});
 
@@ -11,87 +13,232 @@ class AddAssets extends StatefulWidget {
 }
 
 class _AddAssetsState extends State<AddAssets> {
-  AddAssetsController _ = Get.find<AddAssetsController>();
-  int selectedOption = 1;
-  @override
-  Widget build(BuildContext context) {
+  // AddAssetsController _ = Get.find<AddAssetsController>();
+  File? _imageFile;
 
+  Future<void> _pickImage(ImageSource source) async {
+    final pickedFile = await ImagePicker().pickImage(source: source);
+    setState(() {
+      _imageFile = pickedFile != null ? File(pickedFile.path) : null;
+    });
+  }
+  void _changeImage() {
+  }
+
+  void _deleteImage() {
+    setState(() {
+      _imageFile = null;
+    });
+  }
+
+  static const String option1 = 'Option 1';
+  static const String option2 = 'Option 2';
+
+  String selectedRadio = option1;
+
+  bool showTextField = false;
+
+  void setSelectedRadio(String value) {
+    setState(() {
+      selectedRadio = value;
+      if (value == option1) {
+        showTextField = true;
+      } else {
+        showTextField = false;
+      }
+    });
+  }
+
+    @override
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text('ADD ASSET'),
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(14.0),
-          child: Column(
-            children: const [
-              TextFormFildWidgets(title: 'Asset Tag ID:*', icon: Icons.qr_code_scanner),
-              SizedBox(height: 20,),
-              TextFormFildWidgets(title: 'Category', icon: Icons.keyboard_arrow_down),
-              SizedBox(height: 20,),
-              TextFormFildWidgets(title: 'Description', icon: Icons.description),
-              SizedBox(height: 20,),
-              TextFormFildWidgets(title: 'Assigned To', icon: Icons.assignment),
-              SizedBox(height: 20,),
-              TextFormFildWidgets(title: 'Last Scanned Date', icon: Icons.date_range),
-              SizedBox(height: 20,),
-              TextFormFildWidgets(title: 'Due Date', icon: Icons.date_range),
-              SizedBox(
-                height: 20,
+      body: Stack(
+        children: [
+          SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(14.0),
+              child: Column(
+                children:  [
+                  TextFormFildWidgets(title: 'Asset Tag ID:*', icon: Icons.qr_code_scanner),
+                  SizedBox(height: 20,),
+                  TextFormFildWidgets(title: 'Category', icon: Icons.keyboard_arrow_down,onPressd: (){
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: const Text(
+                                'Category'),
+                            content: Text('No option for Category'),
+                          );
+                        });
+                  },),
+                  SizedBox(height: 20,),
+                  TextFormFildWidgets(title: 'Description', icon: Icons.description,),
+                  SizedBox(height: 20,),
+                  TextFormFildWidgets(title: 'Assigned To', icon: Icons.assignment),
+                  SizedBox(height: 20,),
+                  TextFormFildWidgets(title: 'Last Scanned Date', icon: Icons.date_range,onPressd: ()async{
+                    DateTime? pickedDate = await showDatePicker(context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(1950),
+                        lastDate: DateTime(2050));
+                    if(pickedDate != null){
+                    }
+                  },),
+                  SizedBox(height: 20,),
+                  TextFormFildWidgets(title: 'Due Date', icon: Icons.date_range,onPressd: ()async{
+                    DateTime? pickedDate = await showDatePicker(context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(1950),
+                        lastDate: DateTime(2050));
+                    if(pickedDate != null){
+                    }
+                  },),
+                  SizedBox(
+                    height: 20,
+                  ),
+
+                  ContWidgets(text: 'ASSETS LOCATION'),
+                  SizedBox(height: 20,),
+                  Container(
+                    color: Colors.grey.shade100,
+                    height: 270,
+                    width: 400,
+                    child: _imageFile == null
+                        ? Center(child: Text('No image selected.'))
+                        : Image.file(_imageFile!),
+                  ),
+                  SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: () => _pickImage(ImageSource.camera),
+                    child: Text('Take Picture'),
+                  ),
+
+
+                  SizedBox(height: 20,),
+                  TextFormFildWidgets(title: 'Site', icon: Icons.keyboard_arrow_down_sharp,onPressd: (){
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: const Text(
+                                'Site'),
+                            content: Text('No option for Site'),
+                          );
+                        });
+                  },),
+                  SizedBox(height: 20,),
+                  TextFormFildWidgets(title: 'Location', icon: Icons.keyboard_arrow_down_sharp,onPressd: (){
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: const Text(
+                                'Location'),
+                            content: Text('No option for Location'),
+                          );
+                        });
+                  },),
+                  SizedBox(height: 20,),
+                  ContWidgets(text: 'ASSETS IMAGE'),
+                  SizedBox(height: 20,),
+                  ContWidgets(text: 'DEPRECIATION'),
+                  SizedBox(height: 20,),
+                  Align(alignment: Alignment.centerLeft,
+                      child: Text("Depreciation",style: TextStyle(fontSize: 16,),)),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Flexible(
+                        child: RadioListTile(
+                          title:  Text('Yes'),
+                          value: option1,
+                          groupValue: selectedRadio,
+                          onChanged: (value) {
+                            setSelectedRadio(value as String);
+                          },
+                        ),
+                      ),
+                      Flexible(
+                        child: RadioListTile(
+                          title: const Text('No'),
+                          value: option2,
+                          groupValue: selectedRadio,
+                          onChanged: (value) {
+                            setSelectedRadio(value as String);
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  Visibility(
+                    visible: showTextField,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          TextFormFildWidgets(
+                            title: 'Depreciation Method',
+                            icon: Icons.keyboard_arrow_down_sharp,onPressd: (){
+                            showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    title: const Text(
+                                        'Depreciation Method'),
+                                    content: Text('No option for Depreciation Method'),
+                                  );
+                                });
+                          },
+                          ),
+                          SizedBox(height: 20,),
+                          TextFormFildWidgets(title: 'Total Cost(USD)*', icon: Icons.monetization_on_outlined),
+                          SizedBox(height: 20,),
+                          TextFormFildWidgets(title: 'Asset Life(Month)*', icon: Icons.monetization_on_outlined),
+                          SizedBox(height: 20,),
+                          TextFormFildWidgets(title: 'Salvage Value(USD)*', icon: Icons.monetization_on_outlined),
+                          SizedBox(height: 20,),
+                          TextFormFildWidgets(title: 'Date Acquired', icon: Icons.date_range),
+                        ],
+                      ),
+                    ),
+                  ),
+
+                ],
               ),
 
-              ContWidgets(text: 'ASSETS LOCATION'),
-              SizedBox(height: 20,),
-              TextFormFildWidgets(title: 'Site', icon: Icons.keyboard_arrow_down_sharp),
-              SizedBox(height: 20,),
-              TextFormFildWidgets(title: 'Location', icon: Icons.keyboard_arrow_down_sharp),
-              SizedBox(height: 20,),
-              ContWidgets(text: 'ASSETS IMAGE'),
-              SizedBox(height: 20,),
-              ContWidgets(text: 'DEPRECIATION'),
-              SizedBox(height: 20,),
-              Align(alignment: Alignment.centerLeft,
-                  child: Text("Depreciation",style: TextStyle(fontSize: 16,),)),
-              SizedBox(
-                height: 10,
-              ),
-              // ListTile(
-              //   title: const Text('Option 1'),
-              //   leading: Radio<int>(
-              //     value: 1,
-              //     groupValue: selectedOption?,
-              //     activeColor: Colors.red, // Change the active radio button color here
-              //     fillColor: MaterialStateProperty.all(Colors.red), // Change the fill color when selected
-              //     splashRadius: 20, // Change the splash radius when clicked
-              //     onChanged: (int? value) {
-              //       setState(() {
-              //         selectedOption = value!;
-              //       });
-              //     },
-              //   ),
-              // ),
-              // ListTile(
-              //   title: const Text('Option 2'),
-              //   leading: Radio<int>(
-              //     value: 2,
-              //     groupValue: selectedOption,
-              //     activeColor: Colors.blue, // Change the active radio button color here
-              //     fillColor: MaterialStateProperty.all(Colors.blue), // Change the fill color when selected
-              //     splashRadius: 25, // Change the splash radius when clicked
-              //     onChanged: (value) {
-              //       setState(() {
-              //         selectedOption = value!;
-              //       });
-              //     },
-              //   ),
-              // ),
-
-            ],
+            ),
           ),
-        ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Align(alignment: Alignment.bottomCenter,
+              child: SizedBox(
+                width: double.infinity,
+                child: TextButton(
+                  onPressed: (){
+                  },
+                  style: TextButton.styleFrom(
+                      backgroundColor: Colors.indigo,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30)),
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 15,)),
+                  child: const Text('Save',
+                      style: TextStyle(color: Colors.white)),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
+
     );
   }
 }

@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 class TextFormFildWidgets extends StatelessWidget {
   final String title;
   final IconData icon;
-  const TextFormFildWidgets({Key? key,
+  Function()? onPressd ;
+   TextFormFildWidgets({Key? key,
   required this.title,
     required this.icon,
+    this.onPressd,
   });
 
   @override
   Widget build(BuildContext context) {
-    return  TextFormField(
+    return  TextFormField( onTap: onPressd,
         decoration:  InputDecoration(
           hintText: title,
           suffixIcon: Icon(icon),
