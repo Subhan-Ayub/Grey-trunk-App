@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/ui/view/AssetsDestails/bottomBar.dart';
+import 'package:flutter_application_1/src/utils/routes/routes.dart';
 import 'package:flutter_application_1/src/utils/uidata/color.dart';
+import 'package:get/get.dart';
 
 class Document extends StatelessWidget {
   @override
@@ -11,7 +13,7 @@ class Document extends StatelessWidget {
         child: Text('We can t find any document'),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {Get.toNamed(Routes.addDoc); },
         backgroundColor: UIDataColors.commonColor,
         child: const Icon(
           Icons.add,

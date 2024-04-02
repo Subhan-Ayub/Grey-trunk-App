@@ -1,9 +1,14 @@
+import 'package:flutter_application_1/src/bindings/addDocBindings.dart';
 import 'package:flutter_application_1/src/bindings/aseetsdetailsBindings.dart';
 import 'package:flutter_application_1/src/bindings/dashboard_bindings.dart';
+import 'package:flutter_application_1/src/bindings/historyBindings.dart';
+import 'package:flutter_application_1/src/bindings/maintenanceBindings.dart';
 import 'package:flutter_application_1/src/bindings/viewAssets_bindings.dart';
+import 'package:flutter_application_1/src/ui/view/AssetsDestails/addDoc.dart';
 import 'package:flutter_application_1/src/ui/view/AssetsDestails/assetsDetails.dart';
 import 'package:flutter_application_1/src/ui/view/AssetsDestails/document.dart';
 import 'package:flutter_application_1/src/ui/view/AssetsDestails/event.dart';
+import 'package:flutter_application_1/src/ui/view/AssetsDestails/history.dart';
 import 'package:flutter_application_1/src/ui/view/AssetsDestails/maintenancePage.dart';
 import 'package:flutter_application_1/src/ui/view/addAsset.dart';
 import 'package:flutter_application_1/src/ui/view/addLocation.dart';
@@ -74,7 +79,7 @@ class AppPages {
             GetPage(
         name: Routes.maintenance,
         page: () => Maintenance(),
-        // binding: AssetsDetailsBindings(),
+        binding: MaintenanceBindings(),
         transition: Transition.noTransition),
         GetPage(
         name: Routes.checkout,
@@ -110,6 +115,16 @@ class AppPages {
         name: Routes.scanHistory,
         page: () => ScanHistory(),
         binding: AssetsDetailsBindings(),
+        transition: Transition.noTransition),
+         GetPage(
+        name: Routes.history,
+        page: () => History(),
+        binding: HistoryBindings(),
+        transition: Transition.noTransition),
+          GetPage(
+        name: Routes.addDoc,
+        page: () => AddDocument(),
+        binding: AddDocBindings(),
         transition: Transition.noTransition),
   ];
 }

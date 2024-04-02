@@ -1,35 +1,108 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/src/controllers/maintenanceController.dart';
 import 'package:flutter_application_1/src/ui/view/AssetsDestails/bottomBar.dart';
 import 'package:flutter_application_1/src/utils/uidata/color.dart';
+import 'package:get/get.dart';
 
 class Maintenance extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    MaintenanceController _ = Get.find<MaintenanceController>();
     return Scaffold(
       appBar: appbar(),
-      // body: Column(
-      //   children: [
-      //     TabBar(
-      //       controller: TabController(length: 2), // Adjust length for your tabs
-      //       labelColor: Colors.blue, // Customize tab colors
-      //       unselectedLabelColor: Colors.grey,
-      //       onTap: (index) => controller.selectedIndex.value = index,
-      //       tabs: [
-      //         Tab(text: 'Tab 1'),
-      //         Tab(text: 'Tab 2'),
-      //       ],
-      //     ),
-      //     Expanded(
-      //       child: TabBarView(
-      //         controller: TabController(length: 2, vsync: TickerProvider.), // Same length as TabBar
-      //         children: [
-      //           MyTab1Content(), // Replace with your tab 1 content widget
-      //           MyTab2Content(), // Replace with your tab 2 content widget
-      //         ],
-      //       ),
-      //     ),
-      //   ],
-      // ),
+      body: Column(
+        children: [
+          TabBar(
+            controller: _.tabController,
+            labelColor:
+                const Color.fromARGB(255, 0, 0, 0), // Customize tab colors
+            unselectedLabelColor: Colors.grey,
+            onTap: (index) => _.selectedIndex.value = index,
+            tabs: const [
+              Tab(text: 'UPCOMING'),
+              Tab(text: 'MANAGE'),
+            ],
+          ),
+          Expanded(
+            child: TabBarView(
+              controller: _.tabController,
+              children: [
+                Column(
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        Get.bottomSheet(SingleChildScrollView(
+                          child: Container(
+                            padding: EdgeInsets.only(top: 30, left: 20),
+                            height: 380,
+                            width: Get.width,
+                            decoration: BoxDecoration(
+                                color: const Color.fromARGB(255, 213, 213, 213),
+                                borderRadius: BorderRadius.circular(20)),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Status',
+                                  style: TextStyle(fontSize: 20),
+                                ),
+                                // RadioListTile(
+                                //   value: 'ssss',
+                                //   groupValue: _.selectedValue.value,
+                                //   onChanged: (value) => _.onRadioSelected(value!),
+                                //   title: Text('lll'),
+                                // ),
+                                //    RadioListTile(
+                                //   value: 'ddd',
+                                //   groupValue: _.selectedValue.value,
+                                //   onChanged: (value) => _.onRadioSelected(value!),
+                                //   title: Text('lll'),
+                                // )
+                                RadioButtonGroup(options:[
+                                  'All',
+                                  'Schedule',
+                                  'In Progress',
+                                  'On Hold',
+                                  'Complete'
+                                ]),
+                              ],
+                            ),
+                          ),
+                        ));
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text('FILTER'),
+                          Icon(
+                            Icons.filter_alt_outlined,
+                            size: 18,
+                          ).marginSymmetric(horizontal: 10, vertical: 20)
+                        ],
+                      ).marginOnly(right: 10),
+                    ),
+                    Center(
+                      child: Text(
+                        'We cant find any upcomming maintenance',
+                        style: TextStyle(
+                            color: const Color.fromARGB(113, 0, 0, 0)),
+                      ),
+                    )
+                  ],
+                ),
+                Center(
+                  child: Text(
+                    'We cant find any maintenance',
+                    style: TextStyle(color: const Color.fromARGB(113, 0, 0, 0)),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         backgroundColor: UIDataColors.commonColor,
@@ -64,5 +137,30 @@ class Maintenance extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+// ignore: must_be_immutable
+class RadioButtonGroup extends StatelessWidget {
+  final List<String> options;
+
+  final MaintenanceController _ = Get.find<MaintenanceController>();
+
+  RadioButtonGroup({super.key, required this.options});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: options.map((option) => _buildRadioListTile(option)).toList(),
+    );
+  }
+
+  Widget _buildRadioListTile(String option) {
+    return Obx(() =>  RadioListTile<String>(
+      value: option,
+      groupValue: _.selectedValue.value,
+      onChanged: (value) => _.onRadioSelected(value!),
+      title: Text(option),
+    ));
   }
 }

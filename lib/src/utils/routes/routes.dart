@@ -17,6 +17,7 @@ abstract class Routes {
   static const lost = '/lost';
   static const scan = '/scan';
   static const scanHistory = '/scanHistory';
-
+ static const history = '/history';
+  static const addDoc = '/addDoc';
 
 }
