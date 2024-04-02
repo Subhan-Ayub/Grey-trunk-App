@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/controllers/addAsset_controller.dart';
 import 'package:flutter_application_1/src/ui/widgets/container.dart';
 import 'package:flutter_application_1/src/ui/widgets/textformfild_widgets.dart';
+import 'package:flutter_application_1/src/utils/routes/routes.dart';
 import 'package:flutter_application_1/src/utils/uidata/color.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -224,7 +225,7 @@ class _AddAssetsState extends State<AddAssets> {
               child: SizedBox(
                 width: double.infinity,
                 child: TextButton(
-                  onPressed: (){
+                  onPressed: (){Get.toNamed(Routes.dashboard);
                   },
                   style: TextButton.styleFrom(
                       backgroundColor: UIDataColors.commonColor,

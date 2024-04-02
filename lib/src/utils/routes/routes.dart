@@ -16,6 +16,7 @@ abstract class Routes {
   static const dispose = '/dispose';
   static const lost = '/lost';
   static const scan = '/scan';
+  static const scanHistory = '/scanHistory';
 
 
 }

@@ -285,19 +285,23 @@ class Dashboard extends StatelessWidget {
             ),
           ),
           actions: [
-            Container(
-              height: 35,
-              width: 35,
-              decoration: BoxDecoration(
-                  color: UIDataColors.commonColor,
-                  borderRadius: BorderRadius.circular(50)),
-              child: Center(
-                  child: Icon(
-                Icons.center_focus_strong_outlined,
-                size: 24,
-                color: Colors.white,
-              )),
-            ).marginOnly(right: 18),
+            InkWell(onTap: (){
+              Get.toNamed(Routes.scan);
+      },
+              child: Container(
+                height: 35,
+                width: 35,
+                decoration: BoxDecoration(
+                    color: UIDataColors.commonColor,
+                    borderRadius: BorderRadius.circular(50)),
+                child: Center(
+                    child: Icon(
+                  Icons.center_focus_strong_outlined,
+                  size: 24,
+                  color: Colors.white,
+                )),
+              ).marginOnly(right: 18),
+            ),
           ],
         ),
       ),

@@ -17,47 +17,53 @@ class AssetsDetails extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
-                  children: [
-                    Icon(
-                      Icons.reply_rounded,
-                      size: 30,
-                      color: UIDataColors.commonColor,
-                    ),
-                    Text(
-                      'CheckOut',
-                      style: TextStyle(
-                          fontSize: 13, color: UIDataColors.commonColor),
-                    )
-                  ],
+                InkWell(onTap: (){Get.toNamed(Routes.checkout);},
+                  child: Column(
+                    children: [
+                      Icon(
+                        Icons.reply_rounded,
+                        size: 30,
+                        color: UIDataColors.commonColor,
+                      ),
+                      Text(
+                        'CheckOut',
+                        style: TextStyle(
+                            fontSize: 13, color: UIDataColors.commonColor),
+                      )
+                    ],
+                  ),
                 ),
-                Column(
-                  children: [
-                    Icon(
-                      Icons.delete_rounded,
-                      size: 28,
-                      color: UIDataColors.commonColor,
-                    ),
-                    Text(
-                      'Dispose',
-                      style: TextStyle(
-                          fontSize: 13, color: UIDataColors.commonColor),
-                    )
-                  ],
-                ).marginOnly(right: 20),
-                Column(
-                  children: [
-                    Icon(
-                      Icons.help_center_rounded,
-                      size: 30,
-                      color: UIDataColors.commonColor,
-                    ),
-                    Text(
-                      'Lost',
-                      style: TextStyle(
-                          fontSize: 13, color: UIDataColors.commonColor),
-                    )
-                  ],
+                InkWell(onTap: (){Get.toNamed(Routes.dispose);},
+                  child: Column(
+                    children: [
+                      Icon(
+                        Icons.delete_rounded,
+                        size: 28,
+                        color: UIDataColors.commonColor,
+                      ),
+                      Text(
+                        'Dispose',
+                        style: TextStyle(
+                            fontSize: 13, color: UIDataColors.commonColor),
+                      )
+                    ],
+                  ).marginOnly(right: 20),
+                ),
+                InkWell(onTap: (){Get.toNamed(Routes.lost);},
+                  child: Column(
+                    children: [
+                      Icon(
+                        Icons.help_center_rounded,
+                        size: 30,
+                        color: UIDataColors.commonColor,
+                      ),
+                      Text(
+                        'Lost',
+                        style: TextStyle(
+                            fontSize: 13, color: UIDataColors.commonColor),
+                      )
+                    ],
+                  ),
                 )
               ],
             ).marginSymmetric(horizontal: 30, vertical: 10),

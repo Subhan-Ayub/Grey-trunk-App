@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/ui/widgets/textformfild_widgets.dart';
+import 'package:flutter_application_1/src/utils/routes/routes.dart';
 import 'package:flutter_application_1/src/utils/uidata/color.dart';
+import 'package:get/get.dart';
 class AddLocation extends StatefulWidget {
   const AddLocation({super.key});
 
@@ -31,7 +33,7 @@ class _AddLocationState extends State<AddLocation> {
             SizedBox(width:  double.infinity,
               child: TextButton(
                 onPressed: (){
-                  // Get.toNamed(Routes.dashboard);
+                  Get.toNamed(Routes.checkout);
                 },
                 style: TextButton.styleFrom(
                     backgroundColor: UIDataColors.commonColor,

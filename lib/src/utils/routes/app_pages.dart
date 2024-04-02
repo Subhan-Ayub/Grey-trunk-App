@@ -15,6 +15,7 @@ import 'package:flutter_application_1/src/ui/view/dispose.dart';
 import 'package:flutter_application_1/src/ui/view/forgot.dart';
 import 'package:flutter_application_1/src/ui/view/login.dart';
 import 'package:flutter_application_1/src/ui/view/lost.dart';
+import 'package:flutter_application_1/src/ui/view/scan_history.dart';
 import 'package:flutter_application_1/src/ui/view/signup.dart';
 import 'package:flutter_application_1/src/ui/view/splash_screen.dart';
 import 'package:flutter_application_1/src/ui/view/startScan.dart';
@@ -103,6 +104,11 @@ class AppPages {
     GetPage(
         name: Routes.scan,
         page: () => ScanScreen(),
+        binding: AssetsDetailsBindings(),
+        transition: Transition.noTransition),
+    GetPage(
+        name: Routes.scanHistory,
+        page: () => ScanHistory(),
         binding: AssetsDetailsBindings(),
         transition: Transition.noTransition),
   ];

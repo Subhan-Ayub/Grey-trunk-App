@@ -163,7 +163,7 @@ class _CheckOutState extends State<CheckOut> {
 
                 child: TextButton(
                   onPressed: (){
-                    // Get.toNamed(Routes.dashboard);
+                    Get.toNamed(Routes.assetsDetails);
                   },
                   style: TextButton.styleFrom(
                       backgroundColor: UIDataColors.commonColor,
