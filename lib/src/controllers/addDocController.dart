@@ -5,20 +5,15 @@ import 'package:http/http.dart' as http;
 import 'package:file_picker/file_picker.dart';
 
 class AddDocController extends GetxController {
+  check() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
 
-
-
-check()async {
-  FilePickerResult? result = await FilePicker.platform.pickFiles();
-
-if (result != null) {
-  File file = File(result.files.single.path!);
-} else {
-  // User canceled the picker
-}
-}
-
-
+    if (result != null) {
+      File file = File(result.files.single.path!);
+    } else {
+      // User canceled the picker
+    }
+  }
 
   static const String uploadUrl = 'YOUR_UPLOAD_ENDPOINT_URL';
 
@@ -33,6 +28,7 @@ if (result != null) {
         final fileBytes =
             File(filePickerResult.files.single.path!).readAsBytesSync();
         final String fileName = filePickerResult.files.single.name;
+        print('sssssss$fileBytes');
 
         final response = await http.post(
           Uri.parse(uploadUrl),

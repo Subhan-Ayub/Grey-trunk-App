@@ -8,9 +8,7 @@ BottomNavigationBar bottombar(int page) {
     unselectedLabelStyle: const TextStyle(color: Colors.black, fontSize: 10),
     type: BottomNavigationBarType.fixed,
     currentIndex: page,
-    onTap: (ind) {
-      print(ind);
-    },
+   
     items: [
       BottomNavigationBarItem(
         icon: InkWell(
@@ -45,8 +43,17 @@ BottomNavigationBar bottombar(int page) {
               },
               child: Icon(Icons.search)),
           label: 'Event'),
+
       BottomNavigationBarItem(
-          icon: Icon(Icons.more_horiz), label: 'Despreciation'),
+
+          icon: InkWell(
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+              onTap: () {
+                Get.toNamed(Routes.despreciation);
+              },
+              child: Icon(Icons.trending_up_rounded)),
+          label: 'Despreciation'),
     ],
   );
 }

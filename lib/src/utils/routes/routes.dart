@@ -19,5 +19,9 @@ abstract class Routes {
   static const scanHistory = '/scanHistory';
  static const history = '/history';
   static const addDoc = '/addDoc';
+  static const addMaintenance = '/addMaintenance';
+  static const despreciation = '/despreciation';
+
+
 
 }

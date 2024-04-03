@@ -11,7 +11,6 @@ class AddDocument extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AddDocController _ = Get.find<AddDocController>();
-    // TODO: implement build
     return Scaffold(
       body: SafeArea(
           child: Container(
@@ -32,10 +31,17 @@ class AddDocument extends StatelessWidget {
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                     ),
-                    Icon(
-                      Icons.close,
-                      color: Color.fromARGB(148, 0, 0, 0),
-                    ).marginOnly(right: 15)
+                    InkWell(
+                      highlightColor: Colors.transparent,
+                      splashColor: Colors.transparent,
+                      onTap: () {
+                        Get.back();
+                      },
+                      child: Icon(
+                        Icons.close,
+                        color: Color.fromARGB(148, 0, 0, 0),
+                      ).marginOnly(right: 15),
+                    )
                   ],
                 ),
                 TextFormFildWidgets(
@@ -54,8 +60,8 @@ class AddDocument extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
-                    // _.uploadDocument2();
-                  _.check();
+                    _.uploadDocument2();
+                    // _.check();
                   },
                   child: Container(
                     height: 80,

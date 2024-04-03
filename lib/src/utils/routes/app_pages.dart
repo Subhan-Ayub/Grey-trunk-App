@@ -1,11 +1,14 @@
 import 'package:flutter_application_1/src/bindings/addDocBindings.dart';
+import 'package:flutter_application_1/src/bindings/addMaintenanceBindings.dart';
 import 'package:flutter_application_1/src/bindings/aseetsdetailsBindings.dart';
 import 'package:flutter_application_1/src/bindings/dashboard_bindings.dart';
 import 'package:flutter_application_1/src/bindings/historyBindings.dart';
 import 'package:flutter_application_1/src/bindings/maintenanceBindings.dart';
 import 'package:flutter_application_1/src/bindings/viewAssets_bindings.dart';
 import 'package:flutter_application_1/src/ui/view/AssetsDestails/addDoc.dart';
+import 'package:flutter_application_1/src/ui/view/AssetsDestails/addMaintenance.dart';
 import 'package:flutter_application_1/src/ui/view/AssetsDestails/assetsDetails.dart';
+import 'package:flutter_application_1/src/ui/view/AssetsDestails/despreciation.dart';
 import 'package:flutter_application_1/src/ui/view/AssetsDestails/document.dart';
 import 'package:flutter_application_1/src/ui/view/AssetsDestails/event.dart';
 import 'package:flutter_application_1/src/ui/view/AssetsDestails/history.dart';
@@ -52,7 +55,7 @@ class AppPages {
         page: () => Dashboard(),
         binding: DashboardBindings(),
         transition: Transition.noTransition),
-        GetPage(
+    GetPage(
         name: Routes.viewAssets,
         page: () => ViewAssets(),
         binding: ViewAssetsBindings(),
@@ -61,27 +64,27 @@ class AppPages {
         name: Routes.addAsset,
         page: () => AddAssets(),
         transition: Transition.noTransition),
-          GetPage(
+    GetPage(
         name: Routes.assetsDetails,
         page: () => AssetsDetails(),
         binding: AssetsDetailsBindings(),
         transition: Transition.noTransition),
-          GetPage(
+    GetPage(
         name: Routes.document,
         page: () => Document(),
         // binding: AssetsDetailsBindings(),
         transition: Transition.noTransition),
-           GetPage(
+    GetPage(
         name: Routes.event,
         page: () => Event(),
         // binding: AssetsDetailsBindings(),
         transition: Transition.noTransition),
-            GetPage(
+    GetPage(
         name: Routes.maintenance,
         page: () => Maintenance(),
         binding: MaintenanceBindings(),
         transition: Transition.noTransition),
-        GetPage(
+    GetPage(
         name: Routes.checkout,
         page: () => CheckOut(),
         binding: AssetsDetailsBindings(),
@@ -116,15 +119,25 @@ class AppPages {
         page: () => ScanHistory(),
         binding: AssetsDetailsBindings(),
         transition: Transition.noTransition),
-         GetPage(
+    GetPage(
         name: Routes.history,
         page: () => History(),
         binding: HistoryBindings(),
         transition: Transition.noTransition),
-          GetPage(
+    GetPage(
         name: Routes.addDoc,
         page: () => AddDocument(),
         binding: AddDocBindings(),
+        transition: Transition.noTransition),
+    GetPage(
+        name: Routes.addMaintenance,
+        page: () => AddMaintenance(),
+        binding: AddMaintenanceBindings(),
+        transition: Transition.noTransition),
+    GetPage(
+        name: Routes.despreciation,
+        page: () => Despreciation(),
+        // binding: AddMaintenanceBindings(),
         transition: Transition.noTransition),
   ];
 }

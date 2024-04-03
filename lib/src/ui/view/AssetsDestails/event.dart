@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/ui/view/AssetsDestails/bottomBar.dart';
-import 'package:flutter_application_1/src/utils/uidata/color.dart';
+
 
 class Event extends StatelessWidget {
   @override
@@ -10,14 +10,7 @@ class Event extends StatelessWidget {
       body: Center(
         child: Text('We can t find any event'),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: UIDataColors.commonColor,
-        child: const Icon(
-          Icons.add,
-          color: Colors.white,
-        ),
-      ),
+    
       bottomNavigationBar: bottombar(3),
     );
   }

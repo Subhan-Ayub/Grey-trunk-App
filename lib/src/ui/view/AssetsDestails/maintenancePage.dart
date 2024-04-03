@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/controllers/maintenanceController.dart';
 import 'package:flutter_application_1/src/ui/view/AssetsDestails/bottomBar.dart';
+import 'package:flutter_application_1/src/utils/routes/routes.dart';
 import 'package:flutter_application_1/src/utils/uidata/color.dart';
 import 'package:get/get.dart';
 
@@ -48,18 +49,7 @@ class Maintenance extends StatelessWidget {
                                   'Status',
                                   style: TextStyle(fontSize: 20),
                                 ),
-                                // RadioListTile(
-                                //   value: 'ssss',
-                                //   groupValue: _.selectedValue.value,
-                                //   onChanged: (value) => _.onRadioSelected(value!),
-                                //   title: Text('lll'),
-                                // ),
-                                //    RadioListTile(
-                                //   value: 'ddd',
-                                //   groupValue: _.selectedValue.value,
-                                //   onChanged: (value) => _.onRadioSelected(value!),
-                                //   title: Text('lll'),
-                                // )
+                            
                                 RadioButtonGroup(options:[
                                   'All',
                                   'Schedule',
@@ -104,7 +94,9 @@ class Maintenance extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Get.toNamed(Routes.addMaintenance);
+        },
         backgroundColor: UIDataColors.commonColor,
         child: const Icon(
           Icons.add,
