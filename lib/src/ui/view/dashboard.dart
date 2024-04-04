@@ -316,19 +316,24 @@ class Dashboard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
-              child: Container(
-                height: 70,
-                width: 70,
-                decoration: BoxDecoration(
-                    color: Color.fromARGB(141, 224, 224, 224),
-                    borderRadius: BorderRadius.circular(40)),
-                child: Center(
-                    child: Icon(
-                  Icons.person,
-                  size: 40,
-                  color: Color.fromARGB(195, 246, 246, 246),
-                )),
-              ).marginOnly(top: 50),
+              child: InkWell(
+                onTap: () {
+                  Get.toNamed(Routes.profile);
+                },
+                child: Container(
+                  height: 70,
+                  width: 70,
+                  decoration: BoxDecoration(
+                      color: Color.fromARGB(141, 224, 224, 224),
+                      borderRadius: BorderRadius.circular(40)),
+                  child: Center(
+                      child: Icon(
+                    Icons.person,
+                    size: 40,
+                    color: Color.fromARGB(195, 246, 246, 246),
+                  )),
+                ).marginOnly(top: 50),
+              ),
             ),
             SizedBox(
               height: 10,

@@ -27,6 +27,8 @@ abstract class Routes {
   static const newAssets= '/newAssets';
   static const misplaced= '/misplaced';
   static const missingAssets= '/missingAssets';
+  static const profile= '/profile';
+
 
 
 

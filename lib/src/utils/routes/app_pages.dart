@@ -30,6 +30,7 @@ import 'package:flutter_application_1/src/ui/view/forgot.dart';
 import 'package:flutter_application_1/src/ui/view/login.dart';
 import 'package:flutter_application_1/src/ui/view/lost.dart';
 import 'package:flutter_application_1/src/ui/view/ScanHistory/scan_history.dart';
+import 'package:flutter_application_1/src/ui/view/profile.dart';
 import 'package:flutter_application_1/src/ui/view/signup.dart';
 import 'package:flutter_application_1/src/ui/view/splash_screen.dart';
 import 'package:flutter_application_1/src/ui/view/startScan.dart';
@@ -174,6 +175,11 @@ class AppPages {
         name: Routes.missingAssets,
         page: () => MissingAssets(),
         binding: AddDocBindings(),
+        transition: Transition.noTransition),
+         GetPage(
+        name: Routes.profile,
+        page: () => Profile(),
+        // binding: AddMaintenanceBindings(),
         transition: Transition.noTransition),
         
   ];
