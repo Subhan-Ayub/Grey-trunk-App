@@ -13,17 +13,23 @@ import 'package:flutter_application_1/src/ui/view/AssetsDestails/document.dart';
 import 'package:flutter_application_1/src/ui/view/AssetsDestails/event.dart';
 import 'package:flutter_application_1/src/ui/view/AssetsDestails/history.dart';
 import 'package:flutter_application_1/src/ui/view/AssetsDestails/maintenancePage.dart';
+import 'package:flutter_application_1/src/ui/view/CheckOutScreen/addLocation.dart';
+import 'package:flutter_application_1/src/ui/view/CheckOutScreen/addSite.dart';
+import 'package:flutter_application_1/src/ui/view/CheckOutScreen/checkOut.dart';
+import 'package:flutter_application_1/src/ui/view/MyDevices/bluetooth.dart';
+import 'package:flutter_application_1/src/ui/view/ScanHistory/foundAssets.dart';
+import 'package:flutter_application_1/src/ui/view/ScanHistory/misplacedAssets.dart';
+import 'package:flutter_application_1/src/ui/view/ScanHistory/missingAssets.dart';
+import 'package:flutter_application_1/src/ui/view/ScanHistory/newAssets.dart';
 import 'package:flutter_application_1/src/ui/view/addAsset.dart';
-import 'package:flutter_application_1/src/ui/view/addLocation.dart';
-import 'package:flutter_application_1/src/ui/view/addSite.dart';
-import 'package:flutter_application_1/src/ui/view/checkOut.dart';
 
 import 'package:flutter_application_1/src/ui/view/dashboard.dart';
 import 'package:flutter_application_1/src/ui/view/dispose.dart';
+import 'package:flutter_application_1/src/ui/view/editAssets.dart';
 import 'package:flutter_application_1/src/ui/view/forgot.dart';
 import 'package:flutter_application_1/src/ui/view/login.dart';
 import 'package:flutter_application_1/src/ui/view/lost.dart';
-import 'package:flutter_application_1/src/ui/view/scan_history.dart';
+import 'package:flutter_application_1/src/ui/view/ScanHistory/scan_history.dart';
 import 'package:flutter_application_1/src/ui/view/signup.dart';
 import 'package:flutter_application_1/src/ui/view/splash_screen.dart';
 import 'package:flutter_application_1/src/ui/view/startScan.dart';
@@ -139,5 +145,36 @@ class AppPages {
         page: () => Despreciation(),
         // binding: AddMaintenanceBindings(),
         transition: Transition.noTransition),
+        GetPage(
+        name: Routes.bluetooth,
+        page: () => BluetoothScreen(),
+        binding: AddDocBindings(),
+        transition: Transition.noTransition),
+    GetPage(
+        name: Routes.editAssets,
+        page: () => EditScreen(),
+        binding: AddDocBindings(),
+        transition: Transition.noTransition),
+    GetPage(
+        name: Routes.foundAssets,
+        page: () => FoundAssets(),
+        binding: AddDocBindings(),
+        transition: Transition.noTransition),
+    GetPage(
+        name: Routes.newAssets,
+        page: () => NewAssets(),
+        binding: AddDocBindings(),
+        transition: Transition.noTransition),
+    GetPage(
+        name: Routes.misplaced,
+        page: () => Misplaced(),
+        binding: AddDocBindings(),
+        transition: Transition.noTransition),
+    GetPage(
+        name: Routes.missingAssets,
+        page: () => MissingAssets(),
+        binding: AddDocBindings(),
+        transition: Transition.noTransition),
+        
   ];
 }

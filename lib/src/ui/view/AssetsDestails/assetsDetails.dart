@@ -193,7 +193,7 @@ class AssetsDetails extends StatelessWidget {
             Center(
                 child: InkWell(
               onTap: () {
-                Get.toNamed(Routes.addAsset);
+                Get.toNamed(Routes.editAssets);
               },
               child: Icon(
                 Icons.add,

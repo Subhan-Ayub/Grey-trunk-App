@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/ui/widgets/textformfild_widgets.dart';
+import 'package:flutter_application_1/src/utils/routes/routes.dart';
+import 'package:get/get.dart';
 class ScanScreen extends StatefulWidget {
   const ScanScreen({super.key});
 
@@ -29,18 +31,14 @@ class _ScanScreenState extends State<ScanScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade50,
-      appBar: AppBar(
-        title: Text('SCAN',style: TextStyle(fontSize: 16),),
-        centerTitle: true,
-        backgroundColor: Colors.white,
-      ),
+      backgroundColor: Colors.grey.shade100,
+      appBar: appbar(),
       body: Column(
         children: [
           Align(alignment: Alignment.centerLeft,
               child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Text('Choose Scan Option'),
+                padding: const EdgeInsets.all(10.0),
+                child: Text('Choose Scan Option',style: TextStyle(fontSize: 16),),
               )),
           Padding(
             padding: const EdgeInsets.all(12.0),
@@ -59,7 +57,7 @@ class _ScanScreenState extends State<ScanScreen> {
                                 width: 30,
                                 height: 30,
                               ),
-                              SizedBox(width: 70), // Add spacing between image and text
+                              SizedBox(width: 20), // Add spacing between image and text
                               Text('Scan with RFID Reader'),
                             ],
                           ),
@@ -72,12 +70,9 @@ class _ScanScreenState extends State<ScanScreen> {
                       ),
                     ],
                   ),
-                  Center(child: Text('No Device is connected')),
+                  Center(child: Text('No Device is connected',style: TextStyle(fontSize: 14),)),
                   Divider(
-
                     thickness: 0,
-
-
                     color: Colors.grey.shade500,
                   ),
                   Row(
@@ -92,7 +87,6 @@ class _ScanScreenState extends State<ScanScreen> {
 
             ),
           ),
-          SizedBox(height: 15,),
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Container(
@@ -108,7 +102,7 @@ class _ScanScreenState extends State<ScanScreen> {
                                 width: 30,
                                 height: 30,
                               ),
-                              SizedBox(width: 70), // Add spacing between image and text
+                              SizedBox(width:20), // Add spacing between image and text
                               Text('Scan with camera'),
                             ],
                           ),
@@ -123,7 +117,7 @@ class _ScanScreenState extends State<ScanScreen> {
                   ),
             ),
           ),
-          SizedBox(height: 25,),
+          SizedBox(height: 12,),
           Container(
             width: double.infinity,
             color: Colors.white,
@@ -156,7 +150,9 @@ class _ScanScreenState extends State<ScanScreen> {
                       ),
                     ],
                   ),
-                  Text('Choose Site and Location to start scan'),
+                  SizedBox(height: 10,),
+                  Text('Choose Site and Location to start scan',style: TextStyle(fontSize: 16),),
+                  SizedBox(height: 10,),
                   TextFormFildWidgets(title: 'Site', icon: Icons.keyboard_arrow_down_sharp,onPressd: (){
                     showDialog(
                         context: context,
@@ -187,23 +183,51 @@ class _ScanScreenState extends State<ScanScreen> {
           ),
           Spacer(),
 
-          SizedBox(width:  double.infinity,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SizedBox(width:  double.infinity,
 
-            child: TextButton(
-              onPressed: (){
-                // Get.toNamed(Routes.dashboard);
-              },
-              style: TextButton.styleFrom(
-                  backgroundColor: Colors.grey,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(6)),
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 20,)),
-              child: const Text('CHECK OUT',
-                  style: TextStyle(color: Colors.white)),
+              child: TextButton(
+                onPressed: (){
+                  Get.toNamed(Routes.dashboard);
+                },
+                style: TextButton.styleFrom(
+                    backgroundColor: Colors.grey,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(6)),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 20,)),
+                child: const Text('CHECK OUT',
+                    style: TextStyle(color: Colors.white)),
+              ),
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  PreferredSize appbar() {
+    return PreferredSize(
+      preferredSize: Size.fromHeight(kToolbarHeight),
+      child: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 1.0,
+              blurRadius: 3.0,
+              offset: Offset(0.0, 2.0),
+            ),
+          ],
+        ),
+        child: AppBar(
+          title: Text(
+            'SCAN',
+            style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+          ),
+          centerTitle: true,
+        ),
       ),
     );
   }

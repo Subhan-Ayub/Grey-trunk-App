@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/src/ui/view/ScanHistory/bottombar.dart';
+import 'package:flutter_application_1/src/utils/routes/routes.dart';
 import 'package:get/get.dart';
+
+import '../AssetsDestails/bottomBar.dart';
 class ScanHistory extends StatefulWidget {
   const ScanHistory({super.key});
 
@@ -62,12 +66,12 @@ class _ScanHistoryState extends State<ScanHistory> {
                    ],
                  ),
                ),
-               Image.asset('assets/images/logos/search.jpg',width: 300,height: 300,),
+               Image.asset('assets/images/logos/search.jpg',height: 300,),
                Text('Not Result Found',style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),
                SizedBox(height: 10,),
                Text("We can't find any Online scan results"),
                SizedBox(height: 15,),
-               InkWell(onTap: (){},
+               InkWell(onTap: (){ Get.toNamed(Routes.foundAssets);},
                  child: Container(
                    color: Colors.white,
                    child: Column(
@@ -142,6 +146,7 @@ class _ScanHistoryState extends State<ScanHistory> {
            )
           ],
         ),
+        // bottomNavigationBar: historyBottom(0),
       ),
     );
   }

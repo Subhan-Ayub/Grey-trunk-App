@@ -32,10 +32,7 @@ class _CheckOutState extends State<CheckOut> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar: AppBar(
-        title: Text('CHECKOUT',style: TextStyle(fontSize: 16),),
-        centerTitle: true,
-      ),
+      appBar: appbar(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -177,6 +174,30 @@ class _CheckOutState extends State<CheckOut> {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+  PreferredSize appbar() {
+    return PreferredSize(
+      preferredSize: Size.fromHeight(kToolbarHeight),
+      child: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 1.0,
+              blurRadius: 3.0,
+              offset: Offset(0.0, 2.0),
+            ),
+          ],
+        ),
+        child: AppBar(
+          title: Text(
+            'CHECKOUT',
+            style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+          ),
+          centerTitle: true,
         ),
       ),
     );

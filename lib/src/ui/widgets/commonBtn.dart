@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 class CommonBtn extends StatelessWidget {
   final String title;
-  CommonBtn({required this.title});
+  CommonBtn({required this.title,});
   @override
   Widget build(BuildContext context) {
     return Container(

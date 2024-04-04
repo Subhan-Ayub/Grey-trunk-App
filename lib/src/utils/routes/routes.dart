@@ -21,6 +21,13 @@ abstract class Routes {
   static const addDoc = '/addDoc';
   static const addMaintenance = '/addMaintenance';
   static const despreciation = '/despreciation';
+  static const bluetooth= '/bluetooth';
+  static const editAssets= '/editAssets';
+  static const foundAssets= '/foundAssets';
+  static const newAssets= '/newAssets';
+  static const misplaced= '/misplaced';
+  static const missingAssets= '/missingAssets';
+
 
 
 

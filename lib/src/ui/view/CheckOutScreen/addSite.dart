@@ -14,10 +14,7 @@ class _AddSiteState extends State<AddSite> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Add New Site',style: TextStyle(fontSize: 16,),),
-        centerTitle:true,
-      ),
+      appBar: appbar(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -55,6 +52,30 @@ class _AddSiteState extends State<AddSite> {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+  PreferredSize appbar() {
+    return PreferredSize(
+      preferredSize: Size.fromHeight(kToolbarHeight),
+      child: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 1.0,
+              blurRadius: 3.0,
+              offset: Offset(0.0, 2.0),
+            ),
+          ],
+        ),
+        child: AppBar(
+          title: Text(
+            'ADD NEW SITE',
+            style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+          ),
+          centerTitle: true,
         ),
       ),
     );

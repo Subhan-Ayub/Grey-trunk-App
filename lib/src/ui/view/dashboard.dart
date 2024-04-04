@@ -399,9 +399,11 @@ class Dashboard extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            Text(
-              'Start Scan',
-              style: TextStyle(color: Colors.white, fontSize: 20),
+            InkWell(onTap: (){Get.toNamed(Routes.scan);},
+              child: Text(
+                'Start Scan',
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
             ),
             SizedBox(
               height: 20,
@@ -412,9 +414,11 @@ class Dashboard extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            Text(
-              'My Devices',
-              style: TextStyle(color: Colors.white, fontSize: 20),
+            InkWell(onTap: (){Get.toNamed(Routes.bluetooth);},
+              child: Text(
+                'My Devices',
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
             ),
             SizedBox(
               height: 20,
@@ -425,9 +429,11 @@ class Dashboard extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            Text(
-              'Scan History',
-              style: TextStyle(color: Colors.white, fontSize: 20),
+            InkWell(onTap: (){Get.toNamed(Routes.scanHistory);},
+              child: Text(
+                'Scan History',
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
             ),
             SizedBox(
               height: 20,

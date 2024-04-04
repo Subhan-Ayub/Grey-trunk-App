@@ -41,6 +41,7 @@ dependencies:
   path_provider: ^2.1.2
   permission_handler: ^11.3.1
   file_picker: ^8.0.0+1
+  flutter_blue:
 
   flutter_svg: ^2.0.10+1
   syncfusion_flutter_charts: ^25.1.37
@@ -78,6 +79,7 @@ flutter:
     - assets/images/dashboard/purple-bg-images.svg
     - assets/images/logos/rfid_reader.png
     - assets/images/logos/barcode.png
+    - assets/images/logos/search.jpg
   
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
