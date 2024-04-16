@@ -34,7 +34,7 @@ BottomNavigationBar historyBottom(int page) {
               onTap: () {
                 Get.toNamed(Routes.misplaced);
               },
-              child: Icon(Icons.description_outlined)),
+              child: Icon(Icons.note_alt_outlined)),
           label: 'Misplaced Assets'),
       BottomNavigationBarItem(
           icon: InkWell(

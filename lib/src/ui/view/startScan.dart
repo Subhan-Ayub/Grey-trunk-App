@@ -186,6 +186,7 @@ class _ScanScreenState extends State<ScanScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: SizedBox(width:  double.infinity,
+              height: 50,
 
               child: TextButton(
                 onPressed: (){
@@ -196,7 +197,7 @@ class _ScanScreenState extends State<ScanScreen> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(6)),
                     padding: const EdgeInsets.symmetric(
-                      vertical: 20,)),
+                      vertical: 10,)),
                 child: const Text('CHECK OUT',
                     style: TextStyle(color: Colors.white)),
               ),

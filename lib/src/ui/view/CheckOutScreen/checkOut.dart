@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/src/ui/widgets/commonBtn.dart';
 import 'package:flutter_application_1/src/ui/widgets/textformfild_widgets.dart';
 import 'package:flutter_application_1/src/utils/routes/routes.dart';
 import 'package:flutter_application_1/src/utils/uidata/color.dart';
@@ -122,6 +123,7 @@ class _CheckOutState extends State<CheckOut> {
               Row(
                 children: [
                   SizedBox(width:  MediaQuery.of(context).size.height /5,
+                    height: 50,
 
                     child: TextButton(
                       onPressed: (){
@@ -132,13 +134,15 @@ class _CheckOutState extends State<CheckOut> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(6)),
                           padding: const EdgeInsets.symmetric(
-                            vertical: 20,)),
+                            vertical: 10,)),
                       child: const Text('ADD SITE',
-                          style: TextStyle(color: Colors.white)),
+                          style: TextStyle(color: Colors.white,fontSize: 16)),
                     ),
                   ),
                   Spacer(),
-                  SizedBox(width:  MediaQuery.of(context).size.height /5,
+                  SizedBox(
+                    width:  MediaQuery.of(context).size.height /5,
+                    height: 50,
                     child: TextButton(
                       onPressed: (){
                         Get.toNamed(Routes.addLocation);
@@ -148,30 +152,15 @@ class _CheckOutState extends State<CheckOut> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(6)),
                           padding: const EdgeInsets.symmetric(
-                            vertical: 20,)),
+                            vertical: 10,)),
                       child: const Text('ADD LOCATION',
-                          style: TextStyle(color: Colors.white)),
+                          style: TextStyle(color: Colors.white,fontSize: 16)),
                     ),
                   ),
                 ],
               ),
               SizedBox(height: 20,),
-              SizedBox(width:  double.infinity,
-
-                child: TextButton(
-                  onPressed: (){
-                    Get.toNamed(Routes.assetsDetails);
-                  },
-                  style: TextButton.styleFrom(
-                      backgroundColor: UIDataColors.commonColor,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(6)),
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 20,)),
-                  child: const Text('CHECK OUT',
-                      style: TextStyle(color: Colors.white)),
-                ),
-              ),
+              CommonBtn(title: 'CHECK OUT',onPressd: (){Get.toNamed(Routes.assetsDetails);},)
             ],
           ),
         ),

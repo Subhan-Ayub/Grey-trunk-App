@@ -21,7 +21,6 @@ class ContainerWidgets extends StatelessWidget {
       color: UIDataColors.commonColor,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Image.asset(AppImage.logo,
             height: 100,

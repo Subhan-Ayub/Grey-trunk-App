@@ -4,20 +4,23 @@ import 'package:get/get.dart';
 
 class CommonBtn extends StatelessWidget {
   final String title;
-  CommonBtn({required this.title,});
+  Function()? onPressd;
+  CommonBtn({required this.title,this.onPressd,});
   @override
   Widget build(BuildContext context) {
-    return Container(
-        width: Get.width - 40,
-        height: 50,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(6),
-          color: UIDataColors.commonColor,
-        ),
-        child: Text(
-          title,
-          style: TextStyle(color: Colors.white, fontSize: 16),
-        ));
+    return InkWell(onTap: onPressd,
+      child: Container(
+          width: Get.width - 40,
+          height: 50,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(6),
+            color: UIDataColors.commonColor,
+          ),
+          child: Text(
+            title,
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          )),
+    );
   }
 }

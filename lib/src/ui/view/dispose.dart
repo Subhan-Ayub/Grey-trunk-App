@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/src/ui/widgets/commonBtn.dart';
 import 'package:flutter_application_1/src/ui/widgets/textformfild_widgets.dart';
 import 'package:flutter_application_1/src/utils/routes/routes.dart';
 import 'package:flutter_application_1/src/utils/uidata/color.dart';
@@ -27,21 +28,7 @@ class Dispose extends StatelessWidget {
 
             TextFormFildWidgets(title: 'Disposal reason', icon: Icons.keyboard_arrow_down_sharp),
             Spacer(),
-            SizedBox(width:  double.infinity,
-              child: TextButton(
-                onPressed: (){
-                  Get.toNamed(Routes.assetsDetails);
-                },
-                style: TextButton.styleFrom(
-                    backgroundColor: UIDataColors.commonColor,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(6)),
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 20,)),
-                child: const Text('ADD SITE',
-                    style: TextStyle(color: Colors.white)),
-              ),
-            ),
+            CommonBtn(title: 'ADD SITE',onPressd: (){Get.toNamed(Routes.assetsDetails);},)
           ],
         ),
       ),

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/src/ui/widgets/commonBtn.dart';
 import 'package:flutter_application_1/src/ui/widgets/container.dart';
 import 'package:flutter_application_1/src/ui/widgets/textformfild_widgets.dart';
 import 'package:flutter_application_1/src/utils/routes/routes.dart';
@@ -230,21 +231,7 @@ class _EditScreenState extends State<EditScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Align(alignment: Alignment.bottomCenter,
-              child: SizedBox(
-                width: double.infinity,
-                child: TextButton(
-                  onPressed: (){Get.toNamed(Routes.dashboard);
-                  },
-                  style: TextButton.styleFrom(
-                      backgroundColor: UIDataColors.commonColor,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(6)),
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 20,)),
-                  child: const Text('UPDATE',
-                      style: TextStyle(color: Colors.white)),
-                ),
-              ),
+              child: CommonBtn(title: 'Update',onPressd: (){Get.toNamed(Routes.dashboard);},)
             ),
           ),
         ],
@@ -268,7 +255,7 @@ class _EditScreenState extends State<EditScreen> {
         ),
         child: AppBar(
           title: Text(
-            'ADD ASSET',
+            'Edit ASSET',
             style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
           ),
           centerTitle: true,
