@@ -9,6 +9,9 @@ import 'package:get/get.dart';
 class AssetsDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var arg = Get.arguments;
+    print(arg);
+
     return Scaffold(
       appBar: appbar(),
       body: SingleChildScrollView(
@@ -17,7 +20,10 @@ class AssetsDetails extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                InkWell(onTap: (){Get.toNamed(Routes.checkout);},
+                InkWell(
+                  onTap: () {
+                    Get.toNamed(Routes.checkout);
+                  },
                   child: Column(
                     children: [
                       Icon(
@@ -33,7 +39,10 @@ class AssetsDetails extends StatelessWidget {
                     ],
                   ),
                 ),
-                InkWell(onTap: (){Get.toNamed(Routes.dispose);},
+                InkWell(
+                  onTap: () {
+                    Get.toNamed(Routes.dispose);
+                  },
                   child: Column(
                     children: [
                       Icon(
@@ -49,7 +58,10 @@ class AssetsDetails extends StatelessWidget {
                     ],
                   ).marginOnly(right: 20),
                 ),
-                InkWell(onTap: (){Get.toNamed(Routes.lost);},
+                InkWell(
+                  onTap: () {
+                    Get.toNamed(Routes.lost);
+                  },
                   child: Column(
                     children: [
                       Icon(
@@ -83,13 +95,13 @@ class AssetsDetails extends StatelessWidget {
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children:  [
                     Text(
                       'Asset Tag ID:',
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                     ),
-                    Text('11')
+                    Text('${arg['id']}')
                   ],
                 ),
                 Container(
@@ -119,33 +131,31 @@ class AssetsDetails extends StatelessWidget {
                 style: TextStyle(color: Colors.white, fontSize: 16),
               ),
             ).marginOnly(bottom: 25),
-            des('Brand', 'lenovo', 2),
-            des('Description', 'Laptop', 1),
-            des('Purchase Date', '01/01/2024', 2),
-            des('Category', 'NA', 1),
-            des('Model', 'Thinkbook 14 G2', 2),
-            des('Serial number', 'MP24C06F', 1),
-            des('Assigned To', 'NA', 2),
-            des('Last Scanned Date', '03/20/2024', 1),
-            des('Due Date', 'NA', 2),
-            des('Disposed Date', 'NA', 1),
-            des('Created Date', '03/20/2024', 2),
-            des('Site', '5302', 1),
-            des('Location', 'NA', 2),
-            des('Depreciation', 'NO', 1),
-            des('Depreciation Method', 'NA', 2),
-            des('Total cost(USD)', 'NA', 1),
-            des('Asset Life (Month)', 'NA', 2),
-            des('Salvage value (USD)', 'NA', 1),
-            des('Date Acquired', 'NA', 2),
+            des('Brand', '${arg['Brand']}', 2),
+            des('Description', '${arg['Description']}', 1),
+            des('Purchase Date', '${arg['PurchasedDate']}', 2),
+            des('Category', '${arg['Category']}', 1),
+            des('Model', '${arg['Model']}', 2),
+            des('Serial number', '${arg['SerialNumber']}', 1),
+            des('Assigned To', '${arg['AssignedTo']}', 2),
+            des('Last Scanned Date', '${arg['LastScanDate']}', 1),
+            des('Due Date', '${arg['DueDate']}', 2),
+            des('Disposed Date', '${arg['DisposedDate']}', 1),
+            des('Created Date', '${arg['CreatedDate']}', 2),
+            des('Site', '${arg['Site']}', 1),
+            des('Location', '${arg['Location']}', 2),
+            des('Depreciation', '${arg['Depreciation']}', 1),
+            des('Depreciation Method', '${arg['DepreciationMethod']}', 2),
+            des('Total cost(USD)', '${arg['TotalCost']}', 1),
+            des('Asset Life (Month)', '${arg["AssetLife"]}', 2),
+            des('Salvage value (USD)', '${arg["SalvageValue"]}', 1),
+            des('Date Acquired', '${arg["DateAcquired"]}', 2),
           ],
         ),
       ),
       bottomNavigationBar: bottombar(0),
     );
   }
-
- 
 
   Container des(String key, String value, int check) {
     return Container(

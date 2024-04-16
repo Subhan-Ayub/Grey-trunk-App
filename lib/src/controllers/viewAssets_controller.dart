@@ -1,4 +1,75 @@
-
 import 'package:get/get.dart';
 
-class ViewAssetsController extends GetxController{}
+class ViewAssetsController extends GetxController {
+  var data = [
+    {
+      "id": "L-1001",
+      "Brand": "lenovo",
+      "Description": "laptop",
+      "PurchasedDate": "01/01/2020",
+      "Category": "NA",
+      "Model": "thinkbook g4",
+      "SerialNumber": "MP24C06F",
+      "Cost": "8000.0",
+      "AssignedTo": "NA",
+      "LastScanDate": "03/20/2024",
+      "DueDate": "NA",
+      "DisposedDate": "NA",
+      "CreatedDate": "03/20/2024",
+      "Site": "Lahore Office",
+      "Location": "NA",
+      "Depreciation": "Yes",
+      "DepreciationMethod": "Sum of the Years Digits",
+      "TotalCost": "99",
+      "AssetLife": "66",
+      "SalvageValue": "99",
+      "DateAcquired": "04/16/2024"
+    },
+     {
+      "id": "AH-01",
+      "Brand": "dell",
+      "Description": "laptop",
+      "PurchasedDate": "01/01/2020",
+      "Category": "electronics",
+      "Model": "thinkbook g4",
+      "Serial Number": "MP24C06F",
+      "Cost": "8000.0",
+      "AssignedTo": "NA",
+      "LastScanDate": "03/20/2024",
+      "DueDate": "NA",
+      "DisposedDate": "NA",
+      "CreatedDate": "03/20/2024",
+      "Site": "Lahore Office",
+      "Location": "Islamabad",
+      "Depreciation": "Yes",
+      "DepreciationMethod": "Sum of the Years Digits",
+      "TotalCost": "99",
+      "AssetLife": "66",
+      "SalvageValue": "99",
+      "DateAcquired": "04/16/2024"
+    },
+     {
+      "id": "JK-10",
+      "Brand": "lenovo",
+      "Description": "laptop",
+      "PurchasedDate": "01/01/2020",
+      "Category": "NA",
+      "Model": "thinkbook g4",
+      "SerialNumber": "MP24C06F",
+      "Cost": "8000.0",
+      "AssignedTo": "NA",
+      "LastScanDate": "03/20/2024",
+      "DueDate": "NA",
+      "DisposedDate": "NA",
+      "CreatedDate": "03/20/2024",
+      "Site": "Lahore Office",
+      "Location": "Faislabad",
+      "Depreciation": "Yes",
+      "DepreciationMethod": "Sum of the Years Digits",
+      "TotalCost": "99",
+      "AssetLife": "66",
+      "SalvageValue": "99",
+      "DateAcquired": "04/16/2024"
+    }
+  ];
+}

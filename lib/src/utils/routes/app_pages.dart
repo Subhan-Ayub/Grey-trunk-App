@@ -3,8 +3,10 @@ import 'package:flutter_application_1/src/bindings/addMaintenanceBindings.dart';
 import 'package:flutter_application_1/src/bindings/aseetsdetailsBindings.dart';
 import 'package:flutter_application_1/src/bindings/dashboard_bindings.dart';
 import 'package:flutter_application_1/src/bindings/historyBindings.dart';
+import 'package:flutter_application_1/src/bindings/login_bindings.dart';
 import 'package:flutter_application_1/src/bindings/maintenanceBindings.dart';
 import 'package:flutter_application_1/src/bindings/viewAssets_bindings.dart';
+import 'package:flutter_application_1/src/middlewares/auth.dart';
 import 'package:flutter_application_1/src/ui/view/AssetsDestails/addDoc.dart';
 import 'package:flutter_application_1/src/ui/view/AssetsDestails/addMaintenance.dart';
 import 'package:flutter_application_1/src/ui/view/AssetsDestails/assetsDetails.dart';
@@ -22,7 +24,6 @@ import 'package:flutter_application_1/src/ui/view/ScanHistory/misplacedAssets.da
 import 'package:flutter_application_1/src/ui/view/ScanHistory/missingAssets.dart';
 import 'package:flutter_application_1/src/ui/view/ScanHistory/newAssets.dart';
 import 'package:flutter_application_1/src/ui/view/addAsset.dart';
-
 import 'package:flutter_application_1/src/ui/view/dashboard.dart';
 import 'package:flutter_application_1/src/ui/view/dispose.dart';
 import 'package:flutter_application_1/src/ui/view/editAssets.dart';
@@ -48,6 +49,7 @@ class AppPages {
     GetPage(
         name: Routes.login,
         page: () => LogIn(),
+        binding: LoginScreenBindings(),
         transition: Transition.noTransition),
     GetPage(
         name: Routes.signUp,
@@ -60,6 +62,7 @@ class AppPages {
     GetPage(
         name: Routes.dashboard,
         page: () => Dashboard(),
+        middlewares: [AuthMiddleware()],
         binding: DashboardBindings(),
         transition: Transition.noTransition),
     GetPage(
@@ -146,7 +149,7 @@ class AppPages {
         page: () => Despreciation(),
         // binding: AddMaintenanceBindings(),
         transition: Transition.noTransition),
-        GetPage(
+    GetPage(
         name: Routes.bluetooth,
         page: () => BluetoothScreen(),
         binding: AddDocBindings(),
@@ -176,11 +179,10 @@ class AppPages {
         page: () => MissingAssets(),
         binding: AddDocBindings(),
         transition: Transition.noTransition),
-         GetPage(
+    GetPage(
         name: Routes.profile,
         page: () => Profile(),
         // binding: AddMaintenanceBindings(),
         transition: Transition.noTransition),
-        
   ];
 }

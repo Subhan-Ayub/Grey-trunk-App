@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/controllers/dashboard_controller.dart';
 import 'package:flutter_application_1/src/utils/routes/routes.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:flutter_application_1/src/utils/uidata/color.dart';
 import 'package:get/get.dart';
@@ -309,6 +310,7 @@ class Dashboard extends StatelessWidget {
   }
 
   Drawer drawer() {
+
     return Drawer(
         backgroundColor: UIDataColors.commonColor,
         width: Get.width / 1.5,
@@ -449,9 +451,33 @@ class Dashboard extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            Text(
-              'Logout',
-              style: TextStyle(color: Colors.white, fontSize: 20),
+            InkWell(
+              onTap: () {
+                   Get.defaultDialog(
+                        title: 'Log Out',
+                        content: Text('Are you sure u want to log out?'),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Get.back();
+                            },
+                            child: Text('Cancel'),
+                          ),
+                          TextButton(
+                            onPressed: () async {
+                              GetStorage box=GetStorage();
+                              await box.remove('auth');
+                              Get.offAllNamed(Routes.login);
+                            },
+                            child: Text('Log out'),
+                          ),
+                        ],
+                      );
+              },
+              child: Text(
+                'Logout',
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
             ),
           ],
         ).marginSymmetric(horizontal: 40));
