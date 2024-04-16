@@ -26,7 +26,7 @@ class _NewAssetsState extends State<NewAssets> {
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: Row(
-                    children: [
+                    children:const [
                       Icon(Icons.lightbulb, color: Colors.yellow),
                       SizedBox(width: 8), // Add space between Icon and Text
                       Expanded(child: Text('List of scanned assets that are not in the system and available to add')),
@@ -39,7 +39,7 @@ class _NewAssetsState extends State<NewAssets> {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Row(
-                  children: [
+                  children: const[
                     Text('Result:',style: TextStyle(fontWeight: FontWeight.bold),),
                     SizedBox(width: 5,),
                     Text('1 Assets',style: TextStyle(color: Colors.grey),),
@@ -51,7 +51,7 @@ class _NewAssetsState extends State<NewAssets> {
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: Row(
-                    children: [
+                    children:const [
                       Text('TagId:',style: TextStyle(fontWeight: FontWeight.bold),),
                       SizedBox(width: 5,),
                       Text('6901462126755',),

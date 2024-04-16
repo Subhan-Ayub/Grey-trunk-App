@@ -27,7 +27,7 @@ class _MissingAssetsState extends State<MissingAssets> {
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: Row(
-                    children: [
+                    children:const [
                       Icon(Icons.lightbulb, color: Colors.yellow),
                       SizedBox(width: 8), // Add space between Icon and Text
                       Expanded(child: Text('List of assets that are missing in the selected Site or location')),
@@ -40,7 +40,7 @@ class _MissingAssetsState extends State<MissingAssets> {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Row(
-                  children: [
+                  children: const[
                     Text('Result:',style: TextStyle(fontWeight: FontWeight.bold),),
                     SizedBox(width: 5,),
                     Text('2 Assets',style: TextStyle(color: Colors.grey),),

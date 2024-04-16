@@ -26,7 +26,7 @@ class _MisplacedState extends State<Misplaced> {
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: Row(
-                    children: [
+                    children:const [
                       Icon(Icons.lightbulb, color: Colors.yellow),
                       SizedBox(width: 8), // Add space between Icon and Text
                       Expanded(child: Text('List of assets that do not belong in this Site or location')),
@@ -39,7 +39,7 @@ class _MisplacedState extends State<Misplaced> {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Row(
-                  children: [
+                  children:const [
                     Text('Result:',style: TextStyle(fontWeight: FontWeight.bold),),
                     SizedBox(width: 5,),
                     Text('0 Assets',style: TextStyle(color: Colors.grey),),

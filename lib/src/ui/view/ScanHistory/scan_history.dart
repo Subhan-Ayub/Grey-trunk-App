@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/src/ui/view/ScanHistory/bottombar.dart';
 import 'package:flutter_application_1/src/utils/routes/routes.dart';
 import 'package:get/get.dart';
-
-import '../AssetsDestails/bottomBar.dart';
 class ScanHistory extends StatefulWidget {
   const ScanHistory({super.key});
 
@@ -22,7 +19,7 @@ class _ScanHistoryState extends State<ScanHistory> {
           title:  Text('Scan History'),
           centerTitle: true,
           bottom:  TabBar(
-            tabs: <Widget>[
+            tabs: const <Widget>[
               Tab(
                 text: 'UNSYNCED',
               ),
@@ -37,7 +34,7 @@ class _ScanHistoryState extends State<ScanHistory> {
             Padding(
               padding: EdgeInsets.all(12.0),
               child: Column(
-                children: [
+                children:const [
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(children: [
@@ -59,7 +56,7 @@ class _ScanHistoryState extends State<ScanHistory> {
                  color: Colors.grey.shade100,
                  padding: EdgeInsets.all(8.0), // Adjust padding as needed
                  child: Row(
-                   children: [
+                   children:const [
                      Icon(Icons.lightbulb, color: Colors.yellow),
                      SizedBox(width: 8), // Add space between Icon and Text
                      Text('Top on the list to view the detail of scan results'),

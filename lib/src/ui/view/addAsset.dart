@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/src/controllers/addAsset_controller.dart';
 import 'package:flutter_application_1/src/ui/widgets/commonBtn.dart';
 import 'package:flutter_application_1/src/ui/widgets/container.dart';
 import 'package:flutter_application_1/src/ui/widgets/textformfild_widgets.dart';
@@ -25,9 +24,10 @@ class _AddAssetsState extends State<AddAssets> {
       _imageFile = pickedFile != null ? File(pickedFile.path) : null;
     });
   }
-  void _changeImage() {
-  }
+  // void _changeImage() {
+  // }
 
+  // ignore: unused_element
   void _deleteImage() {
     setState(() {
       _imageFile = null;

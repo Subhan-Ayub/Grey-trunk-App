@@ -9,6 +9,7 @@ class AddDocController extends GetxController {
     FilePickerResult? result = await FilePicker.platform.pickFiles();
 
     if (result != null) {
+      // ignore: unused_local_variable
       File file = File(result.files.single.path!);
     } else {
       // User canceled the picker

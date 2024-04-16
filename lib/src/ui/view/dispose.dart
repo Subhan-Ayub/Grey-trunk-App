@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/ui/widgets/commonBtn.dart';
 import 'package:flutter_application_1/src/ui/widgets/textformfild_widgets.dart';
 import 'package:flutter_application_1/src/utils/routes/routes.dart';
-import 'package:flutter_application_1/src/utils/uidata/color.dart';
 import 'package:get/get.dart';
 class Dispose extends StatelessWidget {
   const Dispose({super.key});

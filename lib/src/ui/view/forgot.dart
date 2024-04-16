@@ -3,7 +3,6 @@ import 'package:flutter_application_1/src/ui/widgets/commonBtn.dart';
 import 'package:flutter_application_1/src/utils/routes/routes.dart';
 import 'package:flutter_application_1/src/ui/widgets/container_widget.dart';
 import 'package:flutter_application_1/src/ui/widgets/textformfild_widgets.dart';
-import 'package:flutter_application_1/src/utils/uidata/color.dart';
 import 'package:get/get.dart';
 class ForgotScreen extends StatelessWidget {
   const ForgotScreen({super.key});

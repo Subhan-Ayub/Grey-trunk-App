@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/utils/uidata/color.dart';
 import 'package:get/get.dart';
 
+// ignore: must_be_immutable
 class CommonBtn extends StatelessWidget {
   final String title;
   Function()? onPressd;
