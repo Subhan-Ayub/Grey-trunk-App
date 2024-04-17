@@ -12,7 +12,7 @@ class _FoundAssetsState extends State<FoundAssets> {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
-        title: Text('Add Assets',style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),
+        title: Text('Add Assets',),
         centerTitle: true,
         backgroundColor: Colors.white,
       ),

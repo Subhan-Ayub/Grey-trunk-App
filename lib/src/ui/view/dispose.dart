@@ -25,9 +25,9 @@ class Dispose extends StatelessWidget {
             }),
             SizedBox(height: 20,),
 
-            TextFormFildWidgets(title: 'Disposal reason', icon: Icons.keyboard_arrow_down_sharp),
+            TextFormFildWidgets(title: 'Disposal reason',),
             Spacer(),
-            CommonBtn(title: 'ADD SITE',onPressd: (){Get.toNamed(Routes.assetsDetails);},)
+            CommonBtn(title: 'ADD SITE',onPressd: (){Get.back();},)
           ],
         ),
       ),

@@ -12,7 +12,7 @@ class _NewAssetsState extends State<NewAssets> {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
-        title: Text('New Assets',style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),
+        title: Text('New Assets'),
         centerTitle: true,
         backgroundColor: Colors.white,
       ),

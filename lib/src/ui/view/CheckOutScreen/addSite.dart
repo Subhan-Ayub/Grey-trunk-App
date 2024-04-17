@@ -19,21 +19,21 @@ class _AddSiteState extends State<AddSite> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            TextFormFildWidgets(title: 'Site Nme', icon: Icons.keyboard_arrow_down_sharp),
+            TextFormFildWidgets(title: 'Site Nme', ),
             SizedBox(height: 20,),
-            TextFormFildWidgets(title: 'Description', icon: Icons.keyboard_arrow_down_sharp),
-            SizedBox(height: 20,),
-
-            TextFormFildWidgets(title: 'Address', icon: Icons.keyboard_arrow_down_sharp),
+            TextFormFildWidgets(title: 'Description', ),
             SizedBox(height: 20,),
 
-            TextFormFildWidgets(title: 'City', icon: Icons.keyboard_arrow_down_sharp),
+            TextFormFildWidgets(title: 'Address', ),
             SizedBox(height: 20,),
 
-            TextFormFildWidgets(title: 'State', icon: Icons.keyboard_arrow_down_sharp),
+            TextFormFildWidgets(title: 'City', ),
             SizedBox(height: 20,),
 
-            TextFormFildWidgets(title: 'Postal Code', icon: Icons.keyboard_arrow_down_sharp),
+            TextFormFildWidgets(title: 'State',),
+            SizedBox(height: 20,),
+
+            TextFormFildWidgets(title: 'Postal Code',),
             Spacer(),
 
             CommonBtn(title: 'ADD SITE',onPressd: (){Get.toNamed(Routes.checkout);},)

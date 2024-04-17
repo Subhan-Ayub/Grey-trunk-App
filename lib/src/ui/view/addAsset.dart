@@ -80,9 +80,9 @@ class _AddAssetsState extends State<AddAssets> {
                         });
                   },),
                   SizedBox(height: 20,),
-                  TextFormFildWidgets(title: 'Description', icon: Icons.description,),
+                  TextFormFildWidgets(title: 'Description',),
                   SizedBox(height: 20,),
-                  TextFormFildWidgets(title: 'Assigned To', icon: Icons.assignment),
+                  TextFormFildWidgets(title: 'Assigned To',),
                   SizedBox(height: 20,),
                   TextFormFildWidgets(title: 'Last Scanned Date', icon: Icons.date_range,onPressd: ()async{
                     DateTime? pickedDate = await showDatePicker(context: context,
@@ -145,9 +145,23 @@ class _AddAssetsState extends State<AddAssets> {
                         : Image.file(_imageFile!),
                   ),
                   SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: () => _pickImage(ImageSource.camera),
-                    child: Text('Take Picture',style: TextStyle(color: UIDataColors.commonColor),),
+                  SizedBox(
+                    height: 40,
+                    width: 170,
+                    child: ElevatedButton(
+                      onPressed: () => _pickImage(ImageSource.camera),
+
+                      child: Row(
+                        children: [
+                          Icon(Icons.camera_alt_outlined,color: Colors.white,),
+                          SizedBox(width: 5,),
+                          Text('UPLOAD IMAGE',style: TextStyle(color: Colors.white,fontSize: 11),),
+                        ],
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(UIDataColors.commonColor)
+                      ),
+                    ),
                   ),
                   SizedBox(height: 20,),
                   ContWidgets(text: 'DEPRECIATION'),
@@ -158,7 +172,7 @@ class _AddAssetsState extends State<AddAssets> {
                     height: 10,
                   ),
                   Row(
-                    children: <Widget>[
+                    children: [
                       Flexible(
                         child: RadioListTile(
                           title:  Text('Yes'),
@@ -202,18 +216,18 @@ class _AddAssetsState extends State<AddAssets> {
                           },
                           ),
                           SizedBox(height: 20,),
-                          TextFormFildWidgets(title: 'Total Cost(USD)*', icon: Icons.monetization_on_outlined),
+                          TextFormFildWidgets(title: 'Total Cost(USD)*',),
                           SizedBox(height: 20,),
-                          TextFormFildWidgets(title: 'Asset Life(Month)*', icon: Icons.monetization_on_outlined),
+                          TextFormFildWidgets(title: 'Asset Life(Month)*',),
                           SizedBox(height: 20,),
-                          TextFormFildWidgets(title: 'Salvage Value(USD)*', icon: Icons.monetization_on_outlined),
+                          TextFormFildWidgets(title: 'Salvage Value(USD)*',),
                           SizedBox(height: 20,),
                           TextFormFildWidgets(title: 'Date Acquired', icon: Icons.date_range),
                         ],
                       ),
                     ),
                   ),
-
+SizedBox(height: 50,)
                 ],
               ),
 

@@ -12,7 +12,7 @@ class _MisplacedState extends State<Misplaced> {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
-        title: Text('Misplaced Assets',style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),
+        title: Text('Misplaced Assets',),
         centerTitle: true,
         backgroundColor: Colors.white,
       ),

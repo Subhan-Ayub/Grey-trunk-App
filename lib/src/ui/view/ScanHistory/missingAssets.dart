@@ -13,7 +13,7 @@ class _MissingAssetsState extends State<MissingAssets> {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
-        title: Text('Missing Assets',style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),
+        title: Text('Missing Assets'),
         centerTitle: true,
         backgroundColor: Colors.white,
       ),

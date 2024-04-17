@@ -6,12 +6,14 @@ class TextFormFildWidgets extends StatelessWidget {
   final IconData? icon;
   Function()? onPressd;
   TextEditingController? txtcontroller;
+ final FocusNode? focusNode;
   TextFormFildWidgets({
     Key? key,
     required this.title,
     this.icon,
     this.onPressd,
-    this.txtcontroller
+    this.txtcontroller,
+    this.focusNode
   });
 
   @override

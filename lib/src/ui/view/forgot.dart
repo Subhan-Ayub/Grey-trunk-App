@@ -25,42 +25,6 @@ class ForgotScreen extends StatelessWidget {
                   SizedBox(
                     height: 40,
                   ),
-                  // SizedBox(
-                  //   width: double.infinity,
-                  //   child: TextButton(
-                  //     onPressed: (){
-                  //       Get.toNamed(Routes.login);
-                  //     },
-                  //     // onPressed: () async {
-                  //     //   // var sharedpref= await SharedPreferences.getInstance();
-                  //     //   // SmartDialog.showLoading(msg: "Please Wait..");
-                  //     //   // String email = _emailController.text.toString();
-                  //     //   // String password = _passwordController.text.toString();
-                  //     //   // FirebaseAuth.instance.signInWithEmailAndPassword(email: email,
-                  //     //   //     password: password).then((value){
-                  //     //   //   sharedpref.setBool(keyLogIn, true);
-                  //     //   //   // await loginInWithEmailAndPassword();
-                  //     //   //   // if(value != null){
-                  //     //   //   print("Created New Account");
-                  //     //   //   SmartDialog.dismiss();
-                  //     //   // }).onError((error, stackTrace){
-                  //     //   //
-                  //     //   //   SmartDialog.dismiss();
-                  //     //   //   Fluttertoast.showToast(msg: "Error :${error.toString()}");
-                  //     //   //
-                  //     //   // });
-                  //     // },
-                  //     style: TextButton.styleFrom(
-                  //         backgroundColor: UIDataColors.commonColor,
-                  //         shape: RoundedRectangleBorder(
-                  //             borderRadius: BorderRadius.circular(6)),
-                  //         padding: const EdgeInsets.symmetric(
-                  //           vertical: 20,)),
-                  //     child: const Text('Submit',
-                  //         style: TextStyle(color: Colors.white)),
-                  //   ),
-                  // ),
-
                   CommonBtn(title: 'Submit',onPressd: (){Get.toNamed(Routes.login);},)
                 ],
               ),

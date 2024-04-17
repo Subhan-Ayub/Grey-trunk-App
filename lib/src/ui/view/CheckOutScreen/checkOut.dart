@@ -115,7 +115,7 @@ class _CheckOutState extends State<CheckOut> {
                 }
               },),
               SizedBox(height: 20,),
-              TextFormFildWidgets(title: 'Note', icon: Icons.keyboard_arrow_down_sharp),
+              TextFormFildWidgets(title: 'Note', ),
               SizedBox(
                 height: 20,
               ),
@@ -160,7 +160,8 @@ class _CheckOutState extends State<CheckOut> {
                 ],
               ),
               SizedBox(height: 20,),
-              CommonBtn(title: 'CHECK OUT',onPressd: (){Get.toNamed(Routes.assetsDetails);},)
+            CommonBtn(title: 'CHECK OUT',onPressd: (){Get.back();},)
+
             ],
           ),
         ),

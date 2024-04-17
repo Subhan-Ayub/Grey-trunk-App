@@ -25,9 +25,9 @@ class Lost extends StatelessWidget {
             }),
             SizedBox(height: 20,),
 
-            TextFormFildWidgets(title: 'Note', icon: Icons.keyboard_arrow_down_sharp),
+            TextFormFildWidgets(title: 'Note',),
             Spacer(),
-            CommonBtn(title: 'LOST',onPressd: (){Get.toNamed(Routes.assetsDetails);},)
+            CommonBtn(title: 'LOST',onPressd: (){Get.back();},)
           ],
         ),
       ),

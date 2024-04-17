@@ -22,7 +22,7 @@ class _AddLocationState extends State<AddLocation> {
             TextFormFildWidgets(title: 'Site', icon: Icons.keyboard_arrow_down_sharp),
             SizedBox(height: 20,),
 
-            TextFormFildWidgets(title: 'Location', icon: Icons.keyboard_arrow_down_sharp),
+            TextFormFildWidgets(title: 'Location',),
             Spacer(),
 
             CommonBtn(title: 'ADD SITE',onPressd: (){Get.toNamed(Routes.checkout);},)
