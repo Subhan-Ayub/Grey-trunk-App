@@ -1,241 +1,224 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/src/controllers/scan_controller.dart';
 import 'package:flutter_application_1/src/ui/widgets/textformfild_widgets.dart';
 import 'package:flutter_application_1/src/utils/routes/routes.dart';
 import 'package:flutter_application_1/src/utils/uidata/color.dart';
 import 'package:get/get.dart';
 import 'package:simple_barcode_scanner/simple_barcode_scanner.dart';
-class ScanScreen extends StatefulWidget {
-  const ScanScreen({super.key});
 
-  @override
-  State<ScanScreen> createState() => _ScanScreenState();
-}
 
-class _ScanScreenState extends State<ScanScreen> {
-  static const String option1 = 'Option 1';
-  static const String option2 = 'Option 2';
-
-FocusNode site=FocusNode();
-FocusNode location=FocusNode();
-  String selectedRadio = option1;
-
-  bool showTextField = false;
-
+class ScanScreen extends StatelessWidget {
+  final ScanController controller = Get.put(ScanController());
+  static const String selectedValue = 'selectedValue';
+  static const String selectedValue2 = 'selectedValue2';
+  static const String selectedValue3 = 'selectedValue3';
+  String selectedRadio = selectedValue;
   void setSelectedRadio(String value) {
-    setState(() {
-      selectedRadio = value;
-      if (value == option2) {
-        showTextField = true;
-      } else {
-        showTextField = false;
-      }
-    });
+
   }
-  String result = '';
+
+  // get title => null;
 
   @override
   Widget build(BuildContext context) {
-    // ScanScreenController _ = Get.find<ScanScreenController>();
-
-    return Scaffold(
-      backgroundColor: Colors.grey.shade100,
-      appBar: appbar(),
-      body: SingleChildScrollView(
-        child: Column(
-          // mainAxisAlignment: MainAxisAlignment.end,
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Text('Choose Scan Option',style: TextStyle(fontSize: 16),),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Container(
-                color: Colors.white,
-                child: Column(
-                  children: [
-                    Row(
-                      children:[
-                        Flexible(
-                          child: RadioListTile(
-                            title: Row(
-                              children: [
-                                Image.asset(
-                                  'assets/images/logos/rfid_reader.png',
-
-                                  width: 30,
-                                  height: 30,
-                                ),
-                                SizedBox(width: 20),
-                                Text('Scan with RFID Reader'),
-                              ],
-                            ),
-                            value: option1,
-                            groupValue: selectedRadio,
-                            onChanged: (value) {
-                              setSelectedRadio(value as String);
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                    Center(child: Text('No Device is connected',style: TextStyle(fontSize: 14),)),
-                    Divider(
-                      thickness: 0,
-                      color: Colors.grey.shade500,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        IconButton(onPressed: (){}, icon: Icon(Icons.settings,color: UIDataColors.commonColor,)),
-                        Text('CONNECT DEVICE'),
-                      ],
-                    )
-                  ],
+    return Obx(()=>Scaffold(
+        backgroundColor: Colors.grey.shade100,
+        appBar: appbar(),
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Choose Scan Option',
+                  style: TextStyle(fontSize: 16,color: Colors.grey),
                 ),
-
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Container(
-                color: Colors.white,
-                child: Row(
-                      children:[
-                        Flexible(
-                          child: RadioListTile(
-                            title: Row(
-                              children: [
-                                Image.asset(
-                                  'assets/images/logos/barcode.png',
-                                  width: 30,
-                                  height: 30,
-                                ),
-                                SizedBox(width:20),
-                                Text('Scan with camera'),
-                              ],
-                            ),
-                            value: option2,
-                            groupValue: selectedRadio,
-                            onChanged: (value) {
-                              setSelectedRadio(value as String);
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-              ),
-            ),
-            SizedBox(height: 12,),
-            Container(
-              width: double.infinity,
-              color: Colors.white,
-              child: Padding(
+              Padding(
                 padding: const EdgeInsets.all(12.0),
-                child: SingleChildScrollView(
-
+                child: Container(
+                  color: Colors.white,
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
-                        children:[
-                          Flexible(
-                            child: RadioListTile(
-                              title:  Text('Inventory Scan'),
-                              value: option1,
-                              groupValue: selectedRadio,
-                              onChanged: (value) {
-                                setSelectedRadio(value as String);
-                              },
+                        children: [
+                          Flexible(child: RadioListTile(
+                            title: Row(
+                                children: [
+                                  Image.asset(
+                                    'assets/images/logos/rfid_reader.png',
+                                    width: 30,
+                                    height: 30,
+                                  ),
+                                  SizedBox(width: 20),
+                                  Text('Scan with RFID Reader'),
+                                ],
                             ),
+                            value: 'Option1',
+                            groupValue: controller.selectedRadio.value,
+                            onChanged: (value) {
+                              controller.setSelectedRadio(value as String);
+                              print('Selected Radio Value: ${controller.selectedRadio.value}');
+                            },
                           ),
-                          Flexible(
-                            child: RadioListTile(
-                              title: const Text('Bulk Scan'),
-                              value: option2,
-                              groupValue: selectedRadio,
-                              onChanged: (value) {
-                                setSelectedRadio(value as String);
-                              },
-                            ),
                           ),
                         ],
                       ),
-                      SizedBox(height: 10,),
-                      Text('Choose Site and Location to start scan',style: TextStyle(fontSize: 16),),
-                      SizedBox(height: 10,),
-                      TextFormFildWidgets(title: 'Site', icon: Icons.keyboard_arrow_down_sharp,onPressd: (){
-                        site!.unfocus();
-                        showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AlertDialog(
-                                title: const Text(
-                                    'Site'),
-                                content: Text('No option for Depreciation Method'),
-                              );
-                            });
-                      },
-                      focusNode: site!,
+                      Center(child: Text('No Device is connected', style: TextStyle(fontSize: 14,color: Colors.grey),)),
+                      Divider(
+                        thickness: 0,
+                        color: Colors.grey.shade500,
                       ),
-                      SizedBox(height: 20,),
-                      TextFormFildWidgets(title: 'Location', icon: Icons.keyboard_arrow_down_sharp,onPressd: (){
-                        location!.unfocus();
-                        showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AlertDialog(
-                                title: const Text(
-                                    'Site'),
-                                content: Text('No option for Depreciation Method'),
-                              );
-                            });
-                      },
-                      focusNode:location
+                      Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            IconButton(onPressed: (){}, icon: Icon(Icons.settings,color: UIDataColors.commonColor,)),
+                            Text('CONNECT DEVICE'),
+                          ],
+                        ),
                       ),
-                      Text('Barcode Result: $result'),
                     ],
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: 110,),
-
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SizedBox(width:  double.infinity,
-                  height: 50,
-
-                  child: TextButton(
-                    onPressed: () async {
-                      var res = await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const SimpleBarcodeScannerPage(),
-                          ));
-                      setState(() {
-                        if (res is String) {
-                          result = res;
-                        }
-                      });
-                    },
-                    style: TextButton.styleFrom(
-                        backgroundColor: Colors.grey,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(6)),
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 10,)),
-                    child: const Text('START SCAN',
-                        style: TextStyle(color: Colors.white)),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Container(
+                  color: Colors.white,
+                  child: Row(
+                    children: [
+                      Flexible(child: RadioListTile(
+                        title: Row(
+                          children: [
+                            Image.asset(
+                              'assets/images/logos/barcode.png',
+                              width: 30,
+                              height: 30,
+                            ),
+                            SizedBox(width: 20),
+                            Text('Scan with camera'),
+                          ],
+                        ),
+                        value: 'Option2',
+                        groupValue: controller.selectedRadio.value,
+                        onChanged: (value) {
+                          controller.setSelectedRadio(value as String);
+                          controller.update();
+                          print('Selected Radio Value: ${controller.selectedRadio.value}');
+                        },
+                      ),
+                      ),
+                    ],
                   ),
                 ),
               ),
-            ),
-          ],
+
+              Container(
+                color: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Column(
+                    children: [
+                      Column(
+                        children:[
+                          RadioListTile(
+                            title:  Text('Inventory Scan'),
+                            value: selectedValue,
+                            groupValue: selectedRadio,
+                            onChanged: (value) {
+                              setSelectedRadio(value as String);
+                            },
+                          ),
+                          RadioListTile(
+                            title:  Text('Bulk Scan'),
+                            value: selectedValue2,
+                            groupValue: selectedRadio,
+                            onChanged: (value) {
+                              setSelectedRadio(value as String);
+                            },
+                          ),
+                          RadioListTile(
+                            title: const Text('Audit Scan'),
+                            value: selectedValue3,
+                            groupValue: selectedRadio,
+                            onChanged: (value) {
+                              setSelectedRadio(value as String);
+                            },
+                          ),
+                        ],
+                      ),
+                      Obx(
+                            () => Visibility(
+                          visible: controller.showTextField.value,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Choose Site and Location to start scan',
+                                  style: TextStyle(fontSize: 16,color: Colors.grey)),
+                              SizedBox(height: 10),
+                              TextFormFildWidgets(
+                                title: 'Site',
+                                icon: Icons.keyboard_arrow_down_sharp,
+                                txtcontroller: controller.siteController,
+                                onPressd: () {
+                                  controller.siteController.clear();
+                                  Get.defaultDialog(
+                                    title: 'Site',
+                                    content: Text('No option for Depreciation Method'),
+                                  );
+                                },
+                              ),
+                              SizedBox(height: 20),
+                              TextFormFildWidgets(
+                                title: 'Location',
+                                icon: Icons.keyboard_arrow_down_sharp,
+                                txtcontroller: controller.locationController,
+                                onPressd: () {
+                                  controller.locationController.clear();
+                                  Get.defaultDialog(
+                                    title: 'Location',
+                                    content: Text('No option for Depreciation Method'),
+                                  );
+                                },
+                              ),
+                              Text('Barcode Result: ${controller.result.value}'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 110),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: 50,
+                    child: TextButton(
+                      onPressed: controller.startScan,
+                      style: TextButton.styleFrom(
+                        backgroundColor: Colors.grey,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                      ),
+                      child: const Text(
+                        'START SCAN',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
