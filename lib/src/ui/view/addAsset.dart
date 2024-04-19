@@ -64,15 +64,59 @@ class AddAssets extends StatelessWidget {
                       title: 'Category',
                       icon: Icons.keyboard_arrow_down,
                       txtcontroller: controller.categoryController,
-                      onPressd: () {
-                        showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AlertDialog(
-                                title: const Text('Category'),
-                                content: Text('No option for Category'),
-                              );
-                            });
+                      onPressd: (){
+                        showModalBottomSheet(
+                          backgroundColor: Colors.transparent,
+                          context: context,
+                          builder: (BuildContext context) {
+                            return Padding(
+                              padding: const EdgeInsets.all(12.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                    colors: [Colors.grey[300]!, Colors.grey[600]!],
+                                  ),
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.5),
+                                      spreadRadius: 5,
+                                      blurRadius: 7,
+                                      offset: Offset(0, 3),
+                                    ),
+                                  ],
+                                ),
+                                height: 300.0,
+                                child: ListWheelScrollView(
+                                  itemExtent: 50.0,
+                                  physics: FixedExtentScrollPhysics(),
+                                  overAndUnderCenterOpacity: 0.5,
+                                  children: List.generate(
+                                    5,
+                                        (index) => Container(
+                                      color: Colors.white,
+                                      child: ListTile(
+                                        selectedTileColor: Colors.blue,
+                                        title: Center(
+                                          child: Text(
+                                            _getCategoryName(index),
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                              color: Colors.black87,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        );
+
                       },
                     ),
                     SizedBox(
@@ -80,7 +124,7 @@ class AddAssets extends StatelessWidget {
                     ),
                     TextFormFildWidgets(
                       title: 'Description',
-                      txtcontroller: controller.depreciationController,
+                      txtcontroller: controller.descriptionController,
                     ),
                     SizedBox(
                       height: 20,
@@ -294,6 +338,7 @@ class AddAssets extends StatelessWidget {
                         ),
                       ],
                     ),
+                    if(controller.selectedRadio.value=="Option1")
                     Visibility(
                       visible: showTextField,
                       child: Padding(
@@ -412,5 +457,28 @@ class AddAssets extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+String _getCategoryName(int index) {
+  switch (index) {
+    case 0:
+      return 'Tools';
+    case 1:
+      return 'Vehicles';
+    case 2:
+      return 'Demo Equipment';
+    case 3:
+      return 'Machinery';
+    case 4:
+      return 'Supplies';
+    case 5:
+      return 'Computer';
+    case 6:
+      return 'Furniture and Fixtures';
+    case 7:
+      return 'AV equipment';
+    default:
+      return 'Unknown';
   }
 }

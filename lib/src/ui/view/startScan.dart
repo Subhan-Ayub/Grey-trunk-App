@@ -74,7 +74,7 @@ class ScanScreen extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            IconButton(onPressed: (){}, icon: Icon(Icons.settings,color: UIDataColors.commonColor,)),
+                            IconButton(onPressed: (){Get.toNamed(Routes.bluetooth);}, icon: Icon(Icons.settings,color: UIDataColors.commonColor,)),
                             Text('CONNECT DEVICE'),
                           ],
                         ),

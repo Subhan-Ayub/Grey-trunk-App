@@ -2,6 +2,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/src/utils/uidata/color.dart';
 import 'package:get/get.dart';
 
 import '../../utils/routes/routes.dart';
@@ -25,15 +26,16 @@ class SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: UIDataColors.commonColor,
       body: Center(
         child: Container(
         // width: MediaQuery.of(context).size.width,
         // height: MediaQuery.of(context).size.height,
         // color: Colors.blue,
         child: Image.asset(
-          "assets/images/logos/logo.png",
-          height: 200,
-          width: 200,
+          "assets/images/logos/emergtech_logo.png",
+          height: 300,
+          width: 300,
         ),
             ),
       )

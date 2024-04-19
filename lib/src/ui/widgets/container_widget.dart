@@ -22,9 +22,9 @@ class ContainerWidgets extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(AppImage.logo,
-            height: 100,
-            width: 100,),
+          Image.asset(AppImage.logo3,
+            height: 200,
+            width: 300,),
           Text(text,style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold,color: Colors.white),),
           Text(title,style: TextStyle(fontSize: 16,color: Colors.white),)
         ],
