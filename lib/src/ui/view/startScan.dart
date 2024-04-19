@@ -9,10 +9,10 @@ import 'package:simple_barcode_scanner/simple_barcode_scanner.dart';
 
 class ScanScreen extends StatelessWidget {
   final ScanController controller = Get.put(ScanController());
-  static const String selectedValue = 'selectedValue';
-  static const String selectedValue2 = 'selectedValue2';
-  static const String selectedValue3 = 'selectedValue3';
-  String selectedRadio = selectedValue;
+  static  RxString selectedValue = 'selectedValue'.obs;
+  static  RxString selectedValue2 = 'selectedValue2'.obs;
+  static  RxString selectedValue3 = 'selectedValue3'.obs;
+  RxString selectedRadio = ''.obs;
   void setSelectedRadio(String value) {
 
   }
@@ -125,31 +125,36 @@ class ScanScreen extends StatelessWidget {
                         children:[
                           RadioListTile(
                             title:  Text('Inventory Scan'),
-                            value: selectedValue,
-                            groupValue: selectedRadio,
+                            value: selectedValue.value,
+                            groupValue: selectedRadio.value,
                             onChanged: (value) {
-                              setSelectedRadio(value as String);
+                              selectedRadio.value=value!;
+                              // setSelectedRadio(value as String);
                             },
                           ),
                           RadioListTile(
                             title:  Text('Bulk Scan'),
-                            value: selectedValue2,
-                            groupValue: selectedRadio,
+                            value: selectedValue2.value,
+                            groupValue: selectedRadio.value,
                             onChanged: (value) {
-                              setSelectedRadio(value as String);
+                              selectedRadio.value=value!;
+                              // setSelectedRadio(value as String);
                             },
                           ),
                           RadioListTile(
                             title: const Text('Audit Scan'),
-                            value: selectedValue3,
-                            groupValue: selectedRadio,
+                            value: selectedValue3.value,
+                            groupValue: selectedRadio.value,
                             onChanged: (value) {
-                              setSelectedRadio(value as String);
+                              selectedRadio.value=value!;
+                              print('Selected value${selectedRadio.value}');
+                              // setSelectedRadio(value as String);
                             },
                           ),
                         ],
                       ),
-                      Obx(
+                      if(selectedRadio.value!="selectedValue3")
+                        Obx(
                             () => Visibility(
                           visible: controller.showTextField.value,
                           child: Column(
@@ -188,6 +193,19 @@ class ScanScreen extends StatelessWidget {
                           ),
                         ),
                       ),
+                      if(selectedRadio.value=="selectedValue3")
+                        TextFormFildWidgets(
+                          title: 'File',
+                          icon: Icons.keyboard_arrow_down_sharp,
+                          txtcontroller: controller.locationController,
+                          onPressd: () {
+                            controller.locationController.clear();
+                            Get.defaultDialog(
+                              title: 'File',
+                              content: Text('No option for Depreciation Method'),
+                            );
+                          },
+                        ),
                     ],
                   ),
                 ),
