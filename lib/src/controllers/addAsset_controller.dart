@@ -67,7 +67,8 @@ class AddAssetsController extends GetxController {
           salvageController.text.isEmpty ? 'NA' : salvageController.text,
       "DateAcquired": dateAcquiredController.text.isEmpty
           ? 'NA'
-          : dateAcquiredController.text
+          : dateAcquiredController.text,
+          "img":imageFile.value??'na'
     });
     print(data);
     Get.delete<FoundAssetsController>();

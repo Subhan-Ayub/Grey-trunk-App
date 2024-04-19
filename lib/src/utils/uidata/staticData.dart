@@ -21,7 +21,9 @@
       "TotalCost": "99",
       "AssetLife": "66",
       "SalvageValue": "99",
-      "DateAcquired": "04/16/2024"
+      "DateAcquired": "04/16/2024",
+          "img":'na'
+
     },
     {
       "id": "AH-01",
@@ -44,7 +46,9 @@
       "TotalCost": "99",
       "AssetLife": "66",
       "SalvageValue": "99",
-      "DateAcquired": "04/16/2024"
+      "DateAcquired": "04/16/2024",
+          "img":'na'
+
     },
     {
       // "id": "5415211983601",
@@ -68,7 +72,9 @@
       "TotalCost": "99",
       "AssetLife": "66",
       "SalvageValue": "99",
-      "DateAcquired": "04/16/2024"
+      "DateAcquired": "04/16/2024",
+          "img":'na'
+
     }
   ];
 

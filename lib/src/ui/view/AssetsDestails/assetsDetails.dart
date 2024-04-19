@@ -83,11 +83,11 @@ class AssetsDetails extends StatelessWidget {
               height: 250,
               width: Get.width,
               color: Color.fromARGB(34, 158, 158, 158),
-              child: Icon(
+              child: arg['img']=='na'? Icon(
                 Icons.image,
                 size: 75,
                 color: const Color.fromARGB(123, 158, 158, 158),
-              ),
+              ):Image.file(arg['img']),
             ),
             Row(
               // crossAxisAlignment: CrossAxisAlignment.start,
