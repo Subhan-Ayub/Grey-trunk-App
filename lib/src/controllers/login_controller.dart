@@ -9,7 +9,7 @@ class LoginScreenController extends GetxController {
   TextEditingController password = TextEditingController();
 
   logIn() {
-    if (email.text == "user" && password.text == "abc"||email.text == "admin" && password.text == "abcd") {
+    if (email.text == "user" && password.text == "123"||email.text == "admin" && password.text == "123") {
       box.write('auth', true);
 
       Get.toNamed(Routes.dashboard);

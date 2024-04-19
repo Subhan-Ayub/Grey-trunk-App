@@ -26,14 +26,14 @@ class SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: UIDataColors.commonColor,
+      backgroundColor: Colors.grey.shade50,
       body: Center(
         child: Container(
         // width: MediaQuery.of(context).size.width,
         // height: MediaQuery.of(context).size.height,
         // color: Colors.blue,
         child: Image.asset(
-          "assets/images/logos/emergtech_logo.png",
+          "assets/images/logos/emerg_logo.png",
           height: 300,
           width: 300,
         ),
