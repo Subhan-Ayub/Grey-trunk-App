@@ -6,6 +6,7 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:flutter_application_1/src/utils/uidata/color.dart';
 import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_application_1/src/utils/uidata/staticData.dart' ;
 
 class Dashboard extends StatelessWidget {
   Dashboard({super.key});
@@ -48,7 +49,7 @@ class Dashboard extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Column(
+                    Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -60,7 +61,7 @@ class Dashboard extends StatelessWidget {
                               fontSize: 18),
                         ),
                         Text(
-                          '1',
+                          '${data.length}',
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w600,
@@ -286,9 +287,10 @@ class Dashboard extends StatelessWidget {
             ),
           ),
           actions: [
-            InkWell(onTap: (){
-              Get.toNamed(Routes.scan);
-      },
+            InkWell(
+              onTap: () {
+                Get.toNamed(Routes.scan);
+              },
               child: Container(
                 height: 35,
                 width: 35,
@@ -310,7 +312,6 @@ class Dashboard extends StatelessWidget {
   }
 
   Drawer drawer() {
-
     return Drawer(
         backgroundColor: UIDataColors.commonColor,
         width: Get.width / 1.5,
@@ -406,7 +407,10 @@ class Dashboard extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            InkWell(onTap: (){Get.toNamed(Routes.scan);},
+            InkWell(
+              onTap: () {
+                Get.toNamed(Routes.scan);
+              },
               child: Text(
                 'Start Scan',
                 style: TextStyle(color: Colors.white, fontSize: 20),
@@ -421,7 +425,10 @@ class Dashboard extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            InkWell(onTap: (){Get.toNamed(Routes.bluetooth);},
+            InkWell(
+              onTap: () {
+                Get.toNamed(Routes.bluetooth);
+              },
               child: Text(
                 'My Devices',
                 style: TextStyle(color: Colors.white, fontSize: 20),
@@ -436,7 +443,10 @@ class Dashboard extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            InkWell(onTap: (){Get.toNamed(Routes.scanHistory);},
+            InkWell(
+              onTap: () {
+                Get.toNamed(Routes.scanHistory);
+              },
               child: Text(
                 'Scan History',
                 style: TextStyle(color: Colors.white, fontSize: 20),
@@ -453,26 +463,26 @@ class Dashboard extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                   Get.defaultDialog(
-                        title: 'Log Out',
-                        content: Text('Are you sure u want to log out?'),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Get.back();
-                            },
-                            child: Text('Cancel'),
-                          ),
-                          TextButton(
-                            onPressed: () async {
-                              GetStorage box=GetStorage();
-                              await box.remove('auth');
-                              Get.offAllNamed(Routes.login);
-                            },
-                            child: Text('Log out'),
-                          ),
-                        ],
-                      );
+                Get.defaultDialog(
+                  title: 'Log Out',
+                  content: Text('Are you sure u want to log out?'),
+                  actions: [
+                    TextButton(
+                      onPressed: () {
+                        Get.back();
+                      },
+                      child: Text('Cancel'),
+                    ),
+                    TextButton(
+                      onPressed: () async {
+                        GetStorage box = GetStorage();
+                        await box.remove('auth');
+                        Get.offAllNamed(Routes.login);
+                      },
+                      child: Text('Log out'),
+                    ),
+                  ],
+                );
               },
               child: Text(
                 'Logout',

@@ -1,9 +1,13 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/src/controllers/foundAssetsController.dart';
+import 'package:flutter_application_1/src/utils/routes/routes.dart';
+import 'package:flutter_application_1/src/utils/uidata/staticData.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AddAssetsController extends GetxController {
+  var arg = Get.arguments;
   final TextEditingController assetTagIdController = TextEditingController();
   final TextEditingController purchasedController = TextEditingController();
   final TextEditingController categoryController = TextEditingController();
@@ -22,6 +26,54 @@ class AddAssetsController extends GetxController {
   final TextEditingController salvageController = TextEditingController();
   final TextEditingController dateAcquiredController = TextEditingController();
 
+  @override
+  void onInit() {
+    assetTagIdController.text = arg ?? '';
+    super.onInit();
+  }
+
+  save() {
+    data.add({
+      "id": assetTagIdController.text,
+      "Brand": brandController.text.isEmpty ? 'NA' : brandController.text,
+      "Description": descriptionController.text.isEmpty
+          ? 'NA'
+          : descriptionController.text,
+      "PurchasedDate":
+          purchasedController.text.isEmpty ? 'NA' : purchasedController.text,
+      "Category": "NA",
+      "Model": modelController.text.isEmpty ? 'NA' : modelController.text,
+      "SerialNumber":
+          serialNoController.text.isEmpty ? 'NA' : serialNoController.text,
+      "Cost": costController.text.isEmpty ? 'NA' : costController.text,
+      "AssignedTo": "NA",
+      "LastScanDate": "03/20/2024",
+      "DueDate": "NA",
+      "DisposedDate": disposedDateController.text.isEmpty
+          ? 'NA'
+          : disposedDateController.text,
+      "CreatedDate": createdDateController.text.isEmpty
+          ? 'NA'
+          : createdDateController.text,
+      "Site": "Lahore Office",
+      "Location": "Islamabad",
+      "Depreciation": "No",
+      "DepreciationMethod": "Sum of the Years Digits",
+      "TotalCost":
+          totalCostController.text.isEmpty ? 'NA' : totalCostController.text,
+      "AssetLife":
+          assetsLifeController.text.isEmpty ? 'NA' : assetsLifeController.text,
+      "SalvageValue":
+          salvageController.text.isEmpty ? 'NA' : salvageController.text,
+      "DateAcquired": dateAcquiredController.text.isEmpty
+          ? 'NA'
+          : dateAcquiredController.text
+    });
+    print(data);
+    Get.delete<FoundAssetsController>();
+    Get.offAndToNamed(Routes.dashboard);
+  }
+
   var imageFile = Rx<File?>(null);
   var selectedRadio = 'Option2'.obs;
   var showTextField = true.obs;
@@ -29,7 +81,7 @@ class AddAssetsController extends GetxController {
 
   void pickImage(ImageSource source) async {
     final pickedFile = await ImagePicker().pickImage(source: source);
-    imageFile.value=pickedFile!= null? File(pickedFile.path): null;
+    imageFile.value = pickedFile != null ? File(pickedFile.path) : null;
   }
 
   void deleteImage() {
@@ -44,6 +96,7 @@ class AddAssetsController extends GetxController {
       showTextField.value = false;
     }
   }
+
   @override
   void onClose() {
     assetTagIdController.dispose();

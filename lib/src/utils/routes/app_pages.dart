@@ -2,6 +2,7 @@ import 'package:flutter_application_1/src/bindings/addDocBindings.dart';
 import 'package:flutter_application_1/src/bindings/addMaintenanceBindings.dart';
 import 'package:flutter_application_1/src/bindings/aseetsdetailsBindings.dart';
 import 'package:flutter_application_1/src/bindings/dashboard_bindings.dart';
+import 'package:flutter_application_1/src/bindings/foundAssetsBindings.dart';
 import 'package:flutter_application_1/src/bindings/historyBindings.dart';
 import 'package:flutter_application_1/src/bindings/login_bindings.dart';
 import 'package:flutter_application_1/src/bindings/maintenanceBindings.dart';
@@ -162,7 +163,7 @@ class AppPages {
     GetPage(
         name: Routes.foundAssets,
         page: () => FoundAssets(),
-        binding: AddDocBindings(),
+        binding: FoundAssetsBinding(),
         transition: Transition.noTransition),
     GetPage(
         name: Routes.newAssets,

@@ -6,6 +6,10 @@
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+    <string>This app uses Bluetooth to connect to an RFID reader. RFID technology allows us to identify and track objects wirelessly. By connecting to the reader, the app can Track inventory in real-time. This could include Scan RFID tags on products for inventory management .</string>
+	<key>NSCameraUsageDescription</key>
+    <string>We need access to your camera to take photos and videos.</string>
 	<key>CFBundleDisplayName</key>
 	<string>Flutter Application 1</string>
 	<key>CFBundleExecutable</key>

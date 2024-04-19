@@ -1,8 +1,11 @@
+
+import 'package:flutter_application_1/src/utils/routes/routes.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_barcode_scanner/simple_barcode_scanner.dart';
 
 class ScanController extends GetxController {
+  
   final TextEditingController siteController = TextEditingController();
   final TextEditingController locationController = TextEditingController();
 
@@ -17,9 +20,11 @@ class ScanController extends GetxController {
 
 
   Future<void> startScan() async {
-    var res = await Get.to<String>(SimpleBarcodeScannerPage());
+    var res = await Get.to<String>(() => SimpleBarcodeScannerPage());
     if (res != null) {
       result.value = res;
+      Get.toNamed(Routes.foundAssets,arguments: res);
+      
     }
   }
 

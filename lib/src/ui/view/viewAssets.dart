@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/controllers/viewAssets_controller.dart';
 import 'package:flutter_application_1/src/utils/routes/routes.dart';
 import 'package:flutter_application_1/src/utils/uidata/color.dart';
+import 'package:flutter_application_1/src/utils/uidata/staticData.dart';
 import 'package:get/get.dart';
 
 class ViewAssets extends StatelessWidget {
@@ -54,11 +55,11 @@ class ViewAssets extends StatelessWidget {
               ),
             ),
           ),
-          const Row(
+           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Results: 2 Assets',
+                'Results: ${data.length} Assets',
               ),
               Icon(Icons.format_list_numbered_rounded)
             ],
@@ -67,11 +68,11 @@ class ViewAssets extends StatelessWidget {
             height: Get.height / 1.2,
             width: Get.width,
             child: ListView.builder(
-                itemCount: _.data.length,
+                itemCount: data.length,
                 itemBuilder: (BuildContext context, ind) {
                   return InkWell(
                     onTap: () {
-                      Get.toNamed(Routes.assetsDetails,arguments: _.data[ind]);
+                      Get.toNamed(Routes.assetsDetails,arguments: data[ind]);
                     },
                     child: Container(
                       color: Colors.white,
@@ -81,7 +82,7 @@ class ViewAssets extends StatelessWidget {
                              Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text('Asset tag ID: ${_.data[ind]['id']}'),
+                                Text('Asset tag ID: ${data[ind]['id']}'),
                                 Text(
                                   '• Available',
                                   style: TextStyle(color: Colors.green),
@@ -101,7 +102,7 @@ class ViewAssets extends StatelessWidget {
                                       ).marginOnly(right: 5),
                                       Text('Description:'),
                                       Spacer(),
-                                      Text(' ${_.data[ind]['Description']}')
+                                      Text(' ${data[ind]['Description']}')
                                     ],
                                   ).marginOnly(top: 5, bottom: 5),
                                   Row(
@@ -112,7 +113,7 @@ class ViewAssets extends StatelessWidget {
                                       ).marginOnly(right: 5),
                                       Text('Site:'),
                                       Spacer(),
-                                      Text(' ${_.data[ind]['Site']}')
+                                      Text(' ${data[ind]['Site']}')
                                     ],
                                   ).marginOnly(top: 5, bottom: 5),
                                   Row(
@@ -123,7 +124,7 @@ class ViewAssets extends StatelessWidget {
                                       ).marginOnly(right: 5),
                                       Text('Location:'),
                                       Spacer(),
-                                      Text(' ${_.data[ind]['Location']}')
+                                      Text(' ${data[ind]['Location']}')
                                     ],
                                   ).marginOnly(top: 5, bottom: 5),
                                   Row(
@@ -134,7 +135,7 @@ class ViewAssets extends StatelessWidget {
                                       ).marginOnly(right: 5),
                                       Text('Category:'),
                                       Spacer(),
-                                      Text(' ${_.data[ind]['Category']}')
+                                      Text(' ${data[ind]['Category']}')
                                     ],
                                   ).marginOnly(top: 5, bottom: 5),
                                 ],
