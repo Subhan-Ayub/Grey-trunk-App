@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/controllers/dashboard_controller.dart';
+import 'package:flutter_application_1/src/models/task_model.dart';
 import 'package:flutter_application_1/src/utils/routes/routes.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:flutter_application_1/src/utils/uidata/color.dart';
 import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_application_1/src/utils/uidata/staticData.dart' ;
+
 
 class Dashboard extends StatelessWidget {
   Dashboard({super.key});
@@ -15,14 +16,22 @@ class Dashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     DashboardController _ = Get.find<DashboardController>();
     return Scaffold(
-      drawer: drawer(),
-      appBar: appbar(),
-      body: body(_),
-    );
+        drawer: drawer(),
+        appBar: appbar(_),
+        body: RefreshIndicator(
+          onRefresh: () => _.getData(),
+            child: Obx(
+          () => _.isLoading.value
+              ? Center(
+                  child: CircularProgressIndicator(),
+                )
+              : body(_),
+        )));
   }
 
   SingleChildScrollView body(DashboardController _) {
     return SingleChildScrollView(
+      physics: AlwaysScrollableScrollPhysics(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -60,8 +69,86 @@ class Dashboard extends StatelessWidget {
                               fontWeight: FontWeight.w600,
                               fontSize: 18),
                         ),
+                        Obx(() => Text(
+                              '${_.assets.length}',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 28),
+                            ))
+                      ],
+                    ),
+                    SvgPicture.asset(
+                      'assets/images/dashboard/purple-bg-images.svg',
+                      height: 75,
+                    )
+                  ],
+                ).marginOnly(left: 10),
+              ).marginOnly(bottom: 10, top: 15),
+            ),
+          ),
+          InkWell(
+            onTap: () async {
+              _.db.deleteTable('tasks');
+              // _.db.insertTask(Task(
+              //     productId: 'l-22',
+              //     brand: 'brand',
+              //     description: 'description',
+              //     purchasedDate: 'purchaseDate',
+              //     category: 'category',
+              //     model: 'model',
+              //     serialNumber: 'serialNumber',
+              //     cost: 'cost',
+              //     assignedTo: 'assignedTo',
+              //     lastScanDate: 'lastScanDate',
+              //     dueDate: 'dueDate',
+              //     disposedDate: 'disposedDate',
+              //     createdDate: 'createdDate',
+              //     site: 'site',
+              //     location: 'location',
+              //     depreciation: 'depreciation',
+              //     depreciationMethod: 'depreciationMethod',
+              //     totalCost: 'totalCost',
+              //     assetLife: 'assetLife',
+              //     salvageValue: 'salvageValue',
+              //     dateAquired: 'dateAquired',
+              //     img: 'img'));
+              // print(_.db.getTasks('tasks'));
+              // var c= await _.db.getTasks('tasks');
+              // print(c.length);
+            },
+            child: Center(
+              child: Container(
+                width: Get.width - 30,
+                height: 90,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: const [
+                        UIDataColors.commonColor,
+                        Color.fromARGB(193, 0, 0, 0)
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      stops: const [0.2, 2.9],
+                      tileMode: TileMode.clamp,
+                    ),
+                    borderRadius: BorderRadius.circular(10)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
                         Text(
-                          '${data.length}',
+                          'No. of Assets',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18),
+                        ),
+                        Text(
+                          '1',
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w600,
@@ -75,55 +162,8 @@ class Dashboard extends StatelessWidget {
                     )
                   ],
                 ).marginOnly(left: 10),
-              ).marginOnly(bottom: 10, top: 15),
+              ).marginOnly(bottom: 10),
             ),
-          ),
-          Center(
-            child: Container(
-              width: Get.width - 30,
-              height: 90,
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: const [
-                      UIDataColors.commonColor,
-                      Color.fromARGB(193, 0, 0, 0)
-                    ],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    stops: const [0.2, 2.9],
-                    tileMode: TileMode.clamp,
-                  ),
-                  borderRadius: BorderRadius.circular(10)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'No. of Assets',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18),
-                      ),
-                      Text(
-                        '1',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 28),
-                      )
-                    ],
-                  ),
-                  SvgPicture.asset(
-                    'assets/images/dashboard/purple-bg-images.svg',
-                    height: 75,
-                  )
-                ],
-              ).marginOnly(left: 10),
-            ).marginOnly(bottom: 10),
           ),
           Center(
             child: Container(
@@ -265,7 +305,7 @@ class Dashboard extends StatelessWidget {
     ]);
   }
 
-  PreferredSize appbar() {
+  PreferredSize appbar(DashboardController _) {
     return PreferredSize(
       preferredSize: Size.fromHeight(kToolbarHeight),
       child: Container(
@@ -281,9 +321,15 @@ class Dashboard extends StatelessWidget {
         ),
         child: AppBar(
           title: Center(
-            child: Text(
-              'HOME',
-              style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+            child: InkWell(
+              onTap: () {
+              // _.db.delettte();
+                // _.db.initializeDatabase();
+              },
+              child: Text(
+                'HOME',
+                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+              ),
             ),
           ),
           actions: [
@@ -321,7 +367,7 @@ class Dashboard extends StatelessWidget {
             Center(
               child: InkWell(
                 onTap: () {
-                  Get.toNamed(Routes.profile);
+                  Get.offAndToNamed(Routes.profile);
                 },
                 child: Container(
                   height: 70,
@@ -362,7 +408,7 @@ class Dashboard extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                Get.toNamed(Routes.addAsset);
+                Get.offAndToNamed(Routes.addAsset);
               },
               child: Row(
                 children: [
@@ -382,7 +428,7 @@ class Dashboard extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                Get.toNamed(Routes.viewAssets);
+                Get.offAndToNamed(Routes.viewAssets);
               },
               child: Row(
                 children: [
@@ -409,7 +455,7 @@ class Dashboard extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                Get.toNamed(Routes.scan);
+                Get.offAndToNamed(Routes.scan);
               },
               child: Text(
                 'Start Scan',
@@ -427,7 +473,7 @@ class Dashboard extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                Get.toNamed(Routes.bluetooth);
+                Get.offAndToNamed(Routes.bluetooth);
               },
               child: Text(
                 'My Devices',
@@ -445,7 +491,7 @@ class Dashboard extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                Get.toNamed(Routes.scanHistory);
+                Get.offAndToNamed(Routes.scanHistory);
               },
               child: Text(
                 'Scan History',

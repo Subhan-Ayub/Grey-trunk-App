@@ -13,7 +13,7 @@ BottomNavigationBar bottombar(int page) {
       BottomNavigationBarItem(
         icon: InkWell(
           onTap: () {
-            Get.toNamed(Routes.document);
+            Get.offAndToNamed(Routes.document);
           },
           child: Icon(
             Icons.description_outlined,
@@ -25,21 +25,21 @@ BottomNavigationBar bottombar(int page) {
       BottomNavigationBarItem(
           icon: InkWell(
               onTap: () {
-                Get.toNamed(Routes.maintenance);
+                Get.offAndToNamed(Routes.maintenance);
               },
               child: Icon(Icons.settings)),
           label: 'Maintenance'),
       BottomNavigationBarItem(
           icon: InkWell(
               onTap: () {
-                Get.toNamed(Routes.history);
+                Get.offAndToNamed(Routes.history);
               },
               child: Icon(Icons.person)),
           label: 'History'),
       BottomNavigationBarItem(
           icon: InkWell(
               onTap: () {
-                Get.toNamed(Routes.event);
+                Get.offAndToNamed(Routes.event);
               },
               child: Icon(Icons.search)),
           label: 'Event'),
@@ -50,7 +50,7 @@ BottomNavigationBar bottombar(int page) {
             splashColor: Colors.transparent,
             highlightColor: Colors.transparent,
               onTap: () {
-                Get.toNamed(Routes.despreciation);
+                Get.offAndToNamed(Routes.despreciation);
               },
               child: Icon(Icons.trending_up_rounded)),
           label: 'Despreciation'),

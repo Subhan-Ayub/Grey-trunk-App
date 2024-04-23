@@ -8,15 +8,20 @@ import 'package:get/get.dart';
 class ViewAssets extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    ViewAssetsController _ = Get.find<ViewAssetsController>();
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 241, 241, 241),
-      appBar: appbar(),
-      body: body(),
-    );
+        backgroundColor: Color.fromARGB(255, 241, 241, 241),
+        appBar: appbar(),
+        body: Obx(
+          () => _.isLoading.value
+              ? Center(
+                  child: CircularProgressIndicator(),
+                )
+              : body(_),
+        ));
   }
 
-  SingleChildScrollView body() {
-    ViewAssetsController _= Get.find<ViewAssetsController>();
+  SingleChildScrollView body(ViewAssetsController _) {
     return SingleChildScrollView(
       physics: const NeverScrollableScrollPhysics(),
       child: Column(
@@ -55,34 +60,36 @@ class ViewAssets extends StatelessWidget {
               ),
             ),
           ),
-           Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Results: ${data.length} Assets',
+                'Results: ${_.data?.length} Assets',
               ),
               Icon(Icons.format_list_numbered_rounded)
             ],
           ).marginSymmetric(horizontal: 15).marginOnly(bottom: 10),
           Container(
+            padding: EdgeInsets.only(bottom: 80),
             height: Get.height / 1.2,
             width: Get.width,
             child: ListView.builder(
-                itemCount: data.length,
+                itemCount: _.data.length,
+
                 itemBuilder: (BuildContext context, ind) {
                   return InkWell(
                     onTap: () {
-                      Get.toNamed(Routes.assetsDetails,arguments: data[ind]);
+                      Get.toNamed(Routes.assetsDetails, arguments: _.data[ind]);
                     },
                     child: Container(
                       color: Colors.white,
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                             Row(
+                            Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text('Asset tag ID: ${data[ind]['id']}'),
+                                Text('Asset tag ID: ${_.data[ind]['productId']}'),
                                 Text(
                                   '• Available',
                                   style: TextStyle(color: Colors.green),
@@ -102,7 +109,7 @@ class ViewAssets extends StatelessWidget {
                                       ).marginOnly(right: 5),
                                       Text('Description:'),
                                       Spacer(),
-                                      Text(' ${data[ind]['Description']}')
+                                      Text(' ${_.data[ind]['description']}')
                                     ],
                                   ).marginOnly(top: 5, bottom: 5),
                                   Row(
@@ -113,7 +120,7 @@ class ViewAssets extends StatelessWidget {
                                       ).marginOnly(right: 5),
                                       Text('Site:'),
                                       Spacer(),
-                                      Text(' ${data[ind]['Site']}')
+                                      Text(' ${_.data[ind]['site']}')
                                     ],
                                   ).marginOnly(top: 5, bottom: 5),
                                   Row(
@@ -124,7 +131,7 @@ class ViewAssets extends StatelessWidget {
                                       ).marginOnly(right: 5),
                                       Text('Location:'),
                                       Spacer(),
-                                      Text(' ${data[ind]['Location']}')
+                                      Text(' ${_.data[ind]['location']}')
                                     ],
                                   ).marginOnly(top: 5, bottom: 5),
                                   Row(
@@ -135,7 +142,7 @@ class ViewAssets extends StatelessWidget {
                                       ).marginOnly(right: 5),
                                       Text('Category:'),
                                       Spacer(),
-                                      Text(' ${data[ind]['Category']}')
+                                      Text(' ${_.data[ind]['category']}')
                                     ],
                                   ).marginOnly(top: 5, bottom: 5),
                                 ],

@@ -20,7 +20,7 @@
       "DepreciationMethod": "Sum of the Years Digits",
       "TotalCost": "99",
       "AssetLife": "66",
-      "SalvageValue": "99",
+      "SalvageValue": "99", 
       "DateAcquired": "04/16/2024",
           "img":'na'
 

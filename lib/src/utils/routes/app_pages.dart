@@ -65,6 +65,7 @@ class AppPages {
         page: () => Dashboard(),
         middlewares: [AuthMiddleware()],
         binding: DashboardBindings(),
+        
         transition: Transition.noTransition),
     GetPage(
         name: Routes.viewAssets,

@@ -1,12 +1,16 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/controllers/foundAssetsController.dart';
+import 'package:flutter_application_1/src/models/task_model.dart';
+import 'package:flutter_application_1/src/utils/helpers/db_helper.dart';
 import 'package:flutter_application_1/src/utils/routes/routes.dart';
 import 'package:flutter_application_1/src/utils/uidata/staticData.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AddAssetsController extends GetxController {
+  DatabaseHelper db = Get.put(DatabaseHelper());
+
   var arg = Get.arguments;
   final TextEditingController assetTagIdController = TextEditingController();
   final TextEditingController purchasedController = TextEditingController();
@@ -33,44 +37,84 @@ class AddAssetsController extends GetxController {
   }
 
   save() {
-    data.add({
-      "id": assetTagIdController.text,
-      "Brand": brandController.text.isEmpty ? 'NA' : brandController.text,
-      "Description": descriptionController.text.isEmpty
-          ? 'NA'
-          : descriptionController.text,
-      "PurchasedDate":
-          purchasedController.text.isEmpty ? 'NA' : purchasedController.text,
-      "Category": "NA",
-      "Model": modelController.text.isEmpty ? 'NA' : modelController.text,
-      "SerialNumber":
-          serialNoController.text.isEmpty ? 'NA' : serialNoController.text,
-      "Cost": costController.text.isEmpty ? 'NA' : costController.text,
-      "AssignedTo": "NA",
-      "LastScanDate": "03/20/2024",
-      "DueDate": "NA",
-      "DisposedDate": disposedDateController.text.isEmpty
-          ? 'NA'
-          : disposedDateController.text,
-      "CreatedDate": createdDateController.text.isEmpty
-          ? 'NA'
-          : createdDateController.text,
-      "Site": "Lahore Office",
-      "Location": "Islamabad",
-      "Depreciation": "No",
-      "DepreciationMethod": "Sum of the Years Digits",
-      "TotalCost":
-          totalCostController.text.isEmpty ? 'NA' : totalCostController.text,
-      "AssetLife":
-          assetsLifeController.text.isEmpty ? 'NA' : assetsLifeController.text,
-      "SalvageValue":
-          salvageController.text.isEmpty ? 'NA' : salvageController.text,
-      "DateAcquired": dateAcquiredController.text.isEmpty
-          ? 'NA'
-          : dateAcquiredController.text,
-          "img":imageFile.value??'na'
-    });
-    print(data);
+    // dynamic formData = {
+    //   "productId": assetTagIdController.text,
+    //   "Brand": brandController.text.isEmpty ? 'NA' : brandController.text,
+    //   "Description": descriptionController.text.isEmpty
+    //       ? 'NA'
+    //       : descriptionController.text,
+    //   "PurchasedDate":
+    //       purchasedController.text.isEmpty ? 'NA' : purchasedController.text,
+    //   "Category": "NA",
+    //   "Model": modelController.text.isEmpty ? 'NA' : modelController.text,
+    //   "SerialNumber":
+    //       serialNoController.text.isEmpty ? 'NA' : serialNoController.text,
+    //   "Cost": costController.text.isEmpty ? 'NA' : costController.text,
+    //   "AssignedTo": "NA",
+    //   "LastScanDate": "03/20/2024",
+    //   "DueDate": "NA",
+    //   "DisposedDate": disposedDateController.text.isEmpty
+    //       ? 'NA'
+    //       : disposedDateController.text,
+    //   "CreatedDate": createdDateController.text.isEmpty
+    //       ? 'NA'
+    //       : createdDateController.text,
+    //   "Site": "Lahore Office",
+    //   "Location": "Islamabad",
+    //   "Depreciation": "No",
+    //   "DepreciationMethod": "Sum of the Years Digits",
+    //   "TotalCost":
+    //       totalCostController.text.isEmpty ? 'NA' : totalCostController.text,
+    //   "AssetLife":
+    //       assetsLifeController.text.isEmpty ? 'NA' : assetsLifeController.text,
+    //   "SalvageValue":
+    //       salvageController.text.isEmpty ? 'NA' : salvageController.text,
+    //   "DateAcquired": dateAcquiredController.text.isEmpty
+    //       ? 'NA'
+    //       : dateAcquiredController.text,
+    //   "img": imageFile.value ?? 'na'
+    // };
+
+    db.insertTask(Task(
+        productId: assetTagIdController.text,
+        brand: brandController.text.isEmpty ? 'NA' : brandController.text,
+        description: descriptionController.text.isEmpty
+            ? 'NA'
+            : descriptionController.text,
+        purchasedDate:
+            purchasedController.text.isEmpty ? 'NA' : purchasedController.text,
+        category: "NA",
+        model: modelController.text.isEmpty ? 'NA' : modelController.text,
+        serialNumber:
+            serialNoController.text.isEmpty ? 'NA' : serialNoController.text,
+        cost: costController.text.isEmpty ? 'NA' : costController.text,
+        assignedTo: "NA",
+        lastScanDate: "03/20/2024",
+        dueDate: "NA",
+        disposedDate: disposedDateController.text.isEmpty
+            ? 'NA'
+            : disposedDateController.text,
+        createdDate: createdDateController.text.isEmpty
+            ? 'NA'
+            : createdDateController.text,
+        site: 'site',
+        location: 'location',
+        depreciation: 'depreciation',
+        depreciationMethod: 'depreciationMethod',
+        totalCost:
+            totalCostController.text.isEmpty ? 'NA' : totalCostController.text,
+        assetLife: assetsLifeController.text.isEmpty
+            ? 'NA'
+            : assetsLifeController.text,
+        salvageValue:
+            salvageController.text.isEmpty ? 'NA' : salvageController.text,
+        dateAquired: dateAcquiredController.text.isEmpty
+            ? 'NA'
+            : dateAcquiredController.text,
+        img: pickedFile?.path ?? 'na'));
+
+    // data.add(formData);
+    // print(data);
     Get.delete<FoundAssetsController>();
     Get.offAndToNamed(Routes.dashboard);
   }
@@ -79,9 +123,9 @@ class AddAssetsController extends GetxController {
   var selectedRadio = 'Option2'.obs;
   var showTextField = true.obs;
   // final RxBool showTextField = true.obs;
-
+  var pickedFile;
   void pickImage(ImageSource source) async {
-    final pickedFile = await ImagePicker().pickImage(source: source);
+    pickedFile = await ImagePicker().pickImage(source: source);
     imageFile.value = pickedFile != null ? File(pickedFile.path) : null;
   }
 
