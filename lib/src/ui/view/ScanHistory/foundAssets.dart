@@ -11,7 +11,8 @@ class FoundAssets extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'SCAN RESULTS',style: TextStyle(fontSize: 20,color: UIDataColors.commonColor),
+          'SCAN RESULTS',
+          style: TextStyle(fontSize: 20, color: UIDataColors.commonColor),
         ),
         centerTitle: true,
         backgroundColor: Colors.white,
@@ -24,18 +25,12 @@ class FoundAssets extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(12.0),
               child: Row(
-                children: [
+                children: const [
                   Icon(Icons.lightbulb, color: Colors.yellow),
                   SizedBox(width: 8), // Add space between Icon and Text
                   Expanded(
-                      child: InkWell(
-                    onTap: () {
-                      _.foundAssest();
-                      print('object');
-                    },
-                    child: Text(
-                        'List of assets that are found in the selected Site or location '),
-                  )),
+                      child: Text(
+                          'List of assets that are found in the selected Site or location ')),
                 ],
               ),
             ),
@@ -61,137 +56,141 @@ class FoundAssets extends StatelessWidget {
               ],
             ),
           ),
-          _.filterData.isNotEmpty
-              ? Container(
-                  height: Get.height / 1.8,
-                  width: Get.width,
-                  child: ListView.builder(
-                      itemCount: _.filterData.length,
-                      itemBuilder: (BuildContext context, ind) {
-                        return InkWell(
-                          onTap: () {
-                            // Get.toNamed(Routes.assetsDetails,
-                            //     arguments: _.data[ind]);
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.3),
-                                  spreadRadius: 1.0,
-                                  blurRadius: 20.0,
-                                  offset: Offset(0.0, 5.0),
+          Obx(() => _.isLoading.value
+              ? CircularProgressIndicator()
+              : _.filterData.isNotEmpty
+                  ? Container(
+                      height: Get.height / 1.8,
+                      width: Get.width,
+                      child: ListView.builder(
+                          itemCount: _.filterData.length,
+                          itemBuilder: (BuildContext context, ind) {
+                            return InkWell(
+                              onTap: () {
+                                // Get.toNamed(Routes.assetsDetails,
+                                //     arguments: _.data[ind]);
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.3),
+                                      spreadRadius: 1.0,
+                                      blurRadius: 20.0,
+                                      offset: Offset(0.0, 5.0),
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                            child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Row(
+                                child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
-                                          Text('Asset tag ID:'),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Text('Asset tag ID:'),
+                                              Text(
+                                                ' ${_.filterData[ind]['id']}',
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    color: UIDataColors
+                                                        .commonColor),
+                                              )
+                                            ],
+                                          ),
                                           Text(
-                                            ' ${_.filterData[ind]['id']}',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                color:
-                                                    UIDataColors.commonColor),
+                                            '• Available',
+                                            style:
+                                                TextStyle(color: Colors.green),
                                           )
                                         ],
-                                      ),
-                                      Text(
-                                        '• Available',
-                                        style: TextStyle(color: Colors.green),
+                                      ).marginSymmetric(vertical: 10),
+                                      Divider(),
+                                      Container(
+                                        // width: Get.width / 2,
+                                        child: Column(
+                                          children: [
+                                            Row(
+                                              children: [
+                                                Icon(
+                                                  Icons.description_outlined,
+                                                  size: 17,
+                                                ).marginOnly(right: 5),
+                                                SizedBox(
+                                                    width: Get.width / 2.8,
+                                                    child:
+                                                        Text('Description:')),
+                                                // Spacer(),
+                                                Text(
+                                                    ' ${_.filterData[ind]['Description']}')
+                                              ],
+                                            ).marginOnly(top: 5, bottom: 5),
+                                            Row(
+                                              children: [
+                                                Icon(
+                                                  Icons.add_location_alt,
+                                                  size: 17,
+                                                ).marginOnly(right: 5),
+                                                SizedBox(
+                                                    width: Get.width / 2.8,
+                                                    child: Text('Site:')),
+                                                // Spacer(),
+                                                Text(
+                                                    ' ${_.filterData[ind]['Site']}')
+                                              ],
+                                            ).marginOnly(top: 5, bottom: 5),
+                                            Row(
+                                              children: [
+                                                Icon(
+                                                  Icons.maps_home_work_outlined,
+                                                  size: 17,
+                                                ).marginOnly(right: 5),
+                                                SizedBox(
+                                                    width: Get.width / 2.8,
+                                                    child: Text('Location:')),
+                                                // Spacer(),
+                                                Text(
+                                                    ' ${_.filterData[ind]['Location']}')
+                                              ],
+                                            ).marginOnly(top: 5, bottom: 5),
+                                            Row(
+                                              children: [
+                                                Icon(
+                                                  Icons.category,
+                                                  size: 17,
+                                                ).marginOnly(right: 5),
+                                                SizedBox(
+                                                    width: Get.width / 2.8,
+                                                    child: Text('Category:')),
+                                                // Spacer(),
+                                                Text(
+                                                    ' ${_.filterData[ind]['Category']}')
+                                              ],
+                                            ).marginOnly(top: 5, bottom: 5),
+                                          ],
+                                        ),
                                       )
-                                    ],
-                                  ).marginSymmetric(vertical: 10),
-                                  Divider(),
-                                  Container(
-                                    // width: Get.width / 2,
-                                    child: Column(
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Icon(
-                                              Icons.description_outlined,
-                                              size: 17,
-                                            ).marginOnly(right: 5),
-                                            SizedBox(
-                                                width: Get.width / 2.8,
-                                                child: Text('Description:')),
-                                            // Spacer(),
-                                            Text(
-                                                ' ${_.filterData[ind]['Description']}')
-                                          ],
-                                        ).marginOnly(top: 5, bottom: 5),
-                                        Row(
-                                          children: [
-                                            Icon(
-                                              Icons.add_location_alt,
-                                              size: 17,
-                                            ).marginOnly(right: 5),
-                                            SizedBox(
-                                                width: Get.width / 2.8,
-                                                child: Text('Site:')),
-                                            // Spacer(),
-                                            Text(
-                                                ' ${_.filterData[ind]['Site']}')
-                                          ],
-                                        ).marginOnly(top: 5, bottom: 5),
-                                        Row(
-                                          children: [
-                                            Icon(
-                                              Icons.maps_home_work_outlined,
-                                              size: 17,
-                                            ).marginOnly(right: 5),
-                                            SizedBox(
-                                                width: Get.width / 2.8,
-                                                child: Text('Location:')),
-                                            // Spacer(),
-                                            Text(
-                                                ' ${_.filterData[ind]['Location']}')
-                                          ],
-                                        ).marginOnly(top: 5, bottom: 5),
-                                        Row(
-                                          children: [
-                                            Icon(
-                                              Icons.category,
-                                              size: 17,
-                                            ).marginOnly(right: 5),
-                                            SizedBox(
-                                                width: Get.width / 2.8,
-                                                child: Text('Category:')),
-                                            // Spacer(),
-                                            Text(
-                                                ' ${_.filterData[ind]['Category']}')
-                                          ],
-                                        ).marginOnly(top: 5, bottom: 5),
-                                      ],
-                                    ),
-                                  )
-                                ])
-                                .marginSymmetric(
-                                  horizontal: 15,
-                                )
-                                .marginOnly(bottom: 8),
-                          ).marginOnly(bottom: 10),
-                        );
-                      }),
-                )
-              : Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Center(
-                      child: Text(
-                    'There are not assets present in the selected Site or Location',
-                    style: TextStyle(fontSize: 15),
-                  )),
-                )
+                                    ])
+                                    .marginSymmetric(
+                                      horizontal: 15,
+                                    )
+                                    .marginOnly(bottom: 8),
+                              ).marginOnly(bottom: 10),
+                            );
+                          }),
+                    )
+                  : Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Center(
+                          child: Text(
+                        'There are not assets present in the selected Site or Location',
+                        style: TextStyle(fontSize: 15),
+                      )),
+                    ))
         ],
       ),
       bottomNavigationBar: historyBottom(0),
