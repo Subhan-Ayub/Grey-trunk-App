@@ -4,7 +4,6 @@ import 'package:flutter_application_1/src/controllers/foundAssetsController.dart
 import 'package:flutter_application_1/src/models/task_model.dart';
 import 'package:flutter_application_1/src/utils/helpers/db_helper.dart';
 import 'package:flutter_application_1/src/utils/routes/routes.dart';
-import 'package:flutter_application_1/src/utils/uidata/staticData.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 

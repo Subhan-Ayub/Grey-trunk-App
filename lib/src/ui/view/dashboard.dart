@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/controllers/dashboard_controller.dart';
-import 'package:flutter_application_1/src/models/task_model.dart';
 import 'package:flutter_application_1/src/utils/routes/routes.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -67,7 +66,7 @@ class Dashboard extends StatelessWidget {
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w600,
-                              fontSize: 18),
+                              fontSize: 16),
                         ),
                         Obx(() => Text(
                               '${_.assets.length}',
@@ -89,33 +88,8 @@ class Dashboard extends StatelessWidget {
           ),
           InkWell(
             onTap: () async {
-              _.db.deleteTable('tasks');
-              // _.db.insertTask(Task(
-              //     productId: 'l-22',
-              //     brand: 'brand',
-              //     description: 'description',
-              //     purchasedDate: 'purchaseDate',
-              //     category: 'category',
-              //     model: 'model',
-              //     serialNumber: 'serialNumber',
-              //     cost: 'cost',
-              //     assignedTo: 'assignedTo',
-              //     lastScanDate: 'lastScanDate',
-              //     dueDate: 'dueDate',
-              //     disposedDate: 'disposedDate',
-              //     createdDate: 'createdDate',
-              //     site: 'site',
-              //     location: 'location',
-              //     depreciation: 'depreciation',
-              //     depreciationMethod: 'depreciationMethod',
-              //     totalCost: 'totalCost',
-              //     assetLife: 'assetLife',
-              //     salvageValue: 'salvageValue',
-              //     dateAquired: 'dateAquired',
-              //     img: 'img'));
-              // print(_.db.getTasks('tasks'));
-              // var c= await _.db.getTasks('tasks');
-              // print(c.length);
+              // _.db.deleteTable('tasks');
+    
             },
             child: Center(
               child: Container(
@@ -141,11 +115,11 @@ class Dashboard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'No. of Assets',
+                          'No. of Assets(Last 12 months)',
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w600,
-                              fontSize: 18),
+                              fontSize: 16),
                         ),
                         Text(
                           '1',
@@ -189,14 +163,14 @@ class Dashboard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'No. of Assets',
+                        'NAV(Net Assets Value)',
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w600,
-                            fontSize: 18),
+                            fontSize: 16),
                       ),
                       Text(
-                        '1',
+                        "\$82,000",
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w600,

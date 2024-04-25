@@ -161,15 +161,15 @@ class _EditScreenState extends State<EditScreen> {
                     width: 170,
                     child: ElevatedButton(
                       onPressed: () => _pickImage(ImageSource.camera),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(UIDataColors.commonColor),
+                      ),
                       child: Row(
-                        children: [
+                        children:const [
                           Icon(Icons.camera_alt_outlined,color: Colors.white,),
                           SizedBox(width: 5,),
                           Text('UPLOAD IMAGE',style: TextStyle(color: Colors.white,fontSize: 11),),
                         ],
-                      ),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(UIDataColors.commonColor),
                       ),
                     ),
                   ),

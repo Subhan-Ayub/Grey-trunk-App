@@ -14,9 +14,9 @@ class FoundAssetsController extends GetxController {
       isLoading.value=true;
       data = await db.getTasks('assets');
       filterData = data
-          .where((assets) => assets['id']!
-              .toLowerCase()
+          .where((assets) => assets['productId']!
               .toString()
+              .toLowerCase()
               .contains(arg.toLowerCase()))
           .toList();
     }

@@ -1,10 +1,10 @@
-import 'dart:io';
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/controllers/addAsset_controller.dart';
 import 'package:flutter_application_1/src/ui/widgets/commonBtn.dart';
 import 'package:flutter_application_1/src/ui/widgets/container.dart';
 import 'package:flutter_application_1/src/ui/widgets/textformfild_widgets.dart';
-import 'package:flutter_application_1/src/utils/routes/routes.dart';
 import 'package:flutter_application_1/src/utils/uidata/color.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';

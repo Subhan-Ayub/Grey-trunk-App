@@ -1,10 +1,11 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/controllers/scan_controller.dart';
 import 'package:flutter_application_1/src/ui/widgets/textformfild_widgets.dart';
 import 'package:flutter_application_1/src/utils/routes/routes.dart';
 import 'package:flutter_application_1/src/utils/uidata/color.dart';
 import 'package:get/get.dart';
-import 'package:simple_barcode_scanner/simple_barcode_scanner.dart';
 
 
 class ScanScreen extends StatelessWidget {
@@ -188,7 +189,7 @@ class ScanScreen extends StatelessWidget {
                                   );
                                 },
                               ),
-                              Text('Barcode Result: ${controller.result.value}'),
+                              // Text('Barcode Result: ${controller.result.value}'),
                             ],
                           ),
                         ),
@@ -210,7 +211,7 @@ class ScanScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 110),
+              SizedBox(height: 60),
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Padding(

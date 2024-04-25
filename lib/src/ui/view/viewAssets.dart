@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/controllers/viewAssets_controller.dart';
 import 'package:flutter_application_1/src/utils/routes/routes.dart';
 import 'package:flutter_application_1/src/utils/uidata/color.dart';
-import 'package:flutter_application_1/src/utils/uidata/staticData.dart';
 import 'package:get/get.dart';
 
 class ViewAssets extends StatelessWidget {

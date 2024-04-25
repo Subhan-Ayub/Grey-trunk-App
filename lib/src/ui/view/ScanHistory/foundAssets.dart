@@ -94,7 +94,7 @@ class FoundAssets extends StatelessWidget {
                                             children: [
                                               Text('Asset tag ID:'),
                                               Text(
-                                                ' ${_.filterData[ind]['id']}',
+                                                ' ${_.filterData[ind]['productId']}',
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.bold,
                                                     color: UIDataColors
@@ -126,7 +126,7 @@ class FoundAssets extends StatelessWidget {
                                                         Text('Description:')),
                                                 // Spacer(),
                                                 Text(
-                                                    ' ${_.filterData[ind]['Description']}')
+                                                    ' ${_.filterData[ind]['description']}')
                                               ],
                                             ).marginOnly(top: 5, bottom: 5),
                                             Row(
@@ -140,7 +140,7 @@ class FoundAssets extends StatelessWidget {
                                                     child: Text('Site:')),
                                                 // Spacer(),
                                                 Text(
-                                                    ' ${_.filterData[ind]['Site']}')
+                                                    ' ${_.filterData[ind]['site']}')
                                               ],
                                             ).marginOnly(top: 5, bottom: 5),
                                             Row(
@@ -154,7 +154,7 @@ class FoundAssets extends StatelessWidget {
                                                     child: Text('Location:')),
                                                 // Spacer(),
                                                 Text(
-                                                    ' ${_.filterData[ind]['Location']}')
+                                                    ' ${_.filterData[ind]['location']}')
                                               ],
                                             ).marginOnly(top: 5, bottom: 5),
                                             Row(
@@ -168,7 +168,7 @@ class FoundAssets extends StatelessWidget {
                                                     child: Text('Category:')),
                                                 // Spacer(),
                                                 Text(
-                                                    ' ${_.filterData[ind]['Category']}')
+                                                    ' ${_.filterData[ind]['category']}')
                                               ],
                                             ).marginOnly(top: 5, bottom: 5),
                                           ],
