@@ -12,7 +12,7 @@ class FoundAssets extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'SCAN RESULTS',
-          style: TextStyle(fontSize: 20, color: UIDataColors.commonColor),
+          style: TextStyle(fontSize: 20, color:Colors.black),
         ),
         centerTitle: true,
         backgroundColor: Colors.white,

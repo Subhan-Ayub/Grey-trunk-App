@@ -17,7 +17,7 @@ class ContainerWidgets extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Container(
       width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height/3,
+      height: MediaQuery.of(context).size.height/2,
       color: UIDataColors.commonColor,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

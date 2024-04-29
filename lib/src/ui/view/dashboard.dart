@@ -170,12 +170,12 @@ class Dashboard extends StatelessWidget {
                             fontSize: 16),
                       ),
                       Text(
-                        "\$82,000",
+                        "\$ 5,000",
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w600,
                             fontSize: 28),
-                      )
+                      ),
                     ],
                   ),
                   SvgPicture.asset(

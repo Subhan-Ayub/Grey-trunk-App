@@ -116,7 +116,6 @@ class AddAssets extends StatelessWidget {
                             );
                           },
                         );
-
                       },
                     ),
                     SizedBox(
@@ -476,6 +475,7 @@ String _getCategoryName(int index) {
       return 'Computer';
     case 6:
       return 'Furniture and Fixtures';
+
     case 7:
       return 'AV equipment';
     default:

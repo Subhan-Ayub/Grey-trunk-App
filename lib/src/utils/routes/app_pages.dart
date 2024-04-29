@@ -40,6 +40,8 @@ import 'package:flutter_application_1/src/ui/view/viewAssets.dart';
 import 'package:flutter_application_1/src/utils/routes/routes.dart';
 import 'package:get/route_manager.dart';
 
+import '../../ui/view/read_write_rfid/read_write_rfid.dart';
+
 class AppPages {
   static const String INITIAL = Routes.splash;
   static final List<GetPage<dynamic>> routes = [
@@ -184,6 +186,11 @@ class AppPages {
     GetPage(
         name: Routes.profile,
         page: () => Profile(),
+        // binding: AddMaintenanceBindings(),
+        transition: Transition.noTransition),
+    GetPage(
+        name: Routes.readWriteRfid,
+        page: () => RadWriteRfid(),
         // binding: AddMaintenanceBindings(),
         transition: Transition.noTransition),
   ];

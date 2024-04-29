@@ -28,6 +28,8 @@ abstract class Routes {
   static const misplaced= '/misplaced';
   static const missingAssets= '/missingAssets';
   static const profile= '/profile';
+  static const readWriteRfid= '/readWriteRfid';
+
 
 
 
