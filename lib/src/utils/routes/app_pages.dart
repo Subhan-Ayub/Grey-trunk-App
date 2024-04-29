@@ -29,6 +29,7 @@ import 'package:flutter_application_1/src/ui/view/dashboard.dart';
 import 'package:flutter_application_1/src/ui/view/dispose.dart';
 import 'package:flutter_application_1/src/ui/view/editAssets.dart';
 import 'package:flutter_application_1/src/ui/view/forgot.dart';
+import 'package:flutter_application_1/src/ui/view/import.dart';
 import 'package:flutter_application_1/src/ui/view/login.dart';
 import 'package:flutter_application_1/src/ui/view/lost.dart';
 import 'package:flutter_application_1/src/ui/view/ScanHistory/scan_history.dart';
@@ -191,6 +192,16 @@ class AppPages {
     GetPage(
         name: Routes.readWriteRfid,
         page: () => RadWriteRfid(),
+        // binding: AddMaintenanceBindings(),
+        transition: Transition.noTransition),
+         GetPage(
+        name: Routes.import,
+        page: () => Import(),
+        // binding: AddMaintenanceBindings(),
+        transition: Transition.noTransition),
+            GetPage(
+        name: Routes.range,
+        page: () => Import(),
         // binding: AddMaintenanceBindings(),
         transition: Transition.noTransition),
   ];

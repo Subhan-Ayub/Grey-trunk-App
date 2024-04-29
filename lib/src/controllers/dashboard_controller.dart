@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 class DashboardController extends GetxController {
   DatabaseHelper db = Get.put(DatabaseHelper());
+  RxBool assetsCheck=false.obs;
 
   RxList assets = [].obs;
   RxBool isLoading = true.obs;

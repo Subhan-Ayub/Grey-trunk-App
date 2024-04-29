@@ -11,7 +11,7 @@
 	<key>NSCameraUsageDescription</key>
     <string>We need access to your camera to take photos and videos.</string>
 	<key>CFBundleDisplayName</key>
-	<string>Flutter Application 1</string>
+	<string>ET-AMS</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>

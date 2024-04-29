@@ -29,6 +29,10 @@ abstract class Routes {
   static const missingAssets= '/missingAssets';
   static const profile= '/profile';
   static const readWriteRfid= '/readWriteRfid';
+  static const import= '/import';
+  static const range= '/range';
+
+
 
 
 

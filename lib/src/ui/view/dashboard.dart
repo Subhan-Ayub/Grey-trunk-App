@@ -7,7 +7,6 @@ import 'package:flutter_application_1/src/utils/uidata/color.dart';
 import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-
 class Dashboard extends StatelessWidget {
   Dashboard({super.key});
 
@@ -15,17 +14,17 @@ class Dashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     DashboardController _ = Get.find<DashboardController>();
     return Scaffold(
-        drawer: drawer(),
+        drawer: drawer(_),
         appBar: appbar(_),
         body: RefreshIndicator(
-          onRefresh: () => _.getData(),
+            onRefresh: () => _.getData(),
             child: Obx(
-          () => _.isLoading.value
-              ? Center(
-                  child: CircularProgressIndicator(),
-                )
-              : body(_),
-        )));
+              () => _.isLoading.value
+                  ? Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : body(_),
+            )));
   }
 
   SingleChildScrollView body(DashboardController _) {
@@ -89,7 +88,6 @@ class Dashboard extends StatelessWidget {
           InkWell(
             onTap: () async {
               // _.db.deleteTable('tasks');
-    
             },
             child: Center(
               child: Container(
@@ -297,8 +295,9 @@ class Dashboard extends StatelessWidget {
           title: Center(
             child: InkWell(
               onTap: () {
-              // _.db.delettte();
+                // _.db.delettte();
                 // _.db.initializeDatabase();
+                Get.toNamed(Routes.import);
               },
               child: Text(
                 'HOME',
@@ -331,186 +330,242 @@ class Dashboard extends StatelessWidget {
     );
   }
 
-  Drawer drawer() {
+  Drawer drawer(DashboardController _) {
     return Drawer(
         backgroundColor: UIDataColors.commonColor,
         width: Get.width / 1.5,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: InkWell(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: InkWell(
+                  onTap: () {
+                    Get.offAndToNamed(Routes.profile);
+                  },
+                  child: Container(
+                    height: 70,
+                    width: 70,
+                    decoration: BoxDecoration(
+                        color: Color.fromARGB(141, 224, 224, 224),
+                        borderRadius: BorderRadius.circular(40)),
+                    child: Center(
+                        child: Icon(
+                      Icons.person,
+                      size: 40,
+                      color: Color.fromARGB(195, 246, 246, 246),
+                    )),
+                  ).marginOnly(top: 50),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Center(
+                child: Text(
+                  'Subhan',
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Divider(
+                color: Color.fromARGB(98, 255, 255, 255),
+              ),
+              InkWell(
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
                 onTap: () {
-                  Get.offAndToNamed(Routes.profile);
+                  _.assetsCheck.toggle();
                 },
-                child: Container(
-                  height: 70,
-                  width: 70,
-                  decoration: BoxDecoration(
-                      color: Color.fromARGB(141, 224, 224, 224),
-                      borderRadius: BorderRadius.circular(40)),
-                  child: Center(
-                      child: Icon(
-                    Icons.person,
-                    size: 40,
-                    color: Color.fromARGB(195, 246, 246, 246),
-                  )),
-                ).marginOnly(top: 50),
+                child: Text(
+                  'Assets',
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ).marginOnly(top: 20),
               ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Center(
-              child: Text(
-                'Subhan',
-                style: TextStyle(color: Colors.white, fontSize: 20),
+              Obx(
+                () => _.assetsCheck.value
+                    ? Column(
+                        children: [
+                          SizedBox(
+                            height: 20,
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Get.offAndToNamed(Routes.addAsset);
+                            },
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.add,
+                                  color: const Color.fromARGB(170, 255, 255, 255),
+                                ),
+                                Text(
+                                  'Add Assets',
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 16),
+                                ).marginOnly(left: 10)
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Get.offAndToNamed(Routes.viewAssets);
+                            },
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.remove_red_eye_outlined,
+                                  size: 18,
+                                  color: const Color.fromARGB(170, 255, 255, 255),
+                                ),
+                                Text(
+                                  'View Assets',
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 16),
+                                ).marginOnly(left: 10)
+                              ],
+                            ).marginOnly(left: 3),
+                          ),
+                        ],
+                      )
+                    : SizedBox(),
               ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Divider(
-              color: Color.fromARGB(98, 255, 255, 255),
-            ),
-            Text(
-              'Assets',
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ).marginOnly(top: 20),
-            SizedBox(
-              height: 20,
-            ),
-            InkWell(
-              onTap: () {
-                Get.offAndToNamed(Routes.addAsset);
-              },
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.add,
-                    color: const Color.fromARGB(170, 255, 255, 255),
-                  ),
-                  Text(
-                    'Add Assets',
-                    style: TextStyle(color: Colors.white, fontSize: 16),
-                  ).marginOnly(left: 10)
-                ],
+              SizedBox(
+                height: 20,
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            InkWell(
-              onTap: () {
-                Get.offAndToNamed(Routes.viewAssets);
-              },
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.remove_red_eye_outlined,
-                    size: 18,
-                    color: const Color.fromARGB(170, 255, 255, 255),
-                  ),
-                  Text(
-                    'View Assets',
-                    style: TextStyle(color: Colors.white, fontSize: 16),
-                  ).marginOnly(left: 10)
-                ],
-              ).marginOnly(left: 3),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Divider(
-              color: Color.fromARGB(98, 255, 255, 255),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            InkWell(
-              onTap: () {
-                Get.offAndToNamed(Routes.scan);
-              },
-              child: Text(
-                'Start Scan',
-                style: TextStyle(color: Colors.white, fontSize: 20),
+              Divider(
+                color: Color.fromARGB(98, 255, 255, 255),
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Divider(
-              color: Color.fromARGB(98, 255, 255, 255),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            InkWell(
-              onTap: () {
-                Get.offAndToNamed(Routes.bluetooth);
-              },
-              child: Text(
-                'My Devices',
-                style: TextStyle(color: Colors.white, fontSize: 20),
+              SizedBox(
+                height: 20,
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Divider(
-              color: Color.fromARGB(98, 255, 255, 255),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            InkWell(
-              onTap: () {
-                Get.offAndToNamed(Routes.scanHistory);
-              },
-              child: Text(
-                'Scan History',
-                style: TextStyle(color: Colors.white, fontSize: 20),
+              InkWell(
+                onTap: () {
+                  Get.offAndToNamed(Routes.scan);
+                },
+                child: Text(
+                  'Start Scan',
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Divider(
-              color: Color.fromARGB(98, 255, 255, 255),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            InkWell(
-              onTap: () {
-                Get.defaultDialog(
-                  title: 'Log Out',
-                  content: Text('Are you sure u want to log out?'),
-                  actions: [
-                    TextButton(
-                      onPressed: () {
-                        Get.back();
-                      },
-                      child: Text('Cancel'),
-                    ),
-                    TextButton(
-                      onPressed: () async {
-                        GetStorage box = GetStorage();
-                        await box.remove('auth');
-                        Get.offAllNamed(Routes.login);
-                      },
-                      child: Text('Log out'),
-                    ),
-                  ],
-                );
-              },
-              child: Text(
-                'Logout',
-                style: TextStyle(color: Colors.white, fontSize: 20),
+              SizedBox(
+                height: 20,
               ),
-            ),
-          ],
-        ).marginSymmetric(horizontal: 40));
+              Divider(
+                color: Color.fromARGB(98, 255, 255, 255),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              InkWell(
+                onTap: () {
+                  Get.offAndToNamed(Routes.bluetooth);
+                },
+                child: Text(
+                  'My Devices',
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Divider(
+                color: Color.fromARGB(98, 255, 255, 255),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              InkWell(
+                onTap: () {
+                  Get.offAndToNamed(Routes.scanHistory);
+                },
+                child: Text(
+                  'Scan History',
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Divider(
+                color: Color.fromARGB(98, 255, 255, 255),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              InkWell(
+                onTap: () {
+                  Get.offAndToNamed(Routes.import);
+                },
+                child: Text(
+                  'Import',
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Divider(
+                color: Color.fromARGB(98, 255, 255, 255),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              InkWell(
+                onTap: () {
+                  Get.toNamed(Routes.readWriteRfid);
+                },
+                child: Text(
+                  'Write RFID',
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Divider(
+                color: Color.fromARGB(98, 255, 255, 255),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              InkWell(
+                onTap: () {
+                  Get.defaultDialog(
+                    title: 'Log Out',
+                    content: Text('Are you sure u want to log out?'),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Get.back();
+                        },
+                        child: Text('Cancel'),
+                      ),
+                      TextButton(
+                        onPressed: () async {
+                          GetStorage box = GetStorage();
+                          await box.remove('auth');
+                          Get.offAllNamed(Routes.login);
+                        },
+                        child: Text('Log out'),
+                      ),
+                    ],
+                  );
+                },
+                child: Text(
+                  'Logout',
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+              ),
+              
+            ],
+          ).marginSymmetric(horizontal: 40),
+        ));
   }
 }
 
