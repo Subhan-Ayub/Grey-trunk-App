@@ -229,7 +229,7 @@ class ScanScreen extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(vertical: 10),
                       ),
                       child: const Text(
-                        'START SCAN',
+                        'Asset Audit',
                         style: TextStyle(color: Colors.white),
                       ),
                     ),

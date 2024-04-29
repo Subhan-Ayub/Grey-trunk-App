@@ -17,15 +17,16 @@ class ContainerWidgets extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Container(
       width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height/2,
+      height: MediaQuery.of(context).size.height*0.4,
       color: UIDataColors.commonColor,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
 
           Image.asset(AppImage.logo4,
-            height: 150,
-            width: 300,),
+            height: MediaQuery.of(context).size.height*0.2,
+            width: MediaQuery.of(context).size.width,),
+          SizedBox(height: 15,),
           Text(text,style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold,color: Colors.white),),
           Text(title,style: TextStyle(fontSize: 16,color: Colors.white),)
         ],
