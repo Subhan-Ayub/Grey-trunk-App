@@ -97,7 +97,7 @@ class ViewAssets extends StatelessWidget {
                             ).marginSymmetric(vertical: 10),
                             Divider(),
                             Container(
-                              width: Get.width / 2,
+                              width: Get.width / 1.5,
                               child: Column(
                                 children: [
                                   Row(
@@ -108,7 +108,7 @@ class ViewAssets extends StatelessWidget {
                                       ).marginOnly(right: 5),
                                       Text('Description:'),
                                       Spacer(),
-                                      Text(' ${_.data[ind]['description']}')
+                                      Text(' ${_.data[ind]['description']}',overflow: TextOverflow.fade,)
                                     ],
                                   ).marginOnly(top: 5, bottom: 5),
                                   Row(

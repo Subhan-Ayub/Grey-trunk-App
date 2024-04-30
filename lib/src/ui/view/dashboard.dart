@@ -120,7 +120,7 @@ class Dashboard extends StatelessWidget {
                               fontSize: 16),
                         ),
                         Text(
-                          '1',
+                          '12',
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w600,

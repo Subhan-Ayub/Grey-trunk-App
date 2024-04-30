@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/ui/widgets/commonBtn.dart';
-import 'package:flutter_application_1/src/utils/uidata/color.dart';
+import 'package:flutter_application_1/src/utils/routes/routes.dart';
 import 'package:get/get.dart';
 
 class Import extends StatelessWidget {
@@ -17,7 +17,7 @@ class Import extends StatelessWidget {
                 fontWeight: FontWeight.bold,
                 color: const Color.fromARGB(84, 75, 21, 140)),
           ).marginSymmetric(vertical: 80),
-          CommonBtn(title: 'Import Data').marginOnly(bottom: 20),
+          CommonBtn(title: 'Import Data',onPressd: (){Get.toNamed(Routes.viewAssets);},).marginOnly(bottom: 20),
           CommonBtn(title: 'Export Data')
         ],
       )),
