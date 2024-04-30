@@ -13,10 +13,10 @@ import 'package:image_picker/image_picker.dart';
 class AddAssets extends StatelessWidget {
   final AddAssetsController controller = Get.put(AddAssetsController());
   bool showTextField = true;
-RxList<String> category=<String>['Tools','Vehicles','Demo Equipment'].obs;
+RxList<String> category=<String>['Tools','Vehicles','Furniture','Electronics','Grocery','Stationery'].obs;
 RxList<String> site=<String>['Engro HQ'].obs;
 RxList<String> location=<String>['Engro ISB','Engro KHI','Engro LHR','Engro SKI'].obs;
-RxList<String> depreciation=<String>['Tools','Vehicles','Demo Equipment'].obs;
+RxList<String> depreciation=<String>['Digits Method','Straight line Method','Monthly Depreciation','Rate of Depreciation'].obs;
 
 
 
