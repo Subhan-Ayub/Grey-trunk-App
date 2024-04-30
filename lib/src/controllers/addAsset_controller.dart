@@ -36,44 +36,7 @@ class AddAssetsController extends GetxController {
   }
 
   save() {
-    // dynamic formData = {
-    //   "productId": assetTagIdController.text,
-    //   "Brand": brandController.text.isEmpty ? 'NA' : brandController.text,
-    //   "Description": descriptionController.text.isEmpty
-    //       ? 'NA'
-    //       : descriptionController.text,
-    //   "PurchasedDate":
-    //       purchasedController.text.isEmpty ? 'NA' : purchasedController.text,
-    //   "Category": "NA",
-    //   "Model": modelController.text.isEmpty ? 'NA' : modelController.text,
-    //   "SerialNumber":
-    //       serialNoController.text.isEmpty ? 'NA' : serialNoController.text,
-    //   "Cost": costController.text.isEmpty ? 'NA' : costController.text,
-    //   "AssignedTo": "NA",
-    //   "LastScanDate": "03/20/2024",
-    //   "DueDate": "NA",
-    //   "DisposedDate": disposedDateController.text.isEmpty
-    //       ? 'NA'
-    //       : disposedDateController.text,
-    //   "CreatedDate": createdDateController.text.isEmpty
-    //       ? 'NA'
-    //       : createdDateController.text,
-    //   "Site": "Lahore Office",
-    //   "Location": "Islamabad",
-    //   "Depreciation": "No",
-    //   "DepreciationMethod": "Sum of the Years Digits",
-    //   "TotalCost":
-    //       totalCostController.text.isEmpty ? 'NA' : totalCostController.text,
-    //   "AssetLife":
-    //       assetsLifeController.text.isEmpty ? 'NA' : assetsLifeController.text,
-    //   "SalvageValue":
-    //       salvageController.text.isEmpty ? 'NA' : salvageController.text,
-    //   "DateAcquired": dateAcquiredController.text.isEmpty
-    //       ? 'NA'
-    //       : dateAcquiredController.text,
-    //   "img": imageFile.value ?? 'na'
-    // };
-
+  
     db.insertTask(Task(
         productId: assetTagIdController.text,
         brand: brandController.text.isEmpty ? 'NA' : brandController.text,
@@ -82,7 +45,8 @@ class AddAssetsController extends GetxController {
             : descriptionController.text,
         purchasedDate:
             purchasedController.text.isEmpty ? 'NA' : purchasedController.text,
-        category: "NA",
+        category:
+            categoryController.text.isEmpty ? 'NA' : categoryController.text,
         model: modelController.text.isEmpty ? 'NA' : modelController.text,
         serialNumber:
             serialNoController.text.isEmpty ? 'NA' : serialNoController.text,
@@ -96,10 +60,13 @@ class AddAssetsController extends GetxController {
         createdDate: createdDateController.text.isEmpty
             ? 'NA'
             : createdDateController.text,
-        site: 'site',
-        location: 'location',
-        depreciation: 'depreciation',
-        depreciationMethod: 'depreciationMethod',
+        site: siteController.text.isEmpty ? 'NA' : siteController.text,
+        location:
+            locationController.text.isEmpty ? 'NA' : locationController.text,
+        depreciation: selectedRadio.value == 'Option2' ? 'No' : 'Yes',
+        depreciationMethod: depreciationController.text.isEmpty
+            ? 'NA'
+            : depreciationController.text,
         totalCost:
             totalCostController.text.isEmpty ? 'NA' : totalCostController.text,
         assetLife: assetsLifeController.text.isEmpty
@@ -112,8 +79,6 @@ class AddAssetsController extends GetxController {
             : dateAcquiredController.text,
         img: pickedFile?.path ?? 'na'));
 
-    // data.add(formData);
-    // print(data);
     Get.delete<FoundAssetsController>();
     Get.offAndToNamed(Routes.dashboard);
   }
