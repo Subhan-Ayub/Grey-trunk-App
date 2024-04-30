@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/controllers/addAsset_controller.dart';
 import 'package:flutter_application_1/src/ui/widgets/commonBtn.dart';
 import 'package:flutter_application_1/src/ui/widgets/container.dart';
+import 'package:flutter_application_1/src/ui/widgets/modelbottomSheet.dart';
 import 'package:flutter_application_1/src/ui/widgets/textformfild_widgets.dart';
 import 'package:flutter_application_1/src/utils/uidata/color.dart';
 import 'package:get/get.dart';
@@ -12,6 +13,15 @@ import 'package:image_picker/image_picker.dart';
 class AddAssets extends StatelessWidget {
   final AddAssetsController controller = Get.put(AddAssetsController());
   bool showTextField = true;
+RxList<String> category=<String>['Tools','Vehicles','Demo Equipment'].obs;
+RxList<String> site=<String>['Engro HQ'].obs;
+RxList<String> location=<String>['Engro ISB','Engro KHI','Engro LHR','Engro SKI'].obs;
+RxList<String> depreciation=<String>['Tools','Vehicles','Demo Equipment'].obs;
+
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -64,59 +74,12 @@ class AddAssets extends StatelessWidget {
                       title: 'Category',
                       icon: Icons.keyboard_arrow_down,
                       txtcontroller: controller.categoryController,
-                      onPressd: (){
-                        showModalBottomSheet(
-                          backgroundColor: Colors.transparent,
-                          context: context,
-                          builder: (BuildContext context) {
-                            return Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                    begin: Alignment.topLeft,
-                                    end: Alignment.bottomRight,
-                                    colors: [Colors.grey[300]!, Colors.grey[600]!],
-                                  ),
-                                  borderRadius: BorderRadius.circular(20.0),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.5),
-                                      spreadRadius: 5,
-                                      blurRadius: 7,
-                                      offset: Offset(0, 3),
-                                    ),
-                                  ],
-                                ),
-                                height: 300.0,
-                                child: ListWheelScrollView(
-                                  itemExtent: 50.0,
-                                  physics: FixedExtentScrollPhysics(),
-                                  overAndUnderCenterOpacity: 0.5,
-                                  children: List.generate(
-                                    5,
-                                        (index) => Container(
-                                      color: Colors.white,
-                                      child: ListTile(
-                                        selectedTileColor: Colors.blue,
-                                        title: Center(
-                                          child: Text(
-                                            _getCategoryName(index),
-                                            style: TextStyle(
-                                              fontSize: 18,
-                                              color: Colors.black87,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        );
-                      },
+                     onPressd: (){
+                        appBottomSheet(category,(index){
+                          Get.back();
+                          controller.categoryController.text=   category[index];
+                        });
+                     },
                     ),
                     SizedBox(
                       height: 20,
@@ -214,14 +177,10 @@ class AddAssets extends StatelessWidget {
                       icon: Icons.keyboard_arrow_down_sharp,
                       txtcontroller: controller.siteController,
                       onPressd: () {
-                        showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AlertDialog(
-                                title: const Text('Site'),
-                                content: Text('No option for Site'),
-                              );
-                            });
+                        appBottomSheet(site,(index){
+                          Get.back();
+                          controller.siteController.text=   site[index];
+                        });
                       },
                     ),
                     SizedBox(
@@ -233,14 +192,10 @@ class AddAssets extends StatelessWidget {
                       icon: Icons.keyboard_arrow_down_sharp,
                       txtcontroller: controller.locationController,
                       onPressd: () {
-                        showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AlertDialog(
-                                title: const Text('Location'),
-                                content: Text('No option for Location'),
-                              );
-                            });
+                        appBottomSheet(location,(index){
+                          Get.back();
+                          controller.locationController.text=   location[index];
+                        });
                       },
                     ),
                     SizedBox(
@@ -348,17 +303,12 @@ class AddAssets extends StatelessWidget {
                               read: true,
                               title: 'Depreciation Method',
                               icon: Icons.keyboard_arrow_down_sharp,
+                              txtcontroller: controller.depreciationController,
                               onPressd: () {
-                                showDialog(
-                                    context: context,
-                                    builder: (context) {
-                                      return AlertDialog(
-                                        title:
-                                            const Text('Depreciation Method'),
-                                        content: Text(
-                                            'No option for Depreciation Method'),
-                                      );
-                                    });
+                                appBottomSheet(depreciation,(index){
+                                  Get.back();
+                                  controller.depreciationController.text=   depreciation[index];
+                                });
                               },
                             ),
                             SizedBox(
@@ -459,26 +409,3 @@ class AddAssets extends StatelessWidget {
   }
 }
 
-String _getCategoryName(int index) {
-  switch (index) {
-    case 0:
-      return 'Tools';
-    case 1:
-      return 'Vehicles';
-    case 2:
-      return 'Demo Equipment';
-    case 3:
-      return 'Machinery';
-    case 4:
-      return 'Supplies';
-    case 5:
-      return 'Computer';
-    case 6:
-      return 'Furniture and Fixtures';
-
-    case 7:
-      return 'AV equipment';
-    default:
-      return 'Unknown';
-  }
-}

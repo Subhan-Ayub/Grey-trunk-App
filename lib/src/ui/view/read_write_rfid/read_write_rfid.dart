@@ -19,6 +19,7 @@ class _RadWriteRfidState extends State<RadWriteRfid> {
         length: 4,
         child: Scaffold(
           appBar: AppBar(
+            automaticallyImplyLeading: false,
             title: Row(
               children: [
                 Text('Read/Write RFID',style: TextStyle(color: Colors.white),),
