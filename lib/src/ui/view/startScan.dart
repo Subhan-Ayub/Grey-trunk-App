@@ -229,7 +229,7 @@ class ScanScreen extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(vertical: 10),
                       ),
                       child: const Text(
-                        'Asset Audit',
+                        'Scan',
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
@@ -259,7 +259,7 @@ class ScanScreen extends StatelessWidget {
         ),
         child: AppBar(
           title: Text(
-            "SCAN",
+            "ASSET AUDIT",
             style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
           ),
           centerTitle: true,

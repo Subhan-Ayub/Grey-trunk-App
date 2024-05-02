@@ -61,7 +61,7 @@ class Dashboard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'No. of Assets',
+                          'Total Assets',
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w600,
@@ -449,7 +449,7 @@ class Dashboard extends StatelessWidget {
                   Get.offAndToNamed(Routes.scan);
                 },
                 child: Text(
-                  'Start Scan',
+                  'Asset Audit',
                   style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
               ),
