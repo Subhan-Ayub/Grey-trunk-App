@@ -12,7 +12,7 @@ class AssetsDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var arg = Get.arguments;
-    print(arg);
+    print(File(arg['img']));
 
     return Scaffold(
       appBar: appbar(),
@@ -85,11 +85,15 @@ class AssetsDetails extends StatelessWidget {
               height: 250,
               width: Get.width,
               color: Color.fromARGB(34, 158, 158, 158),
-              child: arg['img']=='na'? Icon(
-                Icons.image,
-                size: 75,
-                color: const Color.fromARGB(123, 158, 158, 158),
-              ):Image.file( File(arg['img']) ),
+              child: arg['img'] == 'na'
+                  ? Icon(
+                      Icons.image,
+                      size: 75,
+                      color: const Color.fromARGB(123, 158, 158, 158),
+                    )
+                  : arg['img'][0] == 'a'
+                      ? Image.asset(arg['img'])
+                      : Image.file(File(arg['img'])),
             ),
             Row(
               // crossAxisAlignment: CrossAxisAlignment.start,
@@ -97,13 +101,13 @@ class AssetsDetails extends StatelessWidget {
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children:  [
+                  children: [
                     Text(
                       'Asset Tag ID:',
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                     ),
-                    Text('${arg['id']}')
+                    Text('${arg['productId']}')
                   ],
                 ),
                 Container(

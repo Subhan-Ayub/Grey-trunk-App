@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter_application_1/src/models/task_model.dart';
+import 'package:flutter_application_1/src/utils/uidata/staticData.dart';
 import 'package:get/get.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -21,16 +22,23 @@ class DatabaseHelper extends GetxController {
 
   Future<Database> initializeDatabase() async {
     final dbPath = await getDatabasesPath();
-    print('object');
+    print(dbPath);
     const dbName = 'rfid.db';
     print('creating');
     return await openDatabase(
       '$dbPath/$dbName',
       version: 1,
       onCreate: (db, version) async {
+        print('object');
         await db.execute(
             'CREATE TABLE assets (id INTEGER PRIMARY KEY AUTOINCREMENT, productId TEXT, brand TEXT, description TEXT, purchaseDate TEXT, category TEXT, model TEXT, serialNumber TEXT, cost TEXT, assignedTo TEXT, lastScanDate TEXT, dueDate TEXT, disposeDate TEXT, createdDate TEXT, site TEXT, location TEXT, depreciation TEXT, depreciationMethod TEXT, totalCost TEXT, assetLife TEXT, salvageValue TEXT, dateAquired TEXT, img  TEXT)');
+        for (var i = 0; i < data.length; i++) {
+          print(i);
+         await db.insert('assets',data[i]);
+        }
+        
       },
+     
     );
   }
 
@@ -97,10 +105,11 @@ class DatabaseHelper extends GetxController {
     await database
         .execute("DROP TABLE IF EXISTS $tableName"); // Use IF EXISTS for safety
   }
-  delettte()async{
-     final dbPath = await getDatabasesPath();
+
+  delettte() async {
+    final dbPath = await getDatabasesPath();
     const dbName = 'rfid.db';
-    deleteDatabase( '$dbPath/$dbName');
+    deleteDatabase('$dbPath/$dbName');
     print(';;;;;');
   }
 }
