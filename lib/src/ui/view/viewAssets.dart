@@ -5,6 +5,9 @@ import 'package:flutter_application_1/src/utils/uidata/color.dart';
 import 'package:get/get.dart';
 
 class ViewAssets extends StatelessWidget {
+  // final ViewAssetsController controller = Get.put(ViewAssetsController());
+
+  String result="";
   @override
   Widget build(BuildContext context) {
     ViewAssetsController _ = Get.find<ViewAssetsController>();
@@ -49,16 +52,20 @@ class ViewAssets extends StatelessWidget {
                   size: 22,
                   color: Colors.grey,
                 ),
-                suffixIcon: Icon(
-                  Icons.center_focus_strong_outlined,
-                  size: 22,
+                suffixIcon: IconButton(
+                  iconSize: 22,
+                  icon: const Icon(Icons.center_focus_strong_outlined),
                   color: UIDataColors.commonColor,
+                  onPressed: () {
+                  _.viewAsset();
+                  },
                 ),
                 border: InputBorder.none,
                 focusedBorder: InputBorder.none,
               ),
             ),
           ),
+          Text('Barcode Result: ${_.result.value}'),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -180,11 +187,14 @@ class ViewAssets extends StatelessWidget {
           ),
           actions: [
             Center(
-                child: Icon(
-              Icons.add,
-              size: 30,
-              color: UIDataColors.commonColor,
-            )).marginOnly(right: 18),
+                child: InkWell(
+                  onTap: (){Get.toNamed(Routes.scan);},
+                  child: Icon(
+                                Icons.add,
+                                size: 30,
+                                color: UIDataColors.commonColor,
+                              ),
+                )).marginOnly(right: 18),
           ],
         ),
       ),
