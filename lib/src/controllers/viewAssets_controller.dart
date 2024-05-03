@@ -3,12 +3,18 @@ import 'package:flutter_application_1/src/utils/routes/routes.dart';
 import 'package:get/get.dart';
 import 'package:simple_barcode_scanner/simple_barcode_scanner.dart';
 
-
 class ViewAssetsController extends GetxController {
   DatabaseHelper db = Get.put(DatabaseHelper());
-  dynamic data=[];
+  dynamic data = [];
   RxBool isLoading = true.obs;
   final RxString result = ''.obs;
+
+  dynamic scanId = 'L-1001';
+  scanData(id) {
+    isLoading.value = true;
+    scanId = id;
+    isLoading.value = false;
+  }
 
   @override
   void onInit() async {
@@ -21,11 +27,10 @@ class ViewAssetsController extends GetxController {
     var res = await Get.to<String>(() => SimpleBarcodeScannerPage());
     print(res);
     if (res != null) {
-
-      result.value = res;
-      print('bbbbbbbbb $result');
+      scanData(res);
+      // result.value = res;
+      // print('bbbbbbbbb $result');
       // Get.toNamed(Routes.foundAssets,arguments: res);
-
     }
   }
 

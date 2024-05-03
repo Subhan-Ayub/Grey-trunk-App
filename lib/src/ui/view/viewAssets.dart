@@ -5,9 +5,6 @@ import 'package:flutter_application_1/src/utils/uidata/color.dart';
 import 'package:get/get.dart';
 
 class ViewAssets extends StatelessWidget {
-  // final ViewAssetsController controller = Get.put(ViewAssetsController());
-
-  String result="";
   @override
   Widget build(BuildContext context) {
     ViewAssetsController _ = Get.find<ViewAssetsController>();
@@ -57,7 +54,7 @@ class ViewAssets extends StatelessWidget {
                   icon: const Icon(Icons.center_focus_strong_outlined),
                   color: UIDataColors.commonColor,
                   onPressed: () {
-                  _.viewAsset();
+                    _.viewAsset();
                   },
                 ),
                 border: InputBorder.none,
@@ -65,7 +62,7 @@ class ViewAssets extends StatelessWidget {
               ),
             ),
           ),
-          Text('Barcode Result: ${_.result.value}'),
+
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -81,21 +78,26 @@ class ViewAssets extends StatelessWidget {
             width: Get.width,
             child: ListView.builder(
                 itemCount: _.data.length,
-
                 itemBuilder: (BuildContext context, ind) {
                   return InkWell(
                     onTap: () {
                       Get.toNamed(Routes.assetsDetails, arguments: _.data[ind]);
                     },
                     child: Container(
-                      color: Colors.white,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: _.scanId == _.data[ind]['productId']
+                            ? const Color.fromARGB(255, 119, 230, 123)
+                            : Colors.white,
+                      ),
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text('Asset tag ID: ${_.data[ind]['productId']}'),
+                                Text(
+                                    'Asset tag ID: ${_.data[ind]['productId']}'),
                                 Text(
                                   '• Available',
                                   style: TextStyle(color: Colors.green),
@@ -115,7 +117,10 @@ class ViewAssets extends StatelessWidget {
                                       ).marginOnly(right: 5),
                                       Text('Description:'),
                                       Spacer(),
-                                      Text(' ${_.data[ind]['description']}',overflow: TextOverflow.fade,)
+                                      Text(
+                                        ' ${_.data[ind]['description']}',
+                                        overflow: TextOverflow.fade,
+                                      )
                                     ],
                                   ).marginOnly(top: 5, bottom: 5),
                                   Row(
@@ -150,12 +155,12 @@ class ViewAssets extends StatelessWidget {
                                       Spacer(),
                                       Text(' ${_.data[ind]['category']}')
                                     ],
-                                  ).marginOnly(top: 5, bottom: 5),
+                                  ).marginOnly(top: 5, bottom: 13),
                                 ],
                               ),
                             )
                           ]).marginSymmetric(horizontal: 15),
-                    ).marginOnly(bottom: 10),
+                    ).marginOnly(bottom: 10).marginSymmetric(horizontal: 15),
                   );
                 }),
           )
@@ -188,13 +193,15 @@ class ViewAssets extends StatelessWidget {
           actions: [
             Center(
                 child: InkWell(
-                  onTap: (){Get.toNamed(Routes.scan);},
-                  child: Icon(
-                                Icons.add,
-                                size: 30,
-                                color: UIDataColors.commonColor,
-                              ),
-                )).marginOnly(right: 18),
+              onTap: () {
+                Get.toNamed(Routes.scan);
+              },
+              child: Icon(
+                Icons.add,
+                size: 30,
+                color: UIDataColors.commonColor,
+              ),
+            )).marginOnly(right: 18),
           ],
         ),
       ),
