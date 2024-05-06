@@ -9,7 +9,7 @@ class ViewAssetsController extends GetxController {
   RxBool isLoading = true.obs;
   final RxString result = ''.obs;
 
-  dynamic scanId = 'L-1001';
+  dynamic scanId = '';
   scanData(id) {
     isLoading.value = true;
     scanId = id;

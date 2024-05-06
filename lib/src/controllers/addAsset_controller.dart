@@ -6,6 +6,7 @@ import 'package:flutter_application_1/src/utils/helpers/db_helper.dart';
 import 'package:flutter_application_1/src/utils/routes/routes.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:simple_barcode_scanner/simple_barcode_scanner.dart';
 
 class AddAssetsController extends GetxController {
   DatabaseHelper db = Get.put(DatabaseHelper());
@@ -29,10 +30,25 @@ class AddAssetsController extends GetxController {
   final TextEditingController salvageController = TextEditingController();
   final TextEditingController dateAcquiredController = TextEditingController();
 
+  final RxString result = ''.obs;
   @override
   void onInit() {
     assetTagIdController.text = arg ?? '';
     super.onInit();
+  }
+
+
+
+  Future<void> viewAsset() async {
+    print('rrrrr');
+    var res = await Get.to<String>(() => SimpleBarcodeScannerPage());
+    print(res);
+    if (res != null) {
+      assetTagIdController.text=res;
+      // result.value = res;
+      // print('bbbbbbbbb $result');
+      // Get.toNamed(Routes.foundAssets,arguments: res);
+    }
   }
 
   save() {

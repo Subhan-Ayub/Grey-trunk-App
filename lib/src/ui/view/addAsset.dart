@@ -34,7 +34,11 @@ RxList<String> depreciation=<String>['Digits Method','Straight line Method','Mon
                   children: [
                     TextFormFildWidgets(
                       title: 'Asset Tag ID:*',
-                      icon: Icons.qr_code_scanner,
+                      iconButton: IconButton(onPressed: (){
+                        controller.viewAsset();
+                      },iconSize: 22,
+                        icon: const Icon(Icons.center_focus_strong_outlined),
+                        color: UIDataColors.commonColor,),
                       txtcontroller: controller.assetTagIdController,
                   
                     ),
@@ -44,9 +48,7 @@ RxList<String> depreciation=<String>['Digits Method','Straight line Method','Mon
                     TextFormFildWidgets(
                       read: true,
                       title: 'Purchased date',
-                      icon: Icons.date_range,
-                      txtcontroller: controller.purchasedController,
-                      onPressd: () async {
+                      iconButton:IconButton(onPressed: ()async {
                         DateTime? pickedDate = await showDatePicker(
                             context: context,
                             initialDate: DateTime.now(),
@@ -61,6 +63,9 @@ RxList<String> depreciation=<String>['Digits Method','Straight line Method','Mon
                               formattedDate.toString();
                         }
                       },
+                        icon: const Icon(Icons.date_range),),
+                      txtcontroller: controller.purchasedController,
+
                     ),
                     SizedBox(
                       height: 20,
@@ -68,14 +73,13 @@ RxList<String> depreciation=<String>['Digits Method','Straight line Method','Mon
                     TextFormFildWidgets(
                       read: true,
                       title: 'Category',
-                      icon: Icons.keyboard_arrow_down,
-                      txtcontroller: controller.categoryController,
-                     onPressd: (){
+                      iconButton:IconButton(onPressed: (){
                         appBottomSheet(category,(index){
                           Get.back();
                           controller.categoryController.text=   category[index];
                         });
-                     },
+                      }, icon: const Icon(Icons.keyboard_arrow_down_outlined),),
+                      txtcontroller: controller.categoryController,
                     ),
                     SizedBox(
                       height: 20,
@@ -117,10 +121,7 @@ RxList<String> depreciation=<String>['Digits Method','Straight line Method','Mon
                     ),
                     TextFormFildWidgets(
                       title: 'Disposed Date',
-                      icon: Icons.date_range,
-                      txtcontroller: controller.disposedDateController,
-                      read: true,
-                      onPressd: () async {
+                      iconButton: IconButton(onPressed: ()async {
                         DateTime? pickedDate = await showDatePicker(
                             context: context,
                             initialDate: DateTime.now(),
@@ -130,11 +131,13 @@ RxList<String> depreciation=<String>['Digits Method','Straight line Method','Mon
                           DateTime dateTime = pickedDate;
                           var formattedDate =
                               "${dateTime.year}-${dateTime.month.toString().padLeft(2, '0')}-${dateTime.day.toString().padLeft(2, '0')}";
-
                           controller.disposedDateController.text =
                               formattedDate.toString();
                         }
                       },
+                          icon: const Icon(Icons.date_range)),
+                      txtcontroller: controller.disposedDateController,
+                      read: true,
                     ),
                     SizedBox(
                       height: 20,
@@ -142,9 +145,7 @@ RxList<String> depreciation=<String>['Digits Method','Straight line Method','Mon
                     TextFormFildWidgets(
                       title: 'Created Date',
                       read: true,
-                      icon: Icons.date_range,
-                      txtcontroller: controller.createdDateController,
-                      onPressd: () async {
+                      iconButton: IconButton(onPressed: ()async {
                         DateTime? pickedDate = await showDatePicker(
                             context: context,
                             initialDate: DateTime.now(),
@@ -159,6 +160,9 @@ RxList<String> depreciation=<String>['Digits Method','Straight line Method','Mon
                               formattedDate.toString();
                         }
                       },
+                          icon: const Icon(Icons.date_range)),
+                      txtcontroller: controller.createdDateController,
+
                     ),
                     SizedBox(
                       height: 20,
@@ -170,7 +174,13 @@ RxList<String> depreciation=<String>['Digits Method','Straight line Method','Mon
                     TextFormFildWidgets(
                       title: 'Site',
                       read: true,
-                      icon: Icons.keyboard_arrow_down_sharp,
+                      iconButton: IconButton(onPressed: (){
+                        appBottomSheet(site,(index){
+                          Get.back();
+                          controller.siteController.text=   site[index];
+                        });
+                      },
+                          icon: const Icon(Icons.keyboard_arrow_down_outlined)),
                       txtcontroller: controller.siteController,
                       onPressd: () {
                         appBottomSheet(site,(index){

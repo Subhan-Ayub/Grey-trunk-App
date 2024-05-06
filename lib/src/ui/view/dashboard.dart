@@ -449,7 +449,7 @@ class Dashboard extends StatelessWidget {
                   Get.offAndToNamed(Routes.scan);
                 },
                 child: Text(
-                  'Asset Audit',
+                  'Scan Screen',
                   style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
               ),
@@ -503,7 +503,7 @@ class Dashboard extends StatelessWidget {
                   Get.offAndToNamed(Routes.import);
                 },
                 child: Text(
-                  'Import',
+                  'Audit',
                   style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
               ),

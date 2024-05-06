@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class TextFormFildWidgets extends StatelessWidget {
   final String title;
   final IconData? icon;
+  final IconButton? iconButton;
   Function()? onPressd;
   final bool? read;
   TextEditingController? txtcontroller;
@@ -12,6 +13,7 @@ class TextFormFildWidgets extends StatelessWidget {
       {Key? key,
       required this.title,
       this.icon,
+        this.iconButton,
       this.onPressd,
       this.txtcontroller,
       this.focusNode,
@@ -27,7 +29,9 @@ class TextFormFildWidgets extends StatelessWidget {
         readOnly: read ?? false,
         decoration: InputDecoration(
           hintText: title,
-          suffixIcon: Icon(icon),
+          suffixIcon: iconButton,
+
+          // suffixIcon: Icon(icon),
         ),
       ),
     );

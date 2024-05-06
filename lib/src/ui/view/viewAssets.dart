@@ -194,7 +194,7 @@ class ViewAssets extends StatelessWidget {
             Center(
                 child: InkWell(
               onTap: () {
-                Get.toNamed(Routes.scan);
+                Get.toNamed(Routes.addAsset);
               },
               child: Icon(
                 Icons.add,
