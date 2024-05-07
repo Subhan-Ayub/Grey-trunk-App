@@ -1,7 +1,10 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:flutter_application_1/src/models/task_model.dart';
 import 'package:flutter_application_1/src/utils/uidata/staticData.dart';
 import 'package:get/get.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DatabaseHelper extends GetxController {
@@ -12,7 +15,28 @@ class DatabaseHelper extends GetxController {
 
   DatabaseHelper._internal();
 
+  Future<String> createFolder() async {
+    final dir = Directory(
+        '/private/var/mobile/Containers/Data/Application/4C64A46E-56F8-4C83-AFD4-DE01B9507B31/MyFolder');
+
+    var status = await Permission.storage.status;
+    print('yyyy ${await getDownloadsDirectory()}');
+    print(status.isGranted);
+    if (!status.isGranted) {
+      await Permission.storage.request();
+    }
+
+    if (await dir.exists()) {
+      print(dir.path);
+      return dir.path; // Folder already exists
+    } else {
+      dir.create();
+      return dir.path; // New folder created
+    }
+  }
+
   Future<Database> get databasee async {
+    // createFolder();
     if (database == null) {
       database = await initializeDatabase();
       print('jjj');
@@ -26,7 +50,7 @@ class DatabaseHelper extends GetxController {
     const dbName = 'rfid.db';
     print('creating');
     return await openDatabase(
-      '$dbPath/$dbName',
+      '$dbPath/databases/$dbName',
       version: 1,
       onCreate: (db, version) async {
         print('object');
@@ -34,11 +58,9 @@ class DatabaseHelper extends GetxController {
             'CREATE TABLE assets (id INTEGER PRIMARY KEY AUTOINCREMENT, productId TEXT, brand TEXT, description TEXT, purchaseDate TEXT, category TEXT, model TEXT, serialNumber TEXT, cost TEXT, assignedTo TEXT, lastScanDate TEXT, dueDate TEXT, disposeDate TEXT, createdDate TEXT, site TEXT, location TEXT, depreciation TEXT, depreciationMethod TEXT, totalCost TEXT, assetLife TEXT, salvageValue TEXT, dateAquired TEXT, img  TEXT)');
         for (var i = 0; i < data.length; i++) {
           print(i);
-         await db.insert('assets',data[i]);
+          await db.insert('assets', data[i]);
         }
-        
       },
-     
     );
   }
 

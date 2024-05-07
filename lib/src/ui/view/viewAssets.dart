@@ -62,14 +62,14 @@ class ViewAssets extends StatelessWidget {
               ),
             ),
           ),
-
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 'Results: ${_.data?.length} Assets',
               ),
-              Icon(Icons.format_list_numbered_rounded)
+              InkWell(
+                  onTap: () {}, child: Icon(Icons.format_list_numbered_rounded))
             ],
           ).marginSymmetric(horizontal: 15).marginOnly(bottom: 10),
           Container(
@@ -79,6 +79,13 @@ class ViewAssets extends StatelessWidget {
             child: ListView.builder(
                 itemCount: _.data.length,
                 itemBuilder: (BuildContext context, ind) {
+                  dynamic colorCheck = false;
+                  for (var i = 0; i < _.check.length; i++) {
+                    if (_.check[i] == _.data[ind]['productId']) {
+                      colorCheck = true;
+                      break;
+                    }
+                  }
                   return InkWell(
                     onTap: () {
                       Get.toNamed(Routes.assetsDetails, arguments: _.data[ind]);
@@ -86,7 +93,7 @@ class ViewAssets extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: _.scanId == _.data[ind]['productId']
+                        color: colorCheck
                             ? const Color.fromARGB(255, 119, 230, 123)
                             : Colors.white,
                       ),
