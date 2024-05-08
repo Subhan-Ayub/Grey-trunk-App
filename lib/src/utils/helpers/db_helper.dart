@@ -15,28 +15,44 @@ class DatabaseHelper extends GetxController {
 
   DatabaseHelper._internal();
 
-  Future<String> createFolder() async {
-    final dir = Directory(
-        '/private/var/mobile/Containers/Data/Application/4C64A46E-56F8-4C83-AFD4-DE01B9507B31/MyFolder');
-
+  String androidDbPath = '';
+  createFolder() async {
+    var path = await getExternalStorageDirectory();
+    print(path);
+    List folders = path!.path.split('/');
     var status = await Permission.storage.status;
-    print('yyyy ${await getDownloadsDirectory()}');
-    print(status.isGranted);
-    if (!status.isGranted) {
-      await Permission.storage.request();
+    for (var i = 1; i < folders.length; i++) {
+      if (folders[i] != 'Android') {
+        androidDbPath += '/' + folders[i];
+      } else {
+        break;
+      }
     }
+    print(androidDbPath);
+    androidDbPath = androidDbPath + '/ET-AMS';
 
+    if (!status.isGranted) {
+      print('sdeeeeeeeee');
+      await Permission.storage.request();
+      print('eeeeee${status.isGranted}');
+    }
+    print(status.isGranted);
+    print(androidDbPath);
+    final dir = Directory(androidDbPath);
     if (await dir.exists()) {
       print(dir.path);
-      return dir.path; // Folder already exists
+      // return dir.path; // Folder already exists
     } else {
-      dir.create();
-      return dir.path; // New folder created
+      print(status.isGranted);
+      dir.create(recursive: true);
+      print('doneeeeeeee');
+      // return dir.path; // New folder created
     }
   }
 
   Future<Database> get databasee async {
     // createFolder();
+    print('folderdone');
     if (database == null) {
       database = await initializeDatabase();
       print('jjj');
@@ -45,7 +61,8 @@ class DatabaseHelper extends GetxController {
   }
 
   Future<Database> initializeDatabase() async {
-    final dbPath = await getDatabasesPath();
+    // await Platform.isAndroid?:
+    final dbPath = getDatabasesPath();
     print(dbPath);
     const dbName = 'rfid.db';
     print('creating');
