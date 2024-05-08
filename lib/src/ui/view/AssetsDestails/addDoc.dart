@@ -28,6 +28,7 @@ class AddDocument extends StatelessWidget {
                     ),
                     Text(
                       'ADD NEW DOCUMENT',
+                      
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                     ),
